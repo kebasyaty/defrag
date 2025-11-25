@@ -44,4 +44,4 @@
 
 ## License
 
-This project is licensed under the [MIT](https://github.com/kebasyaty/defrag/blob/main/LICENSE "GPL-3.0").
+This project is licensed under the [GPL-3.0](https://github.com/kebasyaty/defrag/blob/main/LICENSE "GPL-3.0").
