@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from app import func_print
+
 
 def main() -> None:
     """???"""
-    print("Hello from defrag!")  # noqa: T201
+    func_print()
 
 
 if __name__ == "__main__":
