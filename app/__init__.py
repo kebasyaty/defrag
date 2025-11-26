@@ -5,7 +5,7 @@ from __future__ import annotations
 __all__ = ("Defrag",)
 
 import gi
-from gi.repository import GLib, Gtk
+from gi.repository import GLib, Gtk  # pyright: ignore[reportMissingModuleSource]
 
 gi.require_version("Gtk", "4.0")
 
