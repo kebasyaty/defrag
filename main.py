@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
-from app import func_print
+import sys
+
+from app import Defrag
 
 
 def main() -> None:
     """Business logic."""
-    func_print()
+    app = Defrag()
+    exit_status = app.run(sys.argv)
+    sys.exit(exit_status)
 
 
 if __name__ == "__main__":
