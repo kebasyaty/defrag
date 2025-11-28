@@ -1,13 +1,12 @@
 [project]
 name = "defrag"
 version = "0.1.0"
-description = "???"
+description = "HDD/SSD defragmentation with BTRFS file system."
 readme = "README.md"
 authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
 license = "GPL-3.0"
 license-files = ["LICENSE"]
 requires-python = ">=3.12,<4.0"
-keywords = ["database", "scruby"]
 dependencies = ["pycairo>=1.29.0", "pygobject>=3.54.5"]
 
 [tool.uv]
