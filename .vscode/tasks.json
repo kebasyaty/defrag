@@ -62,6 +62,33 @@
       "problemMatcher": []
     },
     {
+      "label": "MkDocs: Create New Docs",
+      "type": "shell",
+      "command": ["uv run mkdocs new ."],
+      "problemMatcher": []
+    },
+    {
+      "label": "MkDocs: Run Build",
+      "type": "shell",
+      "command": ["uv run mkdocs build"],
+      "problemMatcher": []
+    },
+    {
+      "label": "MkDocs: Run Serve",
+      "type": "shell",
+      "command": ["uv run mkdocs serve"],
+      "problemMatcher": []
+    },
+    {
+      "label": "MkDocs: Run Deploy 0.1",
+      "type": "shell",
+      "command": [
+        "uv run mike deploy --push --update-aliases 0.1 latest;",
+        "uv run mike set-default --push latest"
+      ],
+      "problemMatcher": []
+    },
+    {
       "label": "UV: Run App",
       "type": "shell",
       "command": ["uv run python main.py"],
