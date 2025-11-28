@@ -82,7 +82,7 @@ extra:
       link: https://twitter.com
 
 nav:
-  - defrag: index.md
+  - Defrag: index.md
   - Installation: pages/installation.md
   - Usage: pages/usage.md
   - Details: pages/details.md
