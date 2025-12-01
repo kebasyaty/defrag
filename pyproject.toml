@@ -26,8 +26,13 @@ fix = true
 line-length = 120
 indent-width = 4
 required-version = ">=0.14.6"
-src = ["main.py", "app", "tests"]
-include = ["main.py", "app/**/*.py", "tests/**/*.py"]
+src = ["app", "tests"]
+include = [
+    "*.py",
+    "**/pyproject.toml",
+    "app/**/*.py",
+    "tests/**/*.py",
+]
 exclude = [
     ".bzr",
     ".direnv",
@@ -140,7 +145,7 @@ line-ending = "auto"
 strict = true
 show_error_codes = true
 pretty = true
-files = ["main.py", "app/**/*.py", "tests/**/*.py"]
+files = ["*.py", "app/**/*.py", "tests/**/*.py"]
 disable_error_code = [
     "type-arg",
     "no-any-return",
