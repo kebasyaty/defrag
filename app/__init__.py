@@ -5,9 +5,12 @@ from __future__ import annotations
 __all__ = ("Defrag",)
 
 import gi
-from gi.repository import GLib, Gtk  # pyright: ignore[reportMissingModuleSource]
 
 gi.require_version("Gtk", "4.0")
+
+from gi.repository import GLib, Gtk  # pyright: ignore[reportMissingModuleSource]  # noqa: E402
+
+from app.main_window import MainWindow  # noqa: E402
 
 
 class Defrag(Gtk.Application):
@@ -18,6 +21,6 @@ class Defrag(Gtk.Application):
         GLib.set_application_name("Defrag")
 
     def do_activate(self) -> None:
-        """???"""
-        window = Gtk.ApplicationWindow(application=self, title="Defrag")
+        """Do activate."""
+        window = MainWindow(self)
         window.present()
