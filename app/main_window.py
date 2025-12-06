@@ -16,6 +16,10 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Create a vertical box
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 6)  # Spacing of 6 pixels
+        vbox.set_margin_top(12)
+        vbox.set_margin_start(6)
+        vbox.set_margin_end(6)
+        vbox.set_margin_bottom(6)
         self.set_child(vbox)  # Set the box as the main child of the window
 
         # Create a horizontal box
