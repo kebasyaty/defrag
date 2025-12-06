@@ -4,7 +4,6 @@ from __future__ import annotations
 
 __all__ = ("MainWindow",)
 
-from typing import Any
 
 from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
@@ -12,8 +11,8 @@ from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 class MainWindow(Gtk.ApplicationWindow):
     """Main Window."""
 
-    def __init__(self, app: Any) -> None:  # noqa: D107
-        super().__init__(application=app, title="Defrag")
+    def __init__(self) -> None:  # noqa: D107
+        super().__init__()
 
         # Create a vertical box
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 6)  # Spacing of 6 pixels
