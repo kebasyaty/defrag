@@ -1,4 +1,4 @@
-"""Window."""
+"""Main Window."""
 
 from __future__ import annotations
 
