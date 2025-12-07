@@ -17,6 +17,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} Python ${{ matrix.python-version }}
 
+    container:
+      image: ubuntu/ubuntu:latest
+      options: --user root
+
     steps:
       - uses: actions/checkout@v6
         with:
