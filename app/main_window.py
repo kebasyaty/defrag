@@ -12,9 +12,10 @@ class MainWindow(Gtk.ApplicationWindow):
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
         super().__init__(**kwargs)
 
-        # Create a general horizontal box
-        general_hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 6)
-        general_hbox.set_margin_top(12)
-        general_hbox.set_margin_start(6)
-        general_hbox.set_margin_end(6)
-        general_hbox.set_margin_bottom(6)
+        # Create the main horizontal box
+        main_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+        main_hbox.set_margin_top(12)
+        main_hbox.set_margin_start(6)
+        main_hbox.set_margin_end(6)
+        main_hbox.set_margin_bottom(6)
+        self.set_child(main_hbox)
