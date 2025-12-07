@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 __all__ = ("MainWindow",)
+
+from typing import Any
+
 from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
 
@@ -33,7 +36,14 @@ class MainWindow(Gtk.ApplicationWindow):
         btn_assess = Gtk.Button(label="Assess")  # Assess file fragmentation
         btn_defrag = Gtk.Button(label="Defrag")  # Run optimization
 
+        # Connect handlers of buttons for left vertical box
+        btn_health.connect("clicked", self.on_btn_health)
+
         # Add buttons to left vertical box
         left_vbox.append(btn_health)
         left_vbox.append(btn_assess)
         left_vbox.append(btn_defrag)
+
+    def on_btn_health(self, widget: Any) -> None:
+        """Handler for a Health button."""
+        return
