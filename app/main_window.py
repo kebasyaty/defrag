@@ -33,17 +33,17 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Create buttons for left vertical box
         btn_health = Gtk.Button(label="Health")  # Integrity check
-        btn_assess = Gtk.Button(label="Assess")  # Assess file fragmentation
+        btn_analysis = Gtk.Button(label="Analysis")  # Analysis file fragmentation
         btn_defrag = Gtk.Button(label="Defrag")  # Run optimization
 
         # Connect handlers of buttons for left vertical box
         btn_health.connect("clicked", self.on_btn_health)
-        btn_assess.connect("clicked", self.on_btn_assess)
+        btn_analysis.connect("clicked", self.on_btn_analysis)
         btn_defrag.connect("clicked", self.on_btn_defrag)
 
         # Add buttons to left vertical box
         left_vbox.append(btn_health)
-        left_vbox.append(btn_assess)
+        left_vbox.append(btn_analysis)
         left_vbox.append(btn_defrag)
 
         # Create a pages for right vertical box
@@ -52,10 +52,10 @@ class MainWindow(Gtk.ApplicationWindow):
         self.page_health.set_visible(True)
         self.right_vbox.append(self.page_health)
         #
-        self.page_assess = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.page_assess.append(Gtk.Label(label="Assess file fragmentation"))
-        self.page_assess.set_visible(False)
-        self.right_vbox.append(self.page_assess)
+        self.page_analysis = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.page_analysis.append(Gtk.Label(label="Analysis file fragmentation"))
+        self.page_analysis.set_visible(False)
+        self.right_vbox.append(self.page_analysis)
         #
         self.page_defrag = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.page_defrag.append(Gtk.Label(label="Defragmentation"))
@@ -64,21 +64,21 @@ class MainWindow(Gtk.ApplicationWindow):
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
-        self.page_assess.set_visible(False)
+        self.page_analysis.set_visible(False)
         self.page_defrag.set_visible(False)
         self.page_health.set_visible(True)
         return
 
-    def on_btn_assess(self, widget: Any) -> None:
+    def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Assess button."""
         self.page_health.set_visible(False)
         self.page_defrag.set_visible(False)
-        self.page_assess.set_visible(True)
+        self.page_analysis.set_visible(True)
         return
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
         self.page_health.set_visible(False)
-        self.page_assess.set_visible(False)
+        self.page_analysis.set_visible(False)
         self.page_defrag.set_visible(True)
         return
