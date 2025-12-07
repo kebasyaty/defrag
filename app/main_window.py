@@ -18,4 +18,12 @@ class MainWindow(Gtk.ApplicationWindow):
         main_hbox.set_margin_start(6)
         main_hbox.set_margin_end(6)
         main_hbox.set_margin_bottom(6)
-        self.set_child(main_hbox)
+        self.set_child(main_hbox)  # Set the box as the main child of the window
+
+        # Create a left vertical box
+        left_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        main_hbox.append(left_vbox)
+
+        # Create a right vertical box
+        right_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        main_hbox.append(right_vbox)
