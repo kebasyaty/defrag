@@ -87,7 +87,7 @@ class MainWindow(Gtk.ApplicationWindow):
         return
 
     def on_btn_analysis(self, widget: Any) -> None:
-        """Handler for a Assess button."""
+        """Handler for a Analysis button."""
         self.page_health.set_visible(False)
         self.page_cleaning.set_visible(False)
         self.page_defrag.set_visible(False)
