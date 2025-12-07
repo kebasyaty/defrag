@@ -55,25 +55,25 @@ class MainWindow(Gtk.ApplicationWindow):
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
-        self._clean_content_box()
+        self.clean_content_box()
         self.content_box.append(Gtk.Label(label="Checking the integrity of HDD|SSD"))
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
-        self._clean_content_box()
+        self.clean_content_box()
         self.content_box.append(Gtk.Label(label="cleaning"))
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
-        self._clean_content_box()
+        self.clean_content_box()
         self.content_box.append(Gtk.Label(label="Analysis file fragmentation"))
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
-        self._clean_content_box()
+        self.clean_content_box()
         self.content_box.append(Gtk.Label(label="Defragmentation"))
 
-    def _clean_content_box(self) -> None:
+    def clean_content_box(self) -> None:
         """Remove all child elements in the content box."""
         # Observe the children of `content_box`
         children_model = self.content_box.observe_children()
