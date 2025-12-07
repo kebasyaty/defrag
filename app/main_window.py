@@ -49,55 +49,34 @@ class MainWindow(Gtk.ApplicationWindow):
         left_vbox.append(btn_analysis)
         left_vbox.append(btn_defrag)
 
-        # Create a pages for right vertical box
-        self.page_health = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.page_health.append(Gtk.Label(label="Checking the integrity of HDD|SSD"))
-        self.page_health.set_visible(True)
-        self.right_vbox.append(self.page_health)
-        #
-        self.page_cleaning = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.page_cleaning.append(Gtk.Label(label="cleaning"))
-        self.page_cleaning.set_visible(False)
-        self.right_vbox.append(self.page_cleaning)
-        #
-        self.page_analysis = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.page_analysis.append(Gtk.Label(label="Analysis file fragmentation"))
-        self.page_analysis.set_visible(False)
-        self.right_vbox.append(self.page_analysis)
-        #
-        self.page_defrag = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.page_defrag.append(Gtk.Label(label="Defragmentation"))
-        self.page_defrag.set_visible(False)
-        self.right_vbox.append(self.page_defrag)
+        # Create a page for right vertical box
+        self.content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.right_vbox.append(self.content_box)
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
-        self.page_cleaning.set_visible(False)
-        self.page_analysis.set_visible(False)
-        self.page_defrag.set_visible(False)
-        self.page_health.set_visible(True)
-        return
+        self._clean_content_box()
+        self.content_box.append(Gtk.Label(label="Checking the integrity of HDD|SSD"))
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
-        self.page_health.set_visible(False)
-        self.page_analysis.set_visible(False)
-        self.page_defrag.set_visible(False)
-        self.page_cleaning.set_visible(True)
-        return
+        self._clean_content_box()
+        self.content_box.append(Gtk.Label(label="cleaning"))
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
-        self.page_health.set_visible(False)
-        self.page_cleaning.set_visible(False)
-        self.page_defrag.set_visible(False)
-        self.page_analysis.set_visible(True)
-        return
+        self._clean_content_box()
+        self.content_box.append(Gtk.Label(label="Analysis file fragmentation"))
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
-        self.page_health.set_visible(False)
-        self.page_cleaning.set_visible(False)
-        self.page_analysis.set_visible(False)
-        self.page_defrag.set_visible(True)
-        return
+        self._clean_content_box()
+        self.content_box.append(Gtk.Label(label="Defragmentation"))
+
+    def _clean_content_box(self) -> None:
+        """Remove all child elements in the content box."""
+        children_model = self.content_box.observe_children()
+        for i in range(children_model.get_n_items()):
+            child = children_model.get_item(i)
+            if isinstance(child, Gtk.Widget):
+                self.content_box.remove(child)
