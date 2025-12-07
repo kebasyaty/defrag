@@ -48,17 +48,17 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Create a pages for right vertical box
         self.page_health = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.page_health.append(Gtk.Label(label="Health"))
+        self.page_health.append(Gtk.Label(label="Checking the integrity of HDD|SSD"))
         self.page_health.set_visible(True)
         self.right_vbox.append(self.page_health)
         #
         self.page_assess = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.page_assess.append(Gtk.Label(label="Assess"))
+        self.page_assess.append(Gtk.Label(label="Assess file fragmentation"))
         self.page_assess.set_visible(False)
         self.right_vbox.append(self.page_assess)
         #
         self.page_defrag = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.page_defrag.append(Gtk.Label(label="Defrag"))
+        self.page_defrag.append(Gtk.Label(label="Defragmentation"))
         self.page_defrag.set_visible(False)
         self.right_vbox.append(self.page_defrag)
 
