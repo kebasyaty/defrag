@@ -28,8 +28,8 @@ class MainWindow(Gtk.ApplicationWindow):
         main_hbox.append(left_vbox)
 
         # Create a right vertical box
-        right_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        main_hbox.append(right_vbox)
+        self.right_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        main_hbox.append(self.right_vbox)
 
         # Create buttons for left vertical box
         btn_health = Gtk.Button(label="Health")  # Integrity check
@@ -46,14 +46,39 @@ class MainWindow(Gtk.ApplicationWindow):
         left_vbox.append(btn_assess)
         left_vbox.append(btn_defrag)
 
+        # Create a pages for right vertical box
+        self.page_health = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.page_health.append(Gtk.Label(label="Health"))
+        self.page_health.set_visible(True)
+        self.right_vbox.append(self.page_health)
+        #
+        self.page_assess = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.page_assess.append(Gtk.Label(label="Assess"))
+        self.page_assess.set_visible(False)
+        self.right_vbox.append(self.page_assess)
+        #
+        self.page_defrag = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.page_defrag.append(Gtk.Label(label="Defrag"))
+        self.page_defrag.set_visible(False)
+        self.right_vbox.append(self.page_defrag)
+
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
+        self.page_assess.set_visible(False)
+        self.page_defrag.set_visible(False)
+        self.page_health.set_visible(True)
         return
 
     def on_btn_assess(self, widget: Any) -> None:
         """Handler for a Assess button."""
+        self.page_health.set_visible(False)
+        self.page_defrag.set_visible(False)
+        self.page_assess.set_visible(True)
         return
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
+        self.page_health.set_visible(False)
+        self.page_assess.set_visible(False)
+        self.page_defrag.set_visible(True)
         return
