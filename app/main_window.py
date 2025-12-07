@@ -26,3 +26,6 @@ class MainWindow(Gtk.ApplicationWindow, LeftBox, RightBox):
 
         LeftBox.__init__(self)
         RightBox.__init__(self)
+
+        # Render content for the Health button
+        self.on_btn_health(None)
