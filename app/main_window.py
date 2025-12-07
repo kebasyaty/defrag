@@ -29,7 +29,7 @@ class MainWindow(Gtk.ApplicationWindow, LeftBox):
         self.right_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.main_hbox.append(self.right_vbox)
 
-        # Create a content_box
+        # Create a box for current content
         self.content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.right_vbox.append(self.content_box)
 
