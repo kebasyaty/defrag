@@ -27,3 +27,13 @@ class MainWindow(Gtk.ApplicationWindow):
         # Create a right vertical box
         right_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         main_hbox.append(right_vbox)
+
+        # Create buttons for left vertical box
+        btn_health = Gtk.Button.new_with_label("Health")  # Integrity check
+        btn_assess = Gtk.Button.new_with_label("Assess")  # Assess file fragmentation
+        btn_defrag = Gtk.Button.new_with_label("Defrag")  # Run optimization
+
+        # Add buttons to left vertical box
+        left_vbox.append(btn_health)
+        left_vbox.append(btn_assess)
+        left_vbox.append(btn_defrag)
