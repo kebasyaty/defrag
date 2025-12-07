@@ -75,7 +75,9 @@ class MainWindow(Gtk.ApplicationWindow):
 
     def _clean_content_box(self) -> None:
         """Remove all child elements in the content box."""
+        # Observe the children of `content_box`
         children_model = self.content_box.observe_children()
+        # Iterate through the children of `content_box`
         for i in range(children_model.get_n_items()):
             child = children_model.get_item(i)
             if isinstance(child, Gtk.Widget):
