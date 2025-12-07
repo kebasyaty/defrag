@@ -44,6 +44,10 @@ class MainWindow(Gtk.ApplicationWindow):
         left_vbox.append(btn_assess)
         left_vbox.append(btn_defrag)
 
+        # Create a Notebook widget in right vertical box
+        notebook = Gtk.Notebook()
+        right_vbox.append(notebook)
+
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
         return
