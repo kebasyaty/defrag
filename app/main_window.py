@@ -3,16 +3,14 @@
 from __future__ import annotations
 
 __all__ = ("MainWindow",)
-
-
 from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
 
 class MainWindow(Gtk.ApplicationWindow):
     """Main Window."""
 
-    def __init__(self) -> None:  # noqa: D107
-        super().__init__()
+    def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
+        super().__init__(**kwargs)
 
         # Create a vertical box
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 6)  # Spacing of 6 pixels

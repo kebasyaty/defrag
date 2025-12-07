@@ -23,8 +23,10 @@ class Defrag(Gtk.Application):
 
     def do_activate(self) -> None:
         """Do activate."""
-        window = MainWindow()
-        window.set_application(self)
-        window.set_title(APP_NAME)
-        window.set_default_size(640, 480)
+        window = MainWindow(
+            title=APP_NAME,
+            application=self,
+            default_width=640,
+            default_height=480,
+        )
         window.present()
