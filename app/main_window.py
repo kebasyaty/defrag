@@ -38,6 +38,8 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Connect handlers of buttons for left vertical box
         btn_health.connect("clicked", self.on_btn_health)
+        btn_assess.connect("clicked", self.on_btn_assess)
+        btn_defrag.connect("clicked", self.on_btn_defrag)
 
         # Add buttons to left vertical box
         left_vbox.append(btn_health)
@@ -46,4 +48,12 @@ class MainWindow(Gtk.ApplicationWindow):
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
+        return
+
+    def on_btn_assess(self, widget: Any) -> None:
+        """Handler for a Assess button."""
+        return
+
+    def on_btn_defrag(self, widget: Any) -> None:
+        """Handler for a Defrag button."""
         return
