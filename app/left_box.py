@@ -18,10 +18,42 @@ class LeftBox:
         self.main_hbox.append(left_vbox)
 
         # Create buttons for left vertical box
-        btn_health = Gtk.Button(label="Health")  # Integrity check
-        btn_cleaning = Gtk.Button(label="Cleaning")  # cleaning
-        btn_analysis = Gtk.Button(label="Analysis")  # Analysis file fragmentation
-        btn_defrag = Gtk.Button(label="Defrag")  # Run optimization
+        btn_health = Gtk.Button()  # Integrity check
+        btn_cleaning = Gtk.Button()  # cleaning
+        btn_analysis = Gtk.Button()  # Analysis file fragmentation
+        btn_defrag = Gtk.Button()  # Run optimization
+
+        # Add icon and label on `health` button
+        btn_health_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        btn_health_icon = Gtk.Image.new_from_icon_name("document-new")
+        btn_health_label = Gtk.Label(label="Health")
+        btn_health_content_box.append(btn_health_icon)
+        btn_health_content_box.append(btn_health_label)
+        btn_health.set_child(btn_health_content_box)
+
+        # Add icon and label on `cleaning` button
+        btn_cleaning_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        btn_cleaning_icon = Gtk.Image.new_from_icon_name("document-new")
+        btn_cleaning_label = Gtk.Label(label="Cleaning")
+        btn_cleaning_content_box.append(btn_cleaning_icon)
+        btn_cleaning_content_box.append(btn_cleaning_label)
+        btn_cleaning.set_child(btn_cleaning_content_box)
+
+        # Add icon and label on `analysis` button
+        btn_analysis_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        btn_analysis_icon = Gtk.Image.new_from_icon_name("document-new")
+        btn_analysis_label = Gtk.Label(label="Analysis")
+        btn_analysis_content_box.append(btn_analysis_icon)
+        btn_analysis_content_box.append(btn_analysis_label)
+        btn_analysis.set_child(btn_analysis_content_box)
+
+        # Add icon and label on `defrag` button
+        btn_defrag_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        btn_defrag_icon = Gtk.Image.new_from_icon_name("document-new")
+        btn_defrag_label = Gtk.Label(label="Defrag")
+        btn_defrag_content_box.append(btn_defrag_icon)
+        btn_defrag_content_box.append(btn_defrag_label)
+        btn_defrag.set_child(btn_defrag_content_box)
 
         # Connect handlers of buttons for left vertical box
         btn_health.connect("clicked", self.on_btn_health)
@@ -43,7 +75,7 @@ class LeftBox:
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
         self.clean_content_box()
-        self.title_content_box("cleaning")
+        self.title_content_box("Cleaning")
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
