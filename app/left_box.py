@@ -38,21 +38,25 @@ class LeftBox:
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
         self.clean_content_box()
-        title_label = Gtk.Label(label="Checking the integrity of HDD|SSD")
-        title_label.set_halign(Gtk.Align.CENTER)
-        self.content_box.append(title_label)
+        self.title_content_box("Checking the integrity of HDD|SSD")
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
         self.clean_content_box()
-        self.content_box.append(Gtk.Label(label="cleaning"))
+        self.title_content_box("cleaning")
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
         self.clean_content_box()
-        self.content_box.append(Gtk.Label(label="Analysis file fragmentation"))
+        self.title_content_box("Analysis file fragmentation")
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
         self.clean_content_box()
-        self.content_box.append(Gtk.Label(label="Defragmentation"))
+        self.title_content_box("Defragmentation")
+
+    def title_content_box(self, title: str) -> None:
+        """Add Title to `content_box`."""
+        title_label = Gtk.Label(label=title)
+        title_label.set_halign(Gtk.Align.CENTER)
+        self.content_box.append(title_label)
