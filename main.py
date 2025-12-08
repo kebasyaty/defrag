@@ -9,7 +9,9 @@ from app import Defrag
 
 def main() -> None:
     """Business logic."""
+    # Create an instance of the Defrag class
     app = Defrag()
+    # Run application
     exit_status = app.run(sys.argv)
     sys.exit(exit_status)
 

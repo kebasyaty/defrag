@@ -13,10 +13,12 @@ class RightBox:
     def __init__(self) -> None:  # noqa: D107
         # Create a right vertical box
         self.right_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.right_vbox.set_hexpand(True)
         self.main_hbox.append(self.right_vbox)
 
         # Create a box for current content
         self.content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.content_box.set_hexpand(True)
         self.right_vbox.append(self.content_box)
 
     def clean_content_box(self) -> None:

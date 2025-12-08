@@ -8,6 +8,8 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 
+
+import darkdetect  # noqa: E402
 from gi.repository import GLib, Gtk  # pyright: ignore[reportMissingModuleSource]  # noqa: E402
 
 from app.constants import APP_ID, APP_NAME  # noqa: E402
@@ -23,10 +25,19 @@ class Defrag(Gtk.Application):
 
     def do_activate(self) -> None:
         """Do activate."""
-        window = MainWindow(
-            title=APP_NAME,
-            application=self,
-            default_width=640,
-            default_height=480,
-        )
-        window.present()
+        # Replace application theme on system theme
+        settings = Gtk.Settings.get_default()
+        if settings is not None:
+            is_dark_theme = darkdetect.isDark()
+            default_theme_name = "Adwaita-dark" if is_dark_theme else "Adwaita"
+            settings.set_property("gtk-theme-name", default_theme_name)
+        # Create an instance of the MainWindow class
+        window = self.props.active_window
+        if not window:
+            window = MainWindow(
+                title=APP_NAME,
+                application=self,
+                default_width=640,
+                default_height=480,
+            )
+            window.present()
