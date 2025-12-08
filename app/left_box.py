@@ -38,7 +38,9 @@ class LeftBox:
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
         self.clean_content_box()
-        self.content_box.append(Gtk.Label(label="Checking the integrity of HDD|SSD"))
+        title_label = Gtk.Label(label="Checking the integrity of HDD|SSD")
+        title_label.set_halign(Gtk.Align.CENTER)
+        self.content_box.append(title_label)
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""

@@ -22,6 +22,7 @@ class MainWindow(Gtk.ApplicationWindow, LeftBox, RightBox):
         self.main_hbox.set_margin_start(6)
         self.main_hbox.set_margin_end(6)
         self.main_hbox.set_margin_bottom(6)
+        self.main_hbox.set_hexpand(True)
         self.set_child(self.main_hbox)  # Set the box as the main child of the window
 
         LeftBox.__init__(self)
