@@ -4,14 +4,11 @@ from __future__ import annotations
 
 __all__ = ("Defrag",)
 
-import gi
 
-gi.require_version("Gtk", "4.0")
+from gi.repository import GLib, Gtk  # pyright: ignore[reportMissingModuleSource]
 
-from gi.repository import GLib, Gtk  # pyright: ignore[reportMissingModuleSource]  # noqa: E402
-
-from app.constants import APP_ID, APP_NAME  # noqa: E402
-from app.main_window import MainWindow  # noqa: E402
+from app.constants import APP_ID, APP_NAME
+from app.main_window import MainWindow
 
 
 class Defrag(Gtk.Application):
@@ -23,15 +20,13 @@ class Defrag(Gtk.Application):
 
     def do_activate(self) -> None:
         """Do activate."""
-        # Replace application theme on system theme
-        settings = Gtk.Settings.get_default()
-        if settings is not None:
-            settings.set_property("gtk-theme-name", "Adwaita-dark")
-        # Create window of application
-        window = MainWindow(
-            title=APP_NAME,
-            application=self,
-            default_width=640,
-            default_height=480,
-        )
-        window.present()
+        # Create an instance of the MainWindow class
+        window = self.props.active_window
+        if not window:
+            window = MainWindow(
+                title=APP_NAME,
+                application=self,
+                default_width=640,
+                default_height=480,
+            )
+            window.present()
