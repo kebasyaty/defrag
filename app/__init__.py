@@ -30,7 +30,6 @@ class Defrag(Gtk.Application):
         if settings is not None:
             is_dark_theme = darkdetect.isDark()
             default_theme_name = "Adwaita-dark" if is_dark_theme else "Adwaita"
-            settings.set_property("gtk-icon-theme-name", default_theme_name)
             settings.set_property("gtk-theme-name", default_theme_name)
         # Create an instance of the MainWindow class
         window = self.props.active_window
