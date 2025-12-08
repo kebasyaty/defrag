@@ -23,6 +23,11 @@ class Defrag(Gtk.Application):
 
     def do_activate(self) -> None:
         """Do activate."""
+        # Replace application theme on system theme
+        settings = Gtk.Settings.get_default()
+        if settings is not None:
+            settings.set_property("gtk-theme-name", "Adwaita-dark")
+        # Create window of application
         window = MainWindow(
             title=APP_NAME,
             application=self,
