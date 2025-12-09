@@ -33,6 +33,7 @@ class MainWindow(Gtk.ApplicationWindow, LeftBox, RightBox):
 
         # Create main content horizontal box
         self.main_content_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.main_content_hbox.set_margin_top(12)
         self.main_content_hbox.set_hexpand(True)
         self.main_vbox.append(self.main_content_hbox)
 
