@@ -14,7 +14,7 @@ class RightBox:
         # Create a right vertical box
         self.right_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.right_vbox.set_hexpand(True)
-        self.main_hbox.append(self.right_vbox)
+        self.main_content_hbox.append(self.right_vbox)
 
         # Create a box for current content
         self.content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)

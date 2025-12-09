@@ -15,7 +15,7 @@ class LeftBox:
     def __init__(self) -> None:  # noqa: D107
         # Create vertical box
         left_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.main_hbox.append(left_vbox)
+        self.main_content_hbox.append(left_vbox)
 
         # Create a Health button
         btn_health = Gtk.Button()
@@ -89,14 +89,14 @@ class LeftBox:
         """Add Title to `main_title_hbox`."""
         title_label = Gtk.Label(label=title)
         title_label.set_halign(Gtk.Align.CENTER)
-        self.main_title_hbox.append(title_label)
+        self.main_title_vbox.append(title_label)
 
     def clean_main_title_box(self) -> None:
         """Remove all child elements in `main_title_hbox`."""
         # Observe the children of `main_title_hbox`
-        children_model = self.main_title_hbox.observe_children()
+        children_model = self.main_title_vbox.observe_children()
         # Iterate through the children of `main_title_hbox`
         for i in range(children_model.get_n_items()):
             child = children_model.get_item(i)
             if isinstance(child, Gtk.Widget):
-                self.main_title_hbox.remove(child)
+                self.main_title_vbox.remove(child)
