@@ -18,7 +18,7 @@ class LeftBox:
         self.main_hbox.append(left_vbox)
 
         # Create a Health button
-        btn_health = Gtk.Button()  # Integrity check
+        btn_health = Gtk.Button()
         btn_health_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_health_icon = Gtk.Image.new_from_icon_name("security-medium-rtl-symbolic")
         btn_health_label = Gtk.Label(label="Health")
@@ -29,7 +29,7 @@ class LeftBox:
         left_vbox.append(btn_health)
 
         # Create a Cleaning button
-        btn_cleaning = Gtk.Button()  # Cleaning
+        btn_cleaning = Gtk.Button()
         btn_cleaning_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_cleaning_icon = Gtk.Image.new_from_icon_name("user-trash-symbolic")
         btn_cleaning_label = Gtk.Label(label="Cleaning")
@@ -40,7 +40,7 @@ class LeftBox:
         left_vbox.append(btn_cleaning)
 
         # Create a Analysis button
-        btn_analysis = Gtk.Button()  # Analysis file fragmentation
+        btn_analysis = Gtk.Button()
         btn_analysis_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_analysis_icon = Gtk.Image.new_from_icon_name("applications-science-symbolic")
         btn_analysis_label = Gtk.Label(label="Analysis")
@@ -51,7 +51,7 @@ class LeftBox:
         left_vbox.append(btn_analysis)
 
         # Create a Defrag button
-        btn_defrag = Gtk.Button()  # Run optimization
+        btn_defrag = Gtk.Button()
         btn_defrag_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_defrag_icon = Gtk.Image.new_from_icon_name("preferences-system-symbolic")
         btn_defrag_label = Gtk.Label(label="Defrag")
