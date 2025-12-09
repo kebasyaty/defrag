@@ -9,10 +9,9 @@ import gi
 gi.require_version("Gtk", "4.0")
 
 
-import darkdetect  # noqa: E402
 from gi.repository import GLib, Gtk  # pyright: ignore[reportMissingModuleSource]  # noqa: E402
 
-from app.constants import APP_ID, APP_NAME  # noqa: E402
+from app.constants import APP_ID, APP_NAME, IS_DARK_THEME  # noqa: E402
 from app.main_window import MainWindow  # noqa: E402
 
 
@@ -28,8 +27,8 @@ class Defrag(Gtk.Application):
         # Replace application theme on system theme
         settings = Gtk.Settings.get_default()
         if settings is not None:
-            is_dark_theme = darkdetect.isDark()
-            default_theme_name = "Adwaita-dark" if is_dark_theme else "Adwaita"
+            default_theme_name = "Adwaita-dark" if IS_DARK_THEME else "Adwaita"
+            settings.set_property("gtk-icon-theme-name", "Adwaita")
             settings.set_property("gtk-theme-name", default_theme_name)
         # Create an instance of the MainWindow class
         window = self.props.active_window
