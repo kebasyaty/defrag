@@ -12,6 +12,7 @@ from __future__ import annotations
 __all__ = (
     "APP_NAME",
     "APP_ID",
+    "IS_DARK_THEME",
 )
 
 import darkdetect
