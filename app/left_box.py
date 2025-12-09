@@ -63,26 +63,40 @@ class LeftBox:
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
+        self.clean_main_title_box()
         self.clean_content_box()
-        self.title_content_box("Checking the integrity of HDD|SSD")
+        self.set_main_title("Checking the integrity of HDD|SSD")
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
+        self.clean_main_title_box()
         self.clean_content_box()
-        self.title_content_box("Cleaning")
+        self.set_main_title("Cleaning")
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
+        self.clean_main_title_box()
         self.clean_content_box()
-        self.title_content_box("Analysis file fragmentation")
+        self.set_main_title("Analysis file fragmentation")
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
+        self.clean_main_title_box()
         self.clean_content_box()
-        self.title_content_box("Defragmentation")
+        self.set_main_title("Defragmentation")
 
-    def title_content_box(self, title: str) -> None:
-        """Add Title to `content_box`."""
+    def set_main_title(self, title: str) -> None:
+        """Add Title to `main_title_hbox`."""
         title_label = Gtk.Label(label=title)
         title_label.set_halign(Gtk.Align.CENTER)
-        self.content_box.append(title_label)
+        self.main_title_hbox.append(title_label)
+
+    def clean_main_title_box(self) -> None:
+        """Remove all child elements in `main_title_hbox`."""
+        # Observe the children of `main_title_hbox`
+        children_model = self.main_title_hbox.observe_children()
+        # Iterate through the children of `main_title_hbox`
+        for i in range(children_model.get_n_items()):
+            child = children_model.get_item(i)
+            if isinstance(child, Gtk.Widget):
+                self.main_title_hbox.remove(child)
