@@ -83,6 +83,7 @@ class LeftBox:
 
     def set_title_to_page_right_box(self, title: str) -> None:
         """Add Title to `page_right_box`."""
-        title_label = Gtk.Label(label=title)
+        title_label = Gtk.Label()
+        title_label.set_markup(f"<b>{title}</b>")
         title_label.set_halign(Gtk.Align.START)
         self.page_right_box.append(title_label)
