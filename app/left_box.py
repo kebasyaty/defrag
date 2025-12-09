@@ -15,7 +15,7 @@ class LeftBox:
     def __init__(self) -> None:  # noqa: D107
         # Create vertical box
         left_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.main_content_hbox.append(left_vbox)
+        self.main_hbox.append(left_vbox)
 
         # Create a Health button
         btn_health = Gtk.Button()
@@ -63,40 +63,26 @@ class LeftBox:
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
-        self.clean_main_title_box()
-        self.clean_content_box()
-        self.set_main_title("Checking the integrity of HDD|SSD")
+        self.clean_page_right_box()
+        self.set_title_to_page_right_box("Checking the integrity of HDD|SSD")
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
-        self.clean_main_title_box()
-        self.clean_content_box()
-        self.set_main_title("Cleaning")
+        self.clean_page_right_box()
+        self.set_title_to_page_right_box("Cleaning")
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
-        self.clean_main_title_box()
-        self.clean_content_box()
-        self.set_main_title("Analysis file fragmentation")
+        self.clean_page_right_box()
+        self.set_title_to_page_right_box("Analysis file fragmentation")
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
-        self.clean_main_title_box()
-        self.clean_content_box()
-        self.set_main_title("Defragmentation")
+        self.clean_page_right_box()
+        self.set_title_to_page_right_box("Defragmentation")
 
-    def set_main_title(self, title: str) -> None:
-        """Add Title to `main_title_hbox`."""
+    def set_title_to_page_right_box(self, title: str) -> None:
+        """Add Title to `page_right_box`."""
         title_label = Gtk.Label(label=title)
-        title_label.set_halign(Gtk.Align.CENTER)
-        self.main_title_vbox.append(title_label)
-
-    def clean_main_title_box(self) -> None:
-        """Remove all child elements in `main_title_hbox`."""
-        # Observe the children of `main_title_hbox`
-        children_model = self.main_title_vbox.observe_children()
-        # Iterate through the children of `main_title_hbox`
-        for i in range(children_model.get_n_items()):
-            child = children_model.get_item(i)
-            if isinstance(child, Gtk.Widget):
-                self.main_title_vbox.remove(child)
+        title_label.set_halign(Gtk.Align.START)
+        self.page_right_box.append(title_label)
