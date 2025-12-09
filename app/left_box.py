@@ -13,58 +13,52 @@ class LeftBox:
     """Main control buttons."""
 
     def __init__(self) -> None:  # noqa: D107
-        # Create a left vertical box
+        # Create vertical box
         left_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.main_hbox.append(left_vbox)
 
-        # Create buttons for left vertical box
+        # Create a Health button
         btn_health = Gtk.Button()  # Integrity check
-        btn_cleaning = Gtk.Button()  # cleaning
-        btn_analysis = Gtk.Button()  # Analysis file fragmentation
-        btn_defrag = Gtk.Button()  # Run optimization
-
-        # Add icon and label on `health` button
         btn_health_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_health_icon = Gtk.Image.new_from_icon_name("security-medium-rtl-symbolic")
         btn_health_label = Gtk.Label(label="Health")
         btn_health_content_box.append(btn_health_icon)
         btn_health_content_box.append(btn_health_label)
         btn_health.set_child(btn_health_content_box)
+        btn_health.connect("clicked", self.on_btn_health)
+        left_vbox.append(btn_health)
 
-        # Add icon and label on `cleaning` button
+        # Create a Cleaning button
+        btn_cleaning = Gtk.Button()  # Cleaning
         btn_cleaning_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_cleaning_icon = Gtk.Image.new_from_icon_name("user-trash-symbolic")
         btn_cleaning_label = Gtk.Label(label="Cleaning")
         btn_cleaning_content_box.append(btn_cleaning_icon)
         btn_cleaning_content_box.append(btn_cleaning_label)
         btn_cleaning.set_child(btn_cleaning_content_box)
+        btn_cleaning.connect("clicked", self.on_btn_cleaning)
+        left_vbox.append(btn_cleaning)
 
-        # Add icon and label on `analysis` button
+        # Create a Analysis button
+        btn_analysis = Gtk.Button()  # Analysis file fragmentation
         btn_analysis_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_analysis_icon = Gtk.Image.new_from_icon_name("applications-science-symbolic")
         btn_analysis_label = Gtk.Label(label="Analysis")
         btn_analysis_content_box.append(btn_analysis_icon)
         btn_analysis_content_box.append(btn_analysis_label)
         btn_analysis.set_child(btn_analysis_content_box)
+        btn_analysis.connect("clicked", self.on_btn_analysis)
+        left_vbox.append(btn_analysis)
 
-        # Add icon and label on `defrag` button
+        # Create a Defrag button
+        btn_defrag = Gtk.Button()  # Run optimization
         btn_defrag_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_defrag_icon = Gtk.Image.new_from_icon_name("preferences-system-symbolic")
         btn_defrag_label = Gtk.Label(label="Defrag")
         btn_defrag_content_box.append(btn_defrag_icon)
         btn_defrag_content_box.append(btn_defrag_label)
         btn_defrag.set_child(btn_defrag_content_box)
-
-        # Connect handlers of buttons for left vertical box
-        btn_health.connect("clicked", self.on_btn_health)
-        btn_cleaning.connect("clicked", self.on_btn_cleaning)
-        btn_analysis.connect("clicked", self.on_btn_analysis)
         btn_defrag.connect("clicked", self.on_btn_defrag)
-
-        # Add buttons to left vertical box
-        left_vbox.append(btn_health)
-        left_vbox.append(btn_cleaning)
-        left_vbox.append(btn_analysis)
         left_vbox.append(btn_defrag)
 
     def on_btn_health(self, widget: Any) -> None:
