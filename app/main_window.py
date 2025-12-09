@@ -27,7 +27,7 @@ class MainWindow(Gtk.ApplicationWindow, LeftBox, RightBox):
 
         # Create the Title horizontal box
         self.main_title_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        self.main_hbox.append(self.title_hbox)
+        self.main_hbox.append(self.main_title_hbox)
 
         LeftBox.__init__(self)
         RightBox.__init__(self)
