@@ -12,15 +12,15 @@ class MainContent:
 
     def __init__(self) -> None:  # noqa: D107
         # Create a main content area
-        self.main_content_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.main_content_vbox.set_hexpand(True)
-        self.content_hbox.append(self.main_content_vbox)
+        main_content_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        main_content_vbox.set_hexpand(True)
+        self.content_hbox.append(main_content_vbox)
 
         # Create a page for dynamic content
         self.content_page_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.content_page_vbox.set_margin_start(30)
         self.content_page_vbox.set_hexpand(True)
-        self.main_content_vbox.append(self.content_page_vbox)
+        main_content_vbox.append(self.content_page_vbox)
 
     def clean_content_page(self) -> None:
         """Remove all child elements in `content_page_vbox`."""
