@@ -38,6 +38,7 @@ class MainWindow(Adw.ApplicationWindow, LeftBox, RightBox):
         self.content_hbox.set_hexpand(True)
         self.main_vbox.append(self.content_hbox)
 
+        # Init mixins
         LeftBox.__init__(self)
         RightBox.__init__(self)
 
