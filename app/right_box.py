@@ -16,7 +16,7 @@ class RightBox:
         self.right_vbox.set_hexpand(True)
         self.content_hbox.append(self.right_vbox)
 
-        # Create a box for current content
+        # Create a box for dynamic content
         self.page_right_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.page_right_box.set_margin_start(24)
         self.page_right_box.set_hexpand(True)
