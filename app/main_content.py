@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-__all__ = ("MainArea",)
+__all__ = ("MainContent",)
 
 from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
 
-class MainArea:
+class MainContent:
     """Main content area."""
 
     def __init__(self) -> None:  # noqa: D107

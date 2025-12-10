@@ -6,11 +6,11 @@ __all__ = ("MainWindow",)
 
 from gi.repository import Adw, Gtk  # pyright: ignore[reportMissingModuleSource]
 
-from app.main_area import MainArea
+from app.main_content import MainContent
 from app.sidebar import SideBar
 
 
-class MainWindow(Adw.ApplicationWindow, SideBar, MainArea):
+class MainWindow(Adw.ApplicationWindow, SideBar, MainContent):
     """Main Window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
@@ -40,7 +40,7 @@ class MainWindow(Adw.ApplicationWindow, SideBar, MainArea):
 
         # Init mixins
         SideBar.__init__(self)
-        MainArea.__init__(self)
+        MainContent.__init__(self)
 
         # Render content for the Health button
         self.on_btn_health(None)
