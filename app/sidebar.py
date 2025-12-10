@@ -63,27 +63,27 @@ class SideBar:
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
-        self.clean_page_right_box()
-        self.set_title_to_page_right_box("Checking the integrity of HDD|SSD")
+        self.clean_page_vbox()
+        self.set_title_to_page_box("Checking the integrity of HDD|SSD")
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
-        self.clean_page_right_box()
-        self.set_title_to_page_right_box("Cleaning")
+        self.clean_page_vbox()
+        self.set_title_to_page_box("Cleaning")
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
-        self.clean_page_right_box()
-        self.set_title_to_page_right_box("Analysis file fragmentation")
+        self.clean_page_vbox()
+        self.set_title_to_page_box("Analysis file fragmentation")
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
-        self.clean_page_right_box()
-        self.set_title_to_page_right_box("Defragmentation")
+        self.clean_page_vbox()
+        self.set_title_to_page_box("Defragmentation")
 
-    def set_title_to_page_right_box(self, title: str) -> None:
+    def set_title_to_page_box(self, title: str) -> None:
         """Add Title to `page_right_box`."""
         title_label = Gtk.Label()
         title_label.set_markup(f"<b>{title}</b>")
         title_label.set_halign(Gtk.Align.START)
-        self.page_right_box.append(title_label)
+        self.content_page_vbox.append(title_label)
