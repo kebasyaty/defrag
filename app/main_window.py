@@ -24,8 +24,9 @@ class MainWindow(Adw.ApplicationWindow, LeftBox, RightBox):
         # Create the header box
         self.header_hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         self.header_hbox.set_hexpand(True)
-        header = Adw.HeaderBar()
-        self.header_hbox.append(header)
+        self.header = Adw.HeaderBar()
+        self.header.set_hexpand(True)
+        self.header_hbox.append(self.header)
         self.main_vbox.append(self.header_hbox)
 
         # Create the content box
