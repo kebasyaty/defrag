@@ -22,8 +22,8 @@ class MainArea:
         self.content_page_vbox.set_hexpand(True)
         self.main_area_vbox.append(self.content_page_vbox)
 
-    def clean_page_vbox(self) -> None:
-        """Remove all child elements in `page_vbox`."""
+    def clean_content_page(self) -> None:
+        """Remove all child elements in `content_page_vbox`."""
         # Observe the children of `page_vbox`
         children_model = self.content_page_vbox.observe_children()
         # Iterate through the children of `page_vbox`
