@@ -25,13 +25,6 @@ class MainWindow(Adw.ApplicationWindow, LeftBox, RightBox):
         self.main_vbox.set_hexpand(True)
         self.set_content(self.main_vbox)  # Set the box as the main child of the window
 
-        # Create the header box
-        self.header_hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        self.header_hbox.set_hexpand(True)
-        header = Adw.HeaderBar()
-        self.header_hbox.append(header)
-        self.main_vbox.append(self.header_hbox)
-
         # Create the content box
         self.content_hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         self.content_hbox.set_hexpand(True)
