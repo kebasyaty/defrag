@@ -15,7 +15,7 @@ class LeftBox:
     def __init__(self) -> None:  # noqa: D107
         # Create vertical box
         left_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.main_hbox.append(left_vbox)
+        self.content_hbox.append(left_vbox)
 
         # Create a Health button
         btn_health = Gtk.Button()

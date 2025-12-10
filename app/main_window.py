@@ -16,14 +16,26 @@ class MainWindow(Adw.ApplicationWindow, LeftBox, RightBox):
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
         Adw.ApplicationWindow.__init__(self, **kwargs)
 
-        # Create the main horizontal box
-        self.main_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
-        self.main_hbox.set_margin_top(18)
-        self.main_hbox.set_margin_start(6)
-        self.main_hbox.set_margin_end(6)
-        self.main_hbox.set_margin_bottom(6)
-        self.main_hbox.set_hexpand(True)
-        self.set_content(self.main_hbox)  # Set the box as the main child of the window
+        # Create the main box
+        self.main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        self.main_vbox.set_margin_top(18)
+        self.main_vbox.set_margin_start(6)
+        self.main_vbox.set_margin_end(6)
+        self.main_vbox.set_margin_bottom(6)
+        self.main_vbox.set_hexpand(True)
+        self.set_content(self.main_vbox)  # Set the box as the main child of the window
+
+        # Create the header box
+        self.header_hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.header_hbox.set_hexpand(True)
+        header = Adw.HeaderBar()
+        self.header_hbox.append(header)
+        self.main_vbox.append(self.header_hbox)
+
+        # Create the content box
+        self.content_hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.content_hbox.set_hexpand(True)
+        self.main_vbox.append(self.content_hbox)
 
         LeftBox.__init__(self)
         RightBox.__init__(self)
