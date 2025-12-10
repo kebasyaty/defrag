@@ -18,7 +18,7 @@ class MainArea:
 
         # Create a page for dynamic content
         self.content_page_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.content_page_vbox.set_margin_start(24)
+        self.content_page_vbox.set_margin_start(30)
         self.content_page_vbox.set_hexpand(True)
         self.content_area_vbox.append(self.content_page_vbox)
 
