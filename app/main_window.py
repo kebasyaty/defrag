@@ -4,13 +4,13 @@ from __future__ import annotations
 
 __all__ = ("MainWindow",)
 
-from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
+from gi.repository import Adw, Gtk  # pyright: ignore[reportMissingModuleSource]
 
 from app.left_box import LeftBox
 from app.right_box import RightBox
 
 
-class MainWindow(Gtk.ApplicationWindow, LeftBox, RightBox):
+class MainWindow(Adw.ApplicationWindow, LeftBox, RightBox):
     """Main Window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
@@ -23,7 +23,7 @@ class MainWindow(Gtk.ApplicationWindow, LeftBox, RightBox):
         self.main_hbox.set_margin_end(6)
         self.main_hbox.set_margin_bottom(6)
         self.main_hbox.set_hexpand(True)
-        self.set_child(self.main_hbox)  # Set the box as the main child of the window
+        self.set_content(self.main_hbox)  # Set the box as the main child of the window
 
         LeftBox.__init__(self)
         RightBox.__init__(self)
