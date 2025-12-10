@@ -1,4 +1,4 @@
-"""Buttons on the left side of the application."""
+"""Left side of the application."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
 
 class SideBar:
-    """Buttons on the left side of the application."""
+    """Buttons of menu on the left side of the application."""
 
     def __init__(self) -> None:  # noqa: D107
         # Create vertical box
