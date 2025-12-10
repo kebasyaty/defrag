@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-__all__ = ("RightBox",)
+__all__ = ("MainArea",)
 
 from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
 
-class RightBox:
-    """Switchable content with basic functionality."""
+class MainArea:
+    """Main content area."""
 
     def __init__(self) -> None:  # noqa: D107
         # Create a right vertical box

@@ -10,7 +10,7 @@ from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
 
 class SideBar:
-    """Buttons of menu on the left side of the application."""
+    """Buttons of menu on the left side of the applicatio."""
 
     def __init__(self) -> None:  # noqa: D107
         # Create vertical box
