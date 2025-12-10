@@ -14,7 +14,7 @@ class MainWindow(Adw.ApplicationWindow, LeftBox, RightBox):
     """Main Window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
-        Gtk.ApplicationWindow.__init__(self, **kwargs)
+        Adw.ApplicationWindow.__init__(self, **kwargs)
 
         # Create the main horizontal box
         self.main_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
