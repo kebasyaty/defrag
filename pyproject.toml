@@ -152,6 +152,7 @@ disable_error_code = [
     "operator",
     "misc",
     "import-untyped",
+    "no-untyped-call",
 ]
 
 [[tool.mypy.overrides]]
