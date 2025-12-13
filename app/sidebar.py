@@ -63,27 +63,27 @@ class SideBar:
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
-        self.clean_content_page()
-        self.set_title_to_content_page("Checking the integrity of HDD|SSD")
+        self.clean_dynamic_page()
+        self.set_title_to_dynamic_page("Checking the integrity of HDD|SSD")
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
-        self.clean_content_page()
-        self.set_title_to_content_page("Cleaning")
+        self.clean_dynamic_page()
+        self.set_title_to_dynamic_page("Cleaning")
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
-        self.clean_content_page()
-        self.set_title_to_content_page("Analysis file fragmentation")
+        self.clean_dynamic_page()
+        self.set_title_to_dynamic_page("Analysis file fragmentation")
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
-        self.clean_content_page()
-        self.set_title_to_content_page("Defragmentation")
+        self.clean_dynamic_page()
+        self.set_title_to_dynamic_page("Defragmentation")
 
-    def set_title_to_content_page(self, title: str) -> None:
+    def set_title_to_dynamic_page(self, title: str) -> None:
         """Add Title to `content_page_vbox`."""
         title_label = Gtk.Label()
         title_label.set_markup(f"<b>{title}</b>")
         title_label.set_halign(Gtk.Align.START)
-        self.content_page_vbox.append(title_label)
+        self.dynamic_page_vbox.append(title_label)
