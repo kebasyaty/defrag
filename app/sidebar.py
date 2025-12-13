@@ -2,18 +2,18 @@
 
 from __future__ import annotations
 
-__all__ = ("SideBar",)
+__all__ = ("Sidebar",)
 
 from typing import Any
 
 from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
 
-class SideBar:
+class Sidebar:
     """Buttons of menu on the left side of the applicatio."""
 
     def __init__(self) -> None:  # noqa: D107
-        # Create vertical box
+        # Create Sidebar box
         sidebar_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         sidebar_vbox.add_css_class("colored-box")
         self.content_hbox.append(sidebar_vbox)
