@@ -15,7 +15,6 @@ class Sidebar:
     def __init__(self) -> None:  # noqa: D107
         # Create Sidebar box
         sidebar_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        sidebar_vbox.add_css_class("colored-box")
         self.content_hbox.append(sidebar_vbox)
 
         # Create a Health button

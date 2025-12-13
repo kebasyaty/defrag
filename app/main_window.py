@@ -31,7 +31,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
 
         # Create the content box
         self.content_hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        self.content_hbox.set_margin_top(18)
+        self.content_hbox.set_margin_top(12)
         self.content_hbox.set_margin_start(12)
         self.content_hbox.set_margin_end(12)
         self.content_hbox.set_margin_bottom(12)
