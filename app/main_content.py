@@ -39,14 +39,14 @@ class MainContent:
 
         # Note: Reading streams is also typically done asynchronously in a real app,
         # but for simplicity we use a blocking read here, which is fine since the process already finished
-        stdout_str = "???"
+        stdout_str = ""
         if stdout_stream is not None:
             stdout_bytes = stdout_stream.read_bytes(1024, None)
             tmp = stdout_bytes.get_data()
             if tmp is not None:
                 stdout_str = tmp.decode("utf-8")
 
-        stderr_str = "???"
+        stderr_str = ""
         if stderr_stream is not None:
             stderr_bytes = stderr_stream.read_bytes(1024, None)
             tmp = stderr_bytes.get_data()
