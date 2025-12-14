@@ -24,10 +24,13 @@ class MainContent:
         # Observe the children of `dynamic_page_vbox`
         children_model = self.dynamic_page_vbox.observe_children()
         # Iterate through the children of `dynamic_page_vbox`
+        child_list: list[Gtk.Widget] = []
         for idx in range(children_model.get_n_items()):
             child = children_model.get_item(idx)
             if isinstance(child, Gtk.Widget):
-                self.dynamic_page_vbox.remove(child)
+                child_list.append(child)
+        for child in child_list:
+            self.dynamic_page_vbox.remove(child)
 
     def on_process_exit(self, process: Gio.Subprocess, res: Any) -> None:
         """???"""
