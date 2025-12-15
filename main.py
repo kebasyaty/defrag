@@ -9,6 +9,11 @@
 # .JMMmmmdP'    `Mbmmd'.JMML..JMML.  `Moo9^Yo.YMMMMMb
 #                                            6'     dP
 #                                            Ybmmmd'
+#
+# Copyright (c) 2025 kebasyaty - Gennady Kostyunin
+# Defrag is free software under terms of the GPL-3.0 License.
+# Repository https://github.com/kebasyaty/defrag
+#
 
 """Run Application."""
 
