@@ -32,8 +32,8 @@ class MainContent:
         for child in child_list:
             self.dynamic_page_vbox.remove(child)
 
-    def on_process_exit(self, process: Gio.Subprocess, res: Any) -> None:
-        """???"""
+    def on_subprocess_exit(self, process: Gio.Subprocess, res: Any) -> None:
+        """Get result of subprocess or error."""
         # Read the output streams in the callback
         stdout_stream, stderr_stream = process.get_stdout_pipe(), process.get_stderr_pipe()
 
@@ -42,32 +42,32 @@ class MainContent:
         stdout_str = ""
         if stdout_stream is not None:
             stdout_bytes = stdout_stream.read_bytes(1024, None)
-            tmp = stdout_bytes.get_data()
-            if tmp is not None:
-                stdout_str = tmp.decode("utf-8")
+            tmp_ = stdout_bytes.get_data()
+            if tmp_ is not None:
+                stdout_str = tmp_.decode("utf-8")
 
         stderr_str = ""
         if stderr_stream is not None:
             stderr_bytes = stderr_stream.read_bytes(1024, None)
-            tmp = stderr_bytes.get_data()
-            if tmp is not None:
-                stderr_str = tmp.decode("utf-8")
+            tmp_ = stderr_bytes.get_data()
+            if tmp_ is not None:
+                stderr_str = tmp_.decode("utf-8")
 
+        # Display the result of a subprocess
         exit_code = process.get_exit_status()
         if exit_code == 0:
             print(f"Async Command Output (Exit Code {exit_code}):\n{stdout_str}")  # noqa: T201
         else:
             print(f"Async Command Failed (Exit Code {exit_code}):\n{stderr_str}")  # noqa: T201
 
-    def on_process_run(self, widget: Any, command_args: list[str]) -> None:
-        """???"""
+    def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
+        """Run subprocess."""
         # Create a GSubprocess
         # 'flags' are important for proper I/O handling
         process = Gio.Subprocess.new(
             command_args,
             Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE,
         )
-
         # Asynchronously watch for the process termination
         # When it exits, the callback function will be triggered
-        process.wait_async(None, self.on_process_exit)
+        process.wait_async(None, self.on_subprocess_exit)

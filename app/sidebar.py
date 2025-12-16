@@ -100,6 +100,7 @@ class Sidebar:
         command_args: list[str],
     ) -> None:
         """Add content to dynamic page."""
+        # Remove all child elements in `dynamic_page_vbox`
         self.clean_dynamic_page()
         # Add Title page
         title_label = Gtk.Label()
@@ -108,5 +109,5 @@ class Sidebar:
         self.dynamic_page_vbox.append(title_label)
         # Add button run
         btn_run = Gtk.Button(label=btn_name)
-        btn_run.connect("clicked", self.on_process_run, command_args)
+        btn_run.connect("clicked", self.on_subprocess_run, command_args)
         self.dynamic_page_vbox.append(btn_run)
