@@ -108,6 +108,20 @@ class Sidebar:
         title_label.set_halign(Gtk.Align.START)
         self.dynamic_page_vbox.append(title_label)
         # Add button run
-        btn_run = Gtk.Button(label=btn_name)
+        btn_run = Gtk.Button(label=btn_name, margin_top=24)
         btn_run.connect("clicked", self.on_subprocess_run, command_args)
         self.dynamic_page_vbox.append(btn_run)
+        # Create Box for display result info
+        display_result_info_box = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=6,
+            margin_top=24,
+        )
+        result_info_label = Gtk.Label()
+        result_info_label.set_markup("<b>Info:</b>")
+        result_info_label.set_halign(Gtk.Align.START)
+        display_result_info_box.append(result_info_label)
+        result_info_textview = Gtk.TextView()
+        self.result_info_textbuffer = result_info_textview.get_buffer()
+        display_result_info_box.append(result_info_textview)
+        self.dynamic_page_vbox.append(display_result_info_box)

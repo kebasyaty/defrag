@@ -24,15 +24,13 @@ class MainContent:
         # Observe the children of `dynamic_page_vbox`
         children_model = self.dynamic_page_vbox.observe_children()
         # Iterate through the children of `dynamic_page_vbox`
-        counter: int = 0
+        child_list: list[Gtk.Widget] = []
         for idx in range(children_model.get_n_items()):
-            child = children_model.get_item(counter)
+            child = children_model.get_item(idx)
             if isinstance(child, Gtk.Widget):
-                self.dynamic_page_vbox.remove(child)
-                if idx > 0:
-                    counter -= 1
-            else:
-                counter += 1
+                child_list.append(child)
+        for child in child_list:
+            self.dynamic_page_vbox.remove(child)
 
     def on_subprocess_exit(self, process: Gio.Subprocess, res: Any) -> None:
         """Get result of subprocess or error."""
@@ -58,9 +56,9 @@ class MainContent:
         # Display the result of a subprocess
         exit_code = process.get_exit_status()
         if exit_code == 0:
-            print(f"Async Command Output (Exit Code {exit_code}):\n{stdout_str}")  # noqa: T201
+            self.result_info_textbuffer.set_text(stdout_str)
         else:
-            print(f"Async Command Failed (Exit Code {exit_code}):\n{stderr_str}")  # noqa: T201
+            self.result_info_textbuffer.set_text(stderr_str)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
         """Run subprocess."""
