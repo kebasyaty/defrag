@@ -24,13 +24,15 @@ class MainContent:
         # Observe the children of `dynamic_page_vbox`
         children_model = self.dynamic_page_vbox.observe_children()
         # Iterate through the children of `dynamic_page_vbox`
-        child_list: list[Gtk.Widget] = []
+        counter: int = 0
         for idx in range(children_model.get_n_items()):
-            child = children_model.get_item(idx)
+            child = children_model.get_item(counter)
             if isinstance(child, Gtk.Widget):
-                child_list.append(child)
-        for child in child_list:
-            self.dynamic_page_vbox.remove(child)
+                self.dynamic_page_vbox.remove(child)
+                if idx > 0:
+                    counter -= 1
+            else:
+                counter += 1
 
     def on_subprocess_exit(self, process: Gio.Subprocess, res: Any) -> None:
         """Get result of subprocess or error."""
