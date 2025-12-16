@@ -36,31 +36,25 @@ class MainContent:
         """Get result of subprocess or error."""
         # Read the output streams in the callback
         stdout_stream, stderr_stream = process.get_stdout_pipe(), process.get_stderr_pipe()
-
-        # Note: Reading streams is also typically done asynchronously in a real app,
-        # but for simplicity we use a blocking read here, which is fine since the process already finished
-        stdout_str = ""
-        if stdout_stream is not None:
-            stdout_bytes = stdout_stream.read_bytes(1024, None)
-            tmp_ = stdout_bytes.get_data()
-            if tmp_ is not None:
-                stdout_str = tmp_.decode("utf-8")
-
-        stderr_str = ""
-        if stderr_stream is not None:
-            stderr_bytes = stderr_stream.read_bytes(1024, None)
-            tmp_ = stderr_bytes.get_data()
-            if tmp_ is not None:
-                stderr_str = tmp_.decode("utf-8")
-
-        # Display the result of a subprocess
+        # Reading from streams and converting to string result
         exit_code = process.get_exit_status()
-        result_info_textbuffer = self.result_info_textview.get_buffer()
+        result_str = ""
         if exit_code == 0:
-            result_info_textbuffer.set_text(stdout_str)
+            if stdout_stream is not None:
+                stdout_bytes = stdout_stream.read_bytes(1024, None)
+                tmp_ = stdout_bytes.get_data()
+                if tmp_ is not None:
+                    result_str = tmp_.decode("utf-8")
         else:
-            result_info_textbuffer.set_text(stderr_str)
-        self.display_result_info_box.set_visible(True)
+            if stderr_stream is not None:
+                stderr_bytes = stderr_stream.read_bytes(1024, None)
+                tmp_ = stderr_bytes.get_data()
+                if tmp_ is not None:
+                    result_str = tmp_.decode("utf-8")
+        # Display the result of a subprocess
+        result_info_textbuffer = self.result_info_textview.get_buffer()
+        result_info_textbuffer.set_text(result_str)
+        self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
         """Run subprocess."""
