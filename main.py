@@ -14,7 +14,6 @@
 # Defrag is free software under terms of the GPL-3.0 License.
 # Repository https://github.com/kebasyaty/defrag
 #
-
 """Run Application."""
 
 from __future__ import annotations
