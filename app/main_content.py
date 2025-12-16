@@ -55,10 +55,12 @@ class MainContent:
 
         # Display the result of a subprocess
         exit_code = process.get_exit_status()
+        result_info_textbuffer = self.result_info_textview.get_buffer()
         if exit_code == 0:
-            self.result_info_textbuffer.set_text(stdout_str)
+            result_info_textbuffer.set_text(stdout_str)
         else:
-            self.result_info_textbuffer.set_text(stderr_str)
+            result_info_textbuffer.set_text(stderr_str)
+        self.display_result_info_box.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
         """Run subprocess."""
