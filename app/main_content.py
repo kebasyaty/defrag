@@ -31,6 +31,10 @@ class MainContent:
                 child_list.append(child)
         for child in child_list:
             self.dynamic_page_vbox.remove(child)
+        # Additionally remove the following keys
+        if len(child_list) > 0:
+            del self.__dict__["display_result_info_vbox"]
+            del self.__dict__["result_info_textview"]
 
     def on_subprocess_exit(self, process: Gio.Subprocess, res: Any) -> None:
         """Get result of subprocess or error."""
