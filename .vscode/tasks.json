@@ -93,6 +93,21 @@
       "problemMatcher": []
     },
     {
+      "label": "Babel: Run Update Translations",
+      "type": "shell",
+      "command": [
+        "uv run pybabel extract -o config/translations/messages.pot src;",
+        "uv run pybabel update -i config/translations/messages.pot -d config/translations"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Babel: Run Compile Translations",
+      "type": "shell",
+      "command": ["uv run pybabel compile -d config/translations"],
+      "problemMatcher": []
+    },
+    {
       "label": "UV: Run App",
       "type": "shell",
       "command": ["uv run python main.py"],

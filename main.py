@@ -26,12 +26,14 @@ gi.require_version("Adw", "1")
 
 import sys  # noqa: E402
 
-from app import Defrag, language  # noqa: E402
+from app import Defrag, translations  # noqa: E402
 
 
 def main() -> None:
     """Run Application."""
-    language.get_language_code()
+    translations.get_current_locale()
+    _ = translations.get_translator().gettext
+    print(_("Hello World"))  # noqa: T201
     app = Defrag()
     exit_status = app.run(sys.argv)
     sys.exit(exit_status)
