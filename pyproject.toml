@@ -7,10 +7,7 @@ authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
 license = "GPL-3.0"
 license-files = ["LICENSE"]
 requires-python = ">=3.12,<4.0"
-dependencies = [
- "pycairo>=1.29.0",
- "pygobject>=3.54.5",
-]
+dependencies = ["pycairo>=1.29.0", "pygobject>=3.54.5"]
 
 [tool.uv]
 package = false
@@ -28,8 +25,7 @@ types = ["pygobject-stubs>=2.14.0"]
 fix = true
 line-length = 120
 indent-width = 4
-required-version = ">=0.14.6"
-src = ["app", "tests"]
+src = ["main.py", "app", "tests"]
 include = ["*.py", "**/pyproject.toml", "app/**/*.py", "tests/**/*.py"]
 exclude = [
     ".bzr",
@@ -152,6 +148,8 @@ disable_error_code = [
     "operator",
     "misc",
     "import-untyped",
+    "no-untyped-call",
+    "untyped-decorator",
 ]
 
 [[tool.mypy.overrides]]

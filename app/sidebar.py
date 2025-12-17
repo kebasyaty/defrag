@@ -2,18 +2,18 @@
 
 from __future__ import annotations
 
-__all__ = ("SideBar",)
+__all__ = ("Sidebar",)
 
 from typing import Any
 
 from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
 
-class SideBar:
+class Sidebar:
     """Buttons of menu on the left side of the applicatio."""
 
     def __init__(self) -> None:  # noqa: D107
-        # Create vertical box
+        # Create Sidebar box
         sidebar_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.content_hbox.append(sidebar_vbox)
 
@@ -63,27 +63,70 @@ class SideBar:
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
-        self.clean_content_page()
-        self.set_title_to_content_page("Checking the integrity of HDD|SSD")
+        self.add_content_to_dynamic_page(
+            title_page="Checking the integrity of HDD|SSD",
+            btn_name="Run check health",
+            command_args=["ls", "-l"],
+        )
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
-        self.clean_content_page()
-        self.set_title_to_content_page("Cleaning")
+        self.add_content_to_dynamic_page(
+            title_page="Cleaning",
+            btn_name="Run cleaning",
+            command_args=["ls", "-l"],
+        )
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
-        self.clean_content_page()
-        self.set_title_to_content_page("Analysis file fragmentation")
+        self.add_content_to_dynamic_page(
+            title_page="Analysis file fragmentation",
+            btn_name="Run analysis",
+            command_args=["ls", "-l"],
+        )
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
-        self.clean_content_page()
-        self.set_title_to_content_page("Defragmentation")
+        self.add_content_to_dynamic_page(
+            title_page="Defragmentation",
+            btn_name="Run defrag",
+            command_args=["ls", "-l"],
+        )
 
-    def set_title_to_content_page(self, title: str) -> None:
-        """Add Title to `content_page_vbox`."""
+    def add_content_to_dynamic_page(
+        self,
+        title_page: str,
+        btn_name: str,
+        command_args: list[str],
+    ) -> None:
+        """Add content to dynamic page."""
+        # Remove all child elements in `dynamic_page_vbox`
+        self.clean_dynamic_page()
+        # Create Title page
         title_label = Gtk.Label()
-        title_label.set_markup(f"<b>{title}</b>")
+        title_label.set_markup(f"<b>{title_page}</b>")
         title_label.set_halign(Gtk.Align.START)
-        self.content_page_vbox.append(title_label)
+        self.dynamic_page_vbox.append(title_label)
+        # Create button run
+        btn_run = Gtk.Button(label=btn_name, margin_top=24)
+        btn_run.connect("clicked", self.on_subprocess_run, command_args)
+        self.dynamic_page_vbox.append(btn_run)
+        # Create Box for display result info
+        self.display_result_info_vbox = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=6,
+            margin_top=24,
+            visible=False,
+        )
+        # add Label
+        result_info_label = Gtk.Label()
+        result_info_label.set_markup("<b>Info:</b>")
+        result_info_label.set_halign(Gtk.Align.START)
+        self.display_result_info_vbox.append(result_info_label)
+        # add TextView
+        self.result_info_textview = Gtk.TextView(
+            editable=False,
+            cursor_visible=False,
+        )
+        self.display_result_info_vbox.append(self.result_info_textview)
+        self.dynamic_page_vbox.append(self.display_result_info_vbox)
