@@ -26,10 +26,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - uses: astral-sh/setup-uv@v7
-        with:
-          version: ${{ matrix.uv-version }}
-          python-version: ${{ matrix.python-version }}
+      - name: Install Pyrefly
+        run: pip install pyrefly
+
+      # - uses: astral-sh/setup-uv@v7
+        # with:
+          # version: ${{ matrix.uv-version }}
+          # python-version: ${{ matrix.python-version }}
 
       # - name: Install dependencies with uv
         # run: uv sync --locked --only-group dev --only-group test
