@@ -16,7 +16,7 @@ default-groups = ["dev", "lint", "test", "docs", "types"]
 
 [dependency-groups]
 dev = []
-lint = ["mypy>=1.18.2", "pre-commit>=4.5.0", "ruff>=0.14.6"]
+lint = ["pre-commit>=4.5.0", "pyrefly>=0.46.0", "ruff>=0.14.6"]
 test = ["pytest>=9.0.1"]
 docs = []
 types = ["pygobject-stubs>=2.14.0"]
@@ -135,33 +135,24 @@ docstring-code-line-length = 120
 skip-magic-trailing-comma = false
 line-ending = "auto"
 
-[tool.mypy]
-strict = true
-show_error_codes = true
-pretty = true
-files = ["*.py", "app/**/*.py", "tests/**/*.py"]
-disable_error_code = [
-    "type-arg",
-    "no-any-return",
-    "attr-defined",
-    "index",
-    "operator",
-    "misc",
-    "import-untyped",
-    "no-untyped-call",
-    "untyped-decorator",
-]
+[tool.pyrefly]
+project-includes = ["main.py", "app"]
+search-path = ["main.py", "app", "tests"]
+site-package-path = [".venv/lib64/python3.14/site-packages"]
+python-platform = "linux"
+python-version = "3.14"
+python-interpreter-path = ".venv/bin/python3"
+ignore-errors-in-generated-code = true
+untyped_def_behavior = "check-and-infer-return-any"
 
-[[tool.mypy.overrides]]
-module = ["tests.*"]
-disable_error_code = [
-    "arg-type",
-    "no-untyped-def",
-    "no-untyped-call",
-    "func-returns-value",
-    "union-attr",
-    "import-not-found",
-]
+[tool.pyrefly.errors]
+missing-attribute = false
+
+[[tool.pyrefly.sub-config]]
+matches = "tests/**"
+
+[tool.pyrefly.sub-config.errors]
+
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
