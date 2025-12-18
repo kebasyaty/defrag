@@ -96,7 +96,7 @@
       "label": "Babel: Run Update Translations",
       "type": "shell",
       "command": [
-        "uv run pybabel extract -o config/translations/messages.pot src;",
+        "uv run pybabel extract -o config/translations/messages.pot app;",
         "uv run pybabel update -i config/translations/messages.pot -d config/translations"
       ],
       "problemMatcher": []

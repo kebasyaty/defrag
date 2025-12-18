@@ -8,6 +8,8 @@ from typing import Any
 
 from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
 
+from app.translator import gettext
+
 
 class Sidebar:
     """Buttons of menu on the left side of the applicatio."""
@@ -21,7 +23,7 @@ class Sidebar:
         btn_cleaning = Gtk.Button()
         btn_cleaning_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_cleaning_icon = Gtk.Image.new_from_icon_name("user-trash-symbolic")
-        btn_cleaning_label = Gtk.Label(label="Cleaning")
+        btn_cleaning_label = Gtk.Label(label=gettext("Cleaning"))
         btn_cleaning_content_box.append(btn_cleaning_icon)
         btn_cleaning_content_box.append(btn_cleaning_label)
         btn_cleaning.set_child(btn_cleaning_content_box)
@@ -32,7 +34,7 @@ class Sidebar:
         btn_health = Gtk.Button()
         btn_health_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_health_icon = Gtk.Image.new_from_icon_name("security-medium-rtl-symbolic")
-        btn_health_label = Gtk.Label(label="Health")
+        btn_health_label = Gtk.Label(label=gettext("Health"))
         btn_health_content_box.append(btn_health_icon)
         btn_health_content_box.append(btn_health_label)
         btn_health.set_child(btn_health_content_box)
@@ -43,7 +45,7 @@ class Sidebar:
         btn_analysis = Gtk.Button()
         btn_analysis_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_analysis_icon = Gtk.Image.new_from_icon_name("applications-science-symbolic")
-        btn_analysis_label = Gtk.Label(label="Analysis")
+        btn_analysis_label = Gtk.Label(label=gettext("Analysis"))
         btn_analysis_content_box.append(btn_analysis_icon)
         btn_analysis_content_box.append(btn_analysis_label)
         btn_analysis.set_child(btn_analysis_content_box)
@@ -54,7 +56,7 @@ class Sidebar:
         btn_defrag = Gtk.Button()
         btn_defrag_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_defrag_icon = Gtk.Image.new_from_icon_name("preferences-system-symbolic")
-        btn_defrag_label = Gtk.Label(label="Defrag")
+        btn_defrag_label = Gtk.Label(label=gettext("Defrag"))
         btn_defrag_content_box.append(btn_defrag_icon)
         btn_defrag_content_box.append(btn_defrag_label)
         btn_defrag.set_child(btn_defrag_content_box)
