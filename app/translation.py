@@ -29,7 +29,7 @@ def get_current_locale() -> str:
 # Current operating system locale (By default = en)
 DEFAULT_LOCALE: str = get_current_locale()
 
-TRANSLATION: _gettext.NullTranslations = _gettext.translation(
+TRANSLATOR: _gettext.NullTranslations = _gettext.translation(
     domain="messages",
     localedir="config/translations",
     languages=[DEFAULT_LOCALE],
@@ -37,5 +37,5 @@ TRANSLATION: _gettext.NullTranslations = _gettext.translation(
     fallback=True,
 )
 
-gettext = TRANSLATION.gettext
-ngettext = TRANSLATION.ngettext
+gettext = TRANSLATOR.gettext
+ngettext = TRANSLATOR.ngettext
