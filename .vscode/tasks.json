@@ -24,7 +24,7 @@
     {
       "label": "Pyrefly: Run Type Checker",
       "type": "shell",
-      "command": ["uv run pyrefly check"],
+      "command": ["uv run pyrefly check ."],
       "problemMatcher": []
     },
     {
