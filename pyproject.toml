@@ -136,7 +136,7 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.pyrefly]
-project-includes = ["main.py", "app"]
+project-includes = ["main.py", "app", "tests"]
 search-path = ["main.py", "app", "tests"]
 site-package-path = [".venv/lib64/python3.14/site-packages"]
 python-platform = "linux"
