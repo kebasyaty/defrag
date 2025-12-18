@@ -17,17 +17,6 @@ class Sidebar:
         sidebar_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.content_hbox.append(sidebar_vbox)
 
-        # Create a Health button
-        btn_health = Gtk.Button()
-        btn_health_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        btn_health_icon = Gtk.Image.new_from_icon_name("security-medium-rtl-symbolic")
-        btn_health_label = Gtk.Label(label="Health")
-        btn_health_content_box.append(btn_health_icon)
-        btn_health_content_box.append(btn_health_label)
-        btn_health.set_child(btn_health_content_box)
-        btn_health.connect("clicked", self.on_btn_health)
-        sidebar_vbox.append(btn_health)
-
         # Create a Cleaning button
         btn_cleaning = Gtk.Button()
         btn_cleaning_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
@@ -38,6 +27,17 @@ class Sidebar:
         btn_cleaning.set_child(btn_cleaning_content_box)
         btn_cleaning.connect("clicked", self.on_btn_cleaning)
         sidebar_vbox.append(btn_cleaning)
+
+        # Create a Health button
+        btn_health = Gtk.Button()
+        btn_health_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        btn_health_icon = Gtk.Image.new_from_icon_name("security-medium-rtl-symbolic")
+        btn_health_label = Gtk.Label(label="Health")
+        btn_health_content_box.append(btn_health_icon)
+        btn_health_content_box.append(btn_health_label)
+        btn_health.set_child(btn_health_content_box)
+        btn_health.connect("clicked", self.on_btn_health)
+        sidebar_vbox.append(btn_health)
 
         # Create a Analysis button
         btn_analysis = Gtk.Button()
@@ -61,19 +61,19 @@ class Sidebar:
         btn_defrag.connect("clicked", self.on_btn_defrag)
         sidebar_vbox.append(btn_defrag)
 
-    def on_btn_health(self, widget: Any) -> None:
-        """Handler for a Health button."""
-        self.add_content_to_dynamic_page(
-            title_page="Checking the integrity of HDD|SSD",
-            btn_name="Run check health",
-            command_args=["ls", "-l"],
-        )
-
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
         self.add_content_to_dynamic_page(
             title_page="Cleaning",
             btn_name="Run cleaning",
+            command_args=["ls", "-l"],
+        )
+
+    def on_btn_health(self, widget: Any) -> None:
+        """Handler for a Health button."""
+        self.add_content_to_dynamic_page(
+            title_page="Checking the integrity of HDD|SSD",
+            btn_name="Run check health",
             command_args=["ls", "-l"],
         )
 
