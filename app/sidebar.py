@@ -6,7 +6,7 @@ __all__ = ("Sidebar",)
 
 from typing import Any
 
-from gi.repository import Gtk  # pyright: ignore[reportMissingModuleSource]
+from gi.repository import Gtk
 
 from app.translator import gettext
 
@@ -66,32 +66,32 @@ class Sidebar:
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
         self.add_content_to_dynamic_page(
-            title_page="Cleaning",
-            btn_name="Run cleaning",
+            title_page=gettext("Cleaning"),
+            btn_name=gettext("Run cleaning"),
             command_args=["ls", "-l"],
         )
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
         self.add_content_to_dynamic_page(
-            title_page="Checking the integrity of HDD|SSD",
-            btn_name="Run check health",
+            title_page=gettext("Checking the integrity of HDD|SSD"),
+            btn_name=gettext("Run check health"),
             command_args=["ls", "-l"],
         )
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
         self.add_content_to_dynamic_page(
-            title_page="Analysis file fragmentation",
-            btn_name="Run analysis",
+            title_page=gettext("Analysis a files fragmentation"),
+            btn_name=gettext("Run analysis"),
             command_args=["ls", "-l"],
         )
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
         self.add_content_to_dynamic_page(
-            title_page="Defragmentation",
-            btn_name="Run defrag",
+            title_page=gettext("Defragmentation"),
+            btn_name=gettext("Run defrag"),
             command_args=["ls", "-l"],
         )
 
