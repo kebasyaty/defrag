@@ -42,5 +42,5 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
         Sidebar.__init__(self)
         MainContent.__init__(self)
 
-        # Render content for the Health button
-        self.on_btn_health(None)
+        # Render content for the Cleaning button
+        self.on_btn_cleaning(None)
