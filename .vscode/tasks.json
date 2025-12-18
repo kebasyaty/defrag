@@ -22,11 +22,9 @@
       "problemMatcher": []
     },
     {
-      "label": "MyPy: Run Check",
+      "label": "Pyrefly: Run Type Checker",
       "type": "shell",
-      "command": [
-        "uv run mypy --ignore-missing-imports --config-file pyproject.toml"
-      ],
+      "command": ["uv run pyrefly check ."],
       "problemMatcher": []
     },
     {
@@ -90,6 +88,21 @@
         "uv run mike deploy --push --update-aliases 0.1 latest;",
         "uv run mike set-default --push latest"
       ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Babel: Run Update Translations",
+      "type": "shell",
+      "command": [
+        "uv run pybabel extract -o config/translations/messages.pot app;",
+        "uv run pybabel update -i config/translations/messages.pot -d config/translations"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Babel: Run Compile Translations",
+      "type": "shell",
+      "command": ["uv run pybabel compile -d config/translations"],
       "problemMatcher": []
     },
     {
