@@ -12,7 +12,7 @@ import gettext as _gettext
 import locale
 
 
-def get_current_locale() -> str:
+def _get_current_locale() -> str:
     """Get the current locale."""
     # Enable locale awareness from the operating system's environment variables
     # An empty string "" tells setlocale to use the appropriate default settings
@@ -21,13 +21,13 @@ def get_current_locale() -> str:
         locale.setlocale(locale.LC_ALL, "")
     # Get language code
     language_code = locale.getlocale()[0]
-    # To get a simple two-letter language code (e.g., 'en', 'fr')
-    # Normalize the code and extract the first two characters
+    # To get a simple two-letter language code (e.g., 'en', 'fr').
+    # Normalize the code and extract the first two characters.
     return locale.normalize(language_code).split("_")[0] if language_code else "en"
 
 
 # Current operating system locale (By default = en)
-DEFAULT_LOCALE: str = get_current_locale()
+DEFAULT_LOCALE: str = _get_current_locale()
 
 TRANSLATOR: _gettext.NullTranslations = _gettext.translation(
     domain="messages",
