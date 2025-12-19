@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 09:19+0200\n"
+"POT-Creation-Date: 2025-12-18 20:35+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,7 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/sidebar.py:26
+#: app/main_content.py:47
+msgid "The operation was completed successfully."
+msgstr ""
+
+#: app/sidebar.py:26 app/sidebar.py:69
 msgid "Cleaning"
 msgstr ""
 
@@ -32,5 +36,33 @@ msgstr ""
 
 #: app/sidebar.py:59
 msgid "Defrag"
+msgstr ""
+
+#: app/sidebar.py:70
+msgid "Run cleaning"
+msgstr ""
+
+#: app/sidebar.py:77
+msgid "Checking the integrity of HDD|SSD"
+msgstr ""
+
+#: app/sidebar.py:78
+msgid "Run check health"
+msgstr ""
+
+#: app/sidebar.py:85
+msgid "Analysis a files fragmentation"
+msgstr ""
+
+#: app/sidebar.py:86
+msgid "Run analysis"
+msgstr ""
+
+#: app/sidebar.py:93
+msgid "Defragmentation"
+msgstr ""
+
+#: app/sidebar.py:94
+msgid "Run defrag"
 msgstr ""
 

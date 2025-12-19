@@ -6,7 +6,9 @@ __all__ = ("MainContent",)
 
 from typing import Any
 
-from gi.repository import Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
+from gi.repository import Gio, Gtk
+
+from app.translator import gettext
 
 
 class MainContent:
@@ -42,7 +44,7 @@ class MainContent:
         stdout_stream, stderr_stream = process.get_stdout_pipe(), process.get_stderr_pipe()
         # Reading from streams and converting to string result
         exit_code = process.get_exit_status()
-        result_str = "The operation was completed successfully."
+        result_str = gettext("The operation was completed successfully.")
         if exit_code == 0:
             if stdout_stream is not None:
                 stdout_bytes = stdout_stream.read_bytes(1024, None)

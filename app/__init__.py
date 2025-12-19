@@ -22,7 +22,7 @@ from __future__ import annotations
 __all__ = ("Defrag",)
 
 
-from gi.repository import Adw, GLib  # pyright: ignore[reportMissingModuleSource]
+from gi.repository import Adw, GLib
 
 from app.constants import APP_ID, APP_NAME
 from app.main_window import MainWindow
