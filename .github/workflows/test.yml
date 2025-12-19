@@ -33,11 +33,12 @@ jobs:
       - name: Install Linux dependencies
         run: |
           apt update && \
-          apt install -y curl && \
           apt install -y libgirepository-2.0-dev gcc libcairo2-dev pkg-config python3-dev gir1.2-gtk-4.0
 
-      - name: Install UV
-        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: ${{ matrix.uv-version }}
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies with uv
         run: uv sync --locked --dev --group lint --group test
