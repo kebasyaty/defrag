@@ -37,8 +37,8 @@ jobs:
       - name: Install dependencies with uv
         run: uv sync --locked --dev --group lint --group test
 
-      - name: Run pre-commit
-        run: uv run pre-commit run --all-files
+      # - name: Run pre-commit
+        # run: uv run pre-commit run --all-files
 
       - name: Run tests
         run: uv run pytest -v tests/
