@@ -4,10 +4,6 @@ on:
   push:
     branches: [main]
   pull_request:
-  workflow_dispatch:
-
-permissions:
-  contents: read # access to check out code and install dependencies
 
 jobs:
   build:
@@ -18,10 +14,9 @@ jobs:
         python-version: ["3.14"]
         uv-version: ["latest"]
     runs-on: ${{ matrix.os }}
-    permissions:
-      contents: write
     name: ${{ matrix.os }} Python ${{ matrix.python-version }}
 
+    if: startsWith(matrix.os, 'ubuntu')
     container:
       image: ubuntu:latest
       options: --user root
@@ -36,19 +31,19 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install system dependencies (Ubuntu)
-        if: runner.os == 'Linux'
+        if: startsWith(matrix.os, 'ubuntu')
         run: |
           apt update
           apt install -y libgirepository-2.0-dev gcc \
             libcairo2-dev pkg-config python3-dev gir1.2-gtk-4.0
 
       - name: Install system dependencies (macOS)
-        if: runner.os == 'macOS'
+        if: startsWith(matrix.os, 'macos')
         run: |
           brew install cairo pkg-config
 
       - name: Install system dependencies (Windows)
-        if: runner.os == 'Windows'
+        if: startsWith(matrix.os, 'windows')
         run: echo "Windows wheels handle cairo dependencies automatically."
 
       - uses: astral-sh/setup-uv@v6
