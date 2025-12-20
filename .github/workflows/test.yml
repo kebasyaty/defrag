@@ -6,9 +6,6 @@ on:
   pull_request:
   workflow_dispatch:
 
-permissions:
-  contents: read # access to check out code and install dependencies
-
 jobs:
   build:
     strategy:
@@ -18,6 +15,8 @@ jobs:
         python-version: ["3.14"]
         uv-version: ["latest"]
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
     name: ${{ matrix.os }} Python ${{ matrix.python-version }}
 
     #container:
