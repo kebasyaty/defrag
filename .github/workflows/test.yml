@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} Python ${{ matrix.python-version }}
 
-    if: startsWith(matrix.os, 'ubuntu')
+    if: runner.os == 'Linux'
     container:
       image: ubuntu:latest
       options: --user root
@@ -31,19 +31,19 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install system dependencies (Ubuntu)
-        if: startsWith(matrix.os, 'ubuntu')
+        if: runner.os == 'Linux'
         run: |
           apt update
           apt install -y libgirepository-2.0-dev gcc \
             libcairo2-dev pkg-config python3-dev gir1.2-gtk-4.0
 
       - name: Install system dependencies (macOS)
-        if: startsWith(matrix.os, 'macos')
+        if: runner.os == 'macOS'
         run: |
-          brew install cairo pkg-config
+          brew install pkg-config gtk4
 
       - name: Install system dependencies (Windows)
-        if: startsWith(matrix.os, 'windows')
+        if: runner.os == 'Windows'
         run: echo "Windows wheels handle cairo dependencies automatically."
 
       - uses: astral-sh/setup-uv@v6
