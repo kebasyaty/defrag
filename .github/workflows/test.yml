@@ -22,9 +22,9 @@ jobs:
       contents: write
     name: ${{ matrix.os }} Python ${{ matrix.python-version }}
 
-    #container:
-      #image: ubuntu:latest
-      #options: --user root
+    container:
+      image: python:${{ matrix.python-version }}
+      options: --user root
 
     steps:
       - uses: actions/checkout@v6
