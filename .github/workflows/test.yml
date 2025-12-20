@@ -14,14 +14,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-latest"] # [ubuntu-latest, macos-latest, windows-latest]
+        os: ["macos-latest"] # [ubuntu-latest, macos-latest, windows-latest]
         python-version: ["3.14"]
         uv-version: ["latest"]
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} Python ${{ matrix.python-version }}
 
     container:
-      image: ubuntu:latest
+      image: macos:latest
       options: --user root
 
     steps:
@@ -58,8 +58,8 @@ jobs:
         run: pip install pyrefly
 
       - uses: pre-commit/action@v3.0.1
-        # with:
-          # extra_args: --all-files
+        with:
+          extra_args: --all-files
 
       - name: Run tests
         run: uv run pytest -v tests/
