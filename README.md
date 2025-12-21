@@ -12,7 +12,7 @@
     <h3>Title...</h3>
     <p align="center">
       <a href="https://github.com/kebasyaty/defrag/actions/workflows/test.yml" alt="Build Status"><img src="https://github.com/kebasyaty/defrag/actions/workflows/test.yml/badge.svg" alt="Build Status"></a>
-      <a href="https://mypy-lang.org/" alt="Types: Mypy"><img src="https://img.shields.io/badge/types-Mypy-202235.svg?color=0c7ebf" alt="Types: Mypy"></a>
+      <a href="https://pyrefly.org/" alt="Types: Pyrefly"><img src="https://img.shields.io/badge/types-Pyrefly-202235.svg?color=FFB74D" alt="Types: Pyrefly"></a>
       <a href="https://docs.astral.sh/ruff/" alt="Code style: Ruff"><img src="https://img.shields.io/badge/code%20style-Ruff-FDD835.svg" alt="Code style: Ruff"></a>
       <a href="https://github.com/kebasyaty/defrag/blob/main/LICENSE" alt="GitHub license"><img src="https://img.shields.io/github/license/kebasyaty/defrag" alt="GitHub license"></a>
     </p>
