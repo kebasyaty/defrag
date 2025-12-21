@@ -65,41 +65,68 @@ class Sidebar:
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
+        service_vbox = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=6,
+            margin_top=24,
+        )
+        btn_run = Gtk.Button(label=gettext("Cleaning"))
+        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        service_vbox.append(btn_run)
         self.add_content_to_dynamic_page(
             title_page=gettext("Cleaning"),
-            btn_name=gettext("Run cleaning"),
-            command_args=["ls", "-l"],
+            service_box=service_vbox,
         )
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
+        service_vbox = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=6,
+            margin_top=24,
+        )
+        btn_run = Gtk.Button(label=gettext("Run check health"))
+        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        service_vbox.append(btn_run)
         self.add_content_to_dynamic_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
-            btn_name=gettext("Run check health"),
-            command_args=["ls", "-l"],
+            service_box=service_vbox,
         )
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
+        service_vbox = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=6,
+            margin_top=24,
+        )
+        btn_run = Gtk.Button(label=gettext("Run analysis"))
+        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        service_vbox.append(btn_run)
         self.add_content_to_dynamic_page(
             title_page=gettext("Analysis a files fragmentation"),
-            btn_name=gettext("Run analysis"),
-            command_args=["ls", "-l"],
+            service_box=service_vbox,
         )
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
+        service_vbox = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=6,
+            margin_top=24,
+        )
+        btn_run = Gtk.Button(label=gettext("Run defrag"))
+        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        service_vbox.append(btn_run)
         self.add_content_to_dynamic_page(
             title_page=gettext("Defragmentation"),
-            btn_name=gettext("Run defrag"),
-            command_args=["ls", "-l"],
+            service_box=service_vbox,
         )
 
     def add_content_to_dynamic_page(
         self,
         title_page: str,
-        btn_name: str,
-        command_args: list[str],
+        service_box: Gtk.Box,
     ) -> None:
         """Add content to dynamic page."""
         # Remove all child elements in `dynamic_page_vbox`
@@ -109,10 +136,8 @@ class Sidebar:
         title_label.set_markup(f"<b>{title_page}</b>")
         title_label.set_halign(Gtk.Align.START)
         self.dynamic_page_vbox.append(title_label)
-        # Create button run
-        btn_run = Gtk.Button(label=btn_name, margin_top=24)
-        btn_run.connect("clicked", self.on_subprocess_run, command_args)
-        self.dynamic_page_vbox.append(btn_run)
+        # Add a box to manage the service
+        self.dynamic_page_vbox.append(service_box)
         # Create Box for display result info
         self.display_result_info_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
