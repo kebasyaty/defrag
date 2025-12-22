@@ -24,7 +24,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
         self.set_content(self.main_vbox)  # Set the box as the main child of the window
 
         # Create the header box
-        self.header_hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.header_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         self.header_hbox.set_hexpand(True)
         self.header = Adw.HeaderBar()
         self.header.set_hexpand(True)
@@ -32,7 +32,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
         self.main_vbox.append(self.header_hbox)
 
         # Create the content box
-        self.content_hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.content_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         self.content_hbox.set_margin_top(12)
         self.content_hbox.set_margin_start(12)
         self.content_hbox.set_margin_end(12)
