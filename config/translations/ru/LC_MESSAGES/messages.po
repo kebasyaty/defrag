@@ -41,11 +41,11 @@ msgstr "Дефрагментация"
 
 #: app/sidebar.py:75
 msgid "Run BleachBit as user"
-msgstr ""
+msgstr "Запустите BleachBit от имени пользователя"
 
 #: app/sidebar.py:79
 msgid "Run BleachBit as administrator"
-msgstr ""
+msgstr "Запустите BleachBit от имени администратора"
 
 #: app/sidebar.py:90
 msgid ""
@@ -82,41 +82,4 @@ msgstr "Запустить дефрагментацию"
 #: app/sidebar.py:147
 msgid "Defragmentation"
 msgstr "Дефрагментация"
-
-#~ msgid "Run cleaning"
-#~ msgstr "Запустить очистку"
-
-#~ msgid ""
-#~ "\n"
-#~ "Free up disk space and maintain privacy.\n"
-#~ "The BleachBit application is used for this task.\n"
-#~ "If this application is not on your"
-#~ " computer, you will be prompted to"
-#~ " install it.\n"
-#~ "                "
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Free up disk space and maintain privacy.\n"
-#~ "The BleachBit application is used for this task.\n"
-#~ "If this application is not on your"
-#~ " computer, you will be prompted to"
-#~ " install it.\n"
-#~ "                "
-#~ msgstr ""
-
-#~ msgid ""
-#~ "/\n"
-#~ "Free up disk space and maintain privacy.\n"
-#~ "The BleachBit application is used for this task.\n"
-#~ "If this application is not on your"
-#~ " computer, you will be prompted to"
-#~ " install it."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "{0}\n"
-#~ "{1}\n"
-#~ "{3}"
-#~ msgstr ""
 
