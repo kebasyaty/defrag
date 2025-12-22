@@ -177,10 +177,11 @@ class Sidebar:
         description_label = Gtk.Label(
             label=description_page,
             halign=Gtk.Align.START,
+            margin_top=12,
         )
         self.dynamic_page_vbox.append(description_label)
         # Add a box for manage the service
-        service_box.set_margin_top(6)
+        service_box.set_margin_top(12)
         self.dynamic_page_vbox.append(service_box)
         # Add info box for display result
         self.display_result_info_vbox = Gtk.Box(
