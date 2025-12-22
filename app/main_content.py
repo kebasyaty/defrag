@@ -62,11 +62,11 @@ class MainContent:
         self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
-        """Run subprocess."""
+        """Starts a subprocess asynchronously."""
         # Flags for proper I/O handling
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create the subprocess
         process = Gio.Subprocess.new(command_args, flags)
         # Asynchronously watch for the process termination
         # When it exits, the callback function will be triggered
-        process.wait_async(None, self.on_subprocess_exit)
+        process.wait_async(callback=self.on_subprocess_exit)
