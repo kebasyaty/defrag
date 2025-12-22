@@ -70,13 +70,20 @@ class Sidebar:
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
+            halign=Gtk.Align.START,
         )
         # add button `btn_user_bleachbit_run`
-        btn_user_bleachbit_run = Gtk.Button(label=gettext("Run BleachBit as user"))
+        btn_user_bleachbit_run = Gtk.Button(
+            label=gettext("Run BleachBit as user"),
+            halign=Gtk.Align.START,
+        )
         btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
         service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
-        btn_admin_bleachbit_run = Gtk.Button(label=gettext("Run BleachBit as administrator"))
+        btn_admin_bleachbit_run = Gtk.Button(
+            label=gettext("Run BleachBit as administrator"),
+            halign=Gtk.Align.START,
+        )
         btn_admin_bleachbit_run.connect(
             "clicked",
             self.on_subprocess_run,
