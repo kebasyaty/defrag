@@ -58,18 +58,15 @@ class MainContent:
                 if tmp_ is not None:
                     result_str = tmp_.decode("utf-8")
         # Display the result of a subprocess
-        result_info_textbuffer = self.result_info_textview.get_buffer()
-        result_info_textbuffer.set_text(result_str)
+        self.result_info_textview.set_label(result_str)
         self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
-        """Run subprocess."""
-        # Create a GSubprocess
-        # 'flags' are important for proper I/O handling
-        process = Gio.Subprocess.new(
-            command_args,
-            Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE,
-        )
+        """Starts a subprocess asynchronously."""
+        # Flags for proper I/O handling
+        flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
+        # Create the subprocess
+        process = Gio.Subprocess.new(command_args, flags)
         # Asynchronously watch for the process termination
         # When it exits, the callback function will be triggered
-        process.wait_async(None, self.on_subprocess_exit)
+        process.wait_async(callback=self.on_subprocess_exit)

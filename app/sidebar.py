@@ -4,6 +4,7 @@ from __future__ import annotations
 
 __all__ = ("Sidebar",)
 
+
 from typing import Any
 
 from gi.repository import Gtk
@@ -16,7 +17,11 @@ class Sidebar:
 
     def __init__(self) -> None:  # noqa: D107
         # Create Sidebar box
-        sidebar_vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        sidebar_vbox = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=6,
+            halign=Gtk.Align.START,
+        )
         self.content_hbox.append(sidebar_vbox)
 
         # Create a Cleaning button
@@ -65,95 +70,131 @@ class Sidebar:
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
+        # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
-            margin_top=24,
+            halign=Gtk.Align.START,
         )
-        btn_run = Gtk.Button(label=gettext("Cleaning"))
-        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
-        service_vbox.append(btn_run)
+        # add button `btn_user_bleachbit_run`
+        btn_user_bleachbit_run = Gtk.Button(
+            label=gettext("Run BleachBit as user"),
+            halign=Gtk.Align.START,
+        )
+        btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
+        service_vbox.append(btn_user_bleachbit_run)
+        # add button `btn_admin_bleachbit_run`
+        btn_admin_bleachbit_run = Gtk.Button(
+            label=gettext("Run BleachBit as administrator"),
+            halign=Gtk.Align.START,
+        )
+        btn_admin_bleachbit_run.connect(
+            "clicked",
+            self.on_subprocess_run,
+            [*self.gui_as_root_command, "bleachbit"],
+        )
+        service_vbox.append(btn_admin_bleachbit_run)
+        # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Cleaning"),
+            description_page=gettext(
+                "Free up disk space and maintain privacy.\n"
+                + "The BleachBit application is used for this task.\n"
+                + "If this application is not on your computer,\n"
+                + "you will be prompted to install it.",
+            ),
             service_box=service_vbox,
         )
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
+        # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
-            margin_top=24,
         )
+        # add button `btn_run`
         btn_run = Gtk.Button(label=gettext("Run check health"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
+        # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
+            description_page="???",
             service_box=service_vbox,
         )
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
+        # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
-            margin_top=24,
         )
+        # add button `btn_run`
         btn_run = Gtk.Button(label=gettext("Run analysis"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
+        # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Analysis a files fragmentation"),
+            description_page="???",
             service_box=service_vbox,
         )
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
+        # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
-            margin_top=24,
         )
+        # add button `btn_run`
         btn_run = Gtk.Button(label=gettext("Run defrag"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
+        # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Defragmentation"),
+            description_page="???",
             service_box=service_vbox,
         )
 
     def add_content_to_dynamic_page(
         self,
         title_page: str,
+        description_page: str,
         service_box: Gtk.Box,
     ) -> None:
         """Add content to dynamic page."""
         # Remove all child elements in `dynamic_page_vbox`
         self.clean_dynamic_page()
-        # Create Title page
-        title_label = Gtk.Label()
+        # Add Title of page
+        title_label = Gtk.Label(halign=Gtk.Align.START)
         title_label.set_markup(f"<b>{title_page}</b>")
-        title_label.set_halign(Gtk.Align.START)
         self.dynamic_page_vbox.append(title_label)
-        # Add a box to manage the service
+        # Add description of page
+        description_label = Gtk.Label(
+            label=description_page,
+            halign=Gtk.Align.START,
+            margin_top=12,
+        )
+        self.dynamic_page_vbox.append(description_label)
+        # Add a box for manage the service
+        service_box.set_margin_top(12)
         self.dynamic_page_vbox.append(service_box)
-        # Create Box for display result info
+        # Add info box for display result
         self.display_result_info_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
             margin_top=24,
             visible=False,
         )
-        # add Label
-        result_info_label = Gtk.Label()
+        # add Label to info box
+        result_info_label = Gtk.Label(halign=Gtk.Align.START)
         result_info_label.set_markup("<b>Info:</b>")
-        result_info_label.set_halign(Gtk.Align.START)
         self.display_result_info_vbox.append(result_info_label)
-        # add TextView
-        self.result_info_textview = Gtk.TextView(
-            editable=False,
-            cursor_visible=False,
-        )
+        # add TextView (Label) to info box
+        self.result_info_textview = Gtk.Label(halign=Gtk.Align.START)
         self.display_result_info_vbox.append(self.result_info_textview)
         self.dynamic_page_vbox.append(self.display_result_info_vbox)
