@@ -4,6 +4,7 @@ from __future__ import annotations
 
 __all__ = ("Sidebar",)
 
+
 from typing import Any
 
 from gi.repository import Gtk
@@ -76,7 +77,11 @@ class Sidebar:
         service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
         btn_admin_bleachbit_run = Gtk.Button(label=gettext("Run BleachBit as administrator"))
-        btn_admin_bleachbit_run.connect("clicked", self.on_subprocess_run, ["pkexec", "bleachbit"])
+        btn_admin_bleachbit_run.connect(
+            "clicked",
+            self.on_subprocess_run,
+            [*self.gui_as_root_command, "bleachbit"],
+        )
         service_vbox.append(btn_admin_bleachbit_run)
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
