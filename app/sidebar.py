@@ -72,9 +72,16 @@ class Sidebar:
         btn_run = Gtk.Button(label=gettext("Cleaning"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
+        #
         self.add_content_to_dynamic_page(
             title_page=gettext("Cleaning"),
-            description_page="???",
+            description_page=gettext(
+                """
+Free up disk space and maintain privacy.
+The BleachBit application is used for this task.
+If this application is not on your computer, you will be prompted to install it.
+                """,
+            ),
             service_box=service_vbox,
         )
 
@@ -87,6 +94,7 @@ class Sidebar:
         btn_run = Gtk.Button(label=gettext("Run check health"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
+        #
         self.add_content_to_dynamic_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
             description_page="???",
@@ -102,6 +110,7 @@ class Sidebar:
         btn_run = Gtk.Button(label=gettext("Run analysis"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
+        #
         self.add_content_to_dynamic_page(
             title_page=gettext("Analysis a files fragmentation"),
             description_page="???",
@@ -117,6 +126,7 @@ class Sidebar:
         btn_run = Gtk.Button(label=gettext("Run defrag"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
+        #
         self.add_content_to_dynamic_page(
             title_page=gettext("Defragmentation"),
             description_page="???",
@@ -140,7 +150,6 @@ class Sidebar:
         description_label = Gtk.Label(
             label=description_page,
             halign=Gtk.Align.START,
-            margin_top=12,
         )
         self.dynamic_page_vbox.append(description_label)
         # Add a box for manage the service
