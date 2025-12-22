@@ -65,14 +65,20 @@ class Sidebar:
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
+        # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
         )
-        btn_run = Gtk.Button(label=gettext("Cleaning"))
-        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
-        service_vbox.append(btn_run)
-        #
+        # add button `btn_user_bleachbit_run`
+        btn_user_bleachbit_run = Gtk.Button(label=gettext("Run BleachBit as user"))
+        btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
+        service_vbox.append(btn_user_bleachbit_run)
+        # add button `btn_admin_bleachbit_run`
+        btn_admin_bleachbit_run = Gtk.Button(label=gettext("Run BleachBit as administrator"))
+        btn_admin_bleachbit_run.connect("clicked", self.on_subprocess_run, ["pkexec", "bleachbit"])
+        service_vbox.append(btn_admin_bleachbit_run)
+        # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Cleaning"),
             description_page=gettext(
@@ -87,14 +93,16 @@ If this application is not on your computer, you will be prompted to install it.
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
+        # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
         )
+        # add button `btn_run`
         btn_run = Gtk.Button(label=gettext("Run check health"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
-        #
+        # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
             description_page="???",
@@ -103,14 +111,16 @@ If this application is not on your computer, you will be prompted to install it.
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
+        # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
         )
+        # add button `btn_run`
         btn_run = Gtk.Button(label=gettext("Run analysis"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
-        #
+        # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Analysis a files fragmentation"),
             description_page="???",
@@ -119,14 +129,16 @@ If this application is not on your computer, you will be prompted to install it.
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
+        # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
         )
+        # add button `btn_run`
         btn_run = Gtk.Button(label=gettext("Run defrag"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
-        #
+        # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Defragmentation"),
             description_page="???",
