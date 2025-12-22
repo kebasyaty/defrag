@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 20:35+0200\n"
+"POT-Creation-Date: 2025-12-22 18:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,47 +21,59 @@ msgstr ""
 msgid "The operation was completed successfully."
 msgstr ""
 
-#: app/sidebar.py:26 app/sidebar.py:69
+#: app/sidebar.py:27 app/sidebar.py:88
 msgid "Cleaning"
 msgstr ""
 
-#: app/sidebar.py:37
+#: app/sidebar.py:38
 msgid "Health"
 msgstr ""
 
-#: app/sidebar.py:48
+#: app/sidebar.py:49
 msgid "Analysis"
 msgstr ""
 
-#: app/sidebar.py:59
+#: app/sidebar.py:60
 msgid "Defrag"
 msgstr ""
 
-#: app/sidebar.py:70
-msgid "Run cleaning"
+#: app/sidebar.py:75
+msgid "Run BleachBit as user"
 msgstr ""
 
-#: app/sidebar.py:77
-msgid "Checking the integrity of HDD|SSD"
+#: app/sidebar.py:79
+msgid "Run BleachBit as administrator"
 msgstr ""
 
-#: app/sidebar.py:78
+#: app/sidebar.py:90
+msgid ""
+"Free up disk space and maintain privacy.\n"
+"The BleachBit application is used for this task.\n"
+"If this application is not on your computer,\n"
+"you will be prompted to install it."
+msgstr ""
+
+#: app/sidebar.py:106
 msgid "Run check health"
 msgstr ""
 
-#: app/sidebar.py:85
-msgid "Analysis a files fragmentation"
+#: app/sidebar.py:111
+msgid "Checking the integrity of HDD|SSD"
 msgstr ""
 
-#: app/sidebar.py:86
+#: app/sidebar.py:124
 msgid "Run analysis"
 msgstr ""
 
-#: app/sidebar.py:93
-msgid "Defragmentation"
+#: app/sidebar.py:129
+msgid "Analysis a files fragmentation"
 msgstr ""
 
-#: app/sidebar.py:94
+#: app/sidebar.py:142
 msgid "Run defrag"
+msgstr ""
+
+#: app/sidebar.py:147
+msgid "Defragmentation"
 msgstr ""
 

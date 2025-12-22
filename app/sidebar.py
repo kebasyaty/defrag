@@ -87,11 +87,10 @@ class Sidebar:
         self.add_content_to_dynamic_page(
             title_page=gettext("Cleaning"),
             description_page=gettext(
-                """
-Free up disk space and maintain privacy.
-The BleachBit application is used for this task.
-If this application is not on your computer, you will be prompted to install it.
-                """,
+                "Free up disk space and maintain privacy.\n"
+                + "The BleachBit application is used for this task.\n"
+                + "If this application is not on your computer,\n"
+                + "you will be prompted to install it.",
             ),
             service_box=service_vbox,
         )
