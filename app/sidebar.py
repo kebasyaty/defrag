@@ -153,7 +153,7 @@ If this application is not on your computer, you will be prompted to install it.
         )
         self.dynamic_page_vbox.append(description_label)
         # Add a box for manage the service
-        service_box.set_margin_top(16)
+        service_box.set_margin_top(6)
         self.dynamic_page_vbox.append(service_box)
         # Add info box for display result
         self.display_result_info_vbox = Gtk.Box(
