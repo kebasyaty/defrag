@@ -58,8 +58,7 @@ class MainContent:
                 if tmp_ is not None:
                     result_str = tmp_.decode("utf-8")
         # Display the result of a subprocess
-        result_info_textbuffer = self.result_info_textview.get_buffer()
-        result_info_textbuffer.set_text(result_str)
+        self.result_info_textview.set_label(result_str)
         self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:

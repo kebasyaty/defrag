@@ -132,9 +132,8 @@ class Sidebar:
         # Remove all child elements in `dynamic_page_vbox`
         self.clean_dynamic_page()
         # Create Title page
-        title_label = Gtk.Label()
+        title_label = Gtk.Label(halign=Gtk.Align.START)
         title_label.set_markup(f"<b>{title_page}</b>")
-        title_label.set_halign(Gtk.Align.START)
         self.dynamic_page_vbox.append(title_label)
         # Add a box to manage the service
         self.dynamic_page_vbox.append(service_box)
@@ -145,15 +144,11 @@ class Sidebar:
             margin_top=24,
             visible=False,
         )
-        # add Label
-        result_info_label = Gtk.Label()
+        # add Label to info box
+        result_info_label = Gtk.Label(halign=Gtk.Align.START)
         result_info_label.set_markup("<b>Info:</b>")
-        result_info_label.set_halign(Gtk.Align.START)
         self.display_result_info_vbox.append(result_info_label)
-        # add TextView
-        self.result_info_textview = Gtk.TextView(
-            editable=False,
-            cursor_visible=False,
-        )
+        # add TextView (Label) to info box
+        self.result_info_textview = Gtk.Label(halign=Gtk.Align.START)
         self.display_result_info_vbox.append(self.result_info_textview)
         self.dynamic_page_vbox.append(self.display_result_info_vbox)
