@@ -68,13 +68,13 @@ class Sidebar:
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
-            margin_top=24,
         )
         btn_run = Gtk.Button(label=gettext("Cleaning"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         self.add_content_to_dynamic_page(
             title_page=gettext("Cleaning"),
+            description_page="???",
             service_box=service_vbox,
         )
 
@@ -83,13 +83,13 @@ class Sidebar:
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
-            margin_top=24,
         )
         btn_run = Gtk.Button(label=gettext("Run check health"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         self.add_content_to_dynamic_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
+            description_page="???",
             service_box=service_vbox,
         )
 
@@ -98,13 +98,13 @@ class Sidebar:
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
-            margin_top=24,
         )
         btn_run = Gtk.Button(label=gettext("Run analysis"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         self.add_content_to_dynamic_page(
             title_page=gettext("Analysis a files fragmentation"),
+            description_page="???",
             service_box=service_vbox,
         )
 
@@ -113,31 +113,40 @@ class Sidebar:
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
-            margin_top=24,
         )
         btn_run = Gtk.Button(label=gettext("Run defrag"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         self.add_content_to_dynamic_page(
             title_page=gettext("Defragmentation"),
+            description_page="???",
             service_box=service_vbox,
         )
 
     def add_content_to_dynamic_page(
         self,
         title_page: str,
+        description_page: str,
         service_box: Gtk.Box,
     ) -> None:
         """Add content to dynamic page."""
         # Remove all child elements in `dynamic_page_vbox`
         self.clean_dynamic_page()
-        # Create Title page
+        # Add Title of page
         title_label = Gtk.Label(halign=Gtk.Align.START)
         title_label.set_markup(f"<b>{title_page}</b>")
         self.dynamic_page_vbox.append(title_label)
-        # Add a box to manage the service
+        # Add description of page
+        description_label = Gtk.Label(
+            label=description_page,
+            halign=Gtk.Align.START,
+            margin_top=12,
+        )
+        self.dynamic_page_vbox.append(description_label)
+        # Add a box for manage the service
+        service_box.set_margin_top(16)
         self.dynamic_page_vbox.append(service_box)
-        # Create Box for display result info
+        # Add info box for display result
         self.display_result_info_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
