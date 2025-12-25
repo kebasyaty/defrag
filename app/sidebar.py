@@ -9,6 +9,7 @@ from typing import Any
 
 from gi.repository import Gtk
 
+from app.constants import IS_INSTALLED_BLEACHBIT
 from app.translator import gettext
 
 
@@ -81,7 +82,7 @@ class Sidebar:
         btn_user_bleachbit_run = Gtk.Button(
             label=gettext("Run BleachBit as user"),
             halign=Gtk.Align.START,
-            sensitive=False,
+            sensitive=IS_INSTALLED_BLEACHBIT,
         )
         btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
         service_vbox.append(btn_user_bleachbit_run)
@@ -89,7 +90,7 @@ class Sidebar:
         btn_admin_bleachbit_run = Gtk.Button(
             label=gettext("Run BleachBit as administrator"),
             halign=Gtk.Align.START,
-            sensitive=False,
+            sensitive=IS_INSTALLED_BLEACHBIT,
         )
         btn_admin_bleachbit_run.connect(
             "clicked",
