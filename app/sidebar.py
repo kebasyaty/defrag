@@ -25,7 +25,7 @@ class Sidebar:
         self.content_hbox.append(sidebar_vbox)
 
         # Create a Cleaning button
-        btn_cleaning = Gtk.Button()
+        btn_cleaning = Gtk.Button(sensitive=False)
         btn_cleaning_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_cleaning_icon = Gtk.Image.new_from_icon_name("user-trash-symbolic")
         btn_cleaning_label = Gtk.Label(label=gettext("Cleaning"))
@@ -80,6 +80,7 @@ class Sidebar:
         btn_user_bleachbit_run = Gtk.Button(
             label=gettext("Run BleachBit as user"),
             halign=Gtk.Align.START,
+            sensitive=False,
         )
         btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
         service_vbox.append(btn_user_bleachbit_run)
@@ -87,6 +88,7 @@ class Sidebar:
         btn_admin_bleachbit_run = Gtk.Button(
             label=gettext("Run BleachBit as administrator"),
             halign=Gtk.Align.START,
+            sensitive=False,
         )
         btn_admin_bleachbit_run.connect(
             "clicked",
