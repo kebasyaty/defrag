@@ -70,7 +70,7 @@ class Sidebar:
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
-        self.block_buttons_to_sidebar()
+        self.unlock_buttons_to_sidebar()
         self.btn_cleaning.set_sensitive(False)
         # Create a box for manage the service
         service_vbox = Gtk.Box(
@@ -112,7 +112,7 @@ class Sidebar:
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
-        self.block_buttons_to_sidebar()
+        self.unlock_buttons_to_sidebar()
         self.btn_health.set_sensitive(False)
         # Create a box for manage the service
         service_vbox = Gtk.Box(
@@ -132,7 +132,7 @@ class Sidebar:
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
-        self.block_buttons_to_sidebar()
+        self.unlock_buttons_to_sidebar()
         self.btn_analysis.set_sensitive(False)
         # Create a box for manage the service
         service_vbox = Gtk.Box(
@@ -152,7 +152,7 @@ class Sidebar:
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
-        self.block_buttons_to_sidebar()
+        self.unlock_buttons_to_sidebar()
         self.btn_defrag.set_sensitive(False)
         # Create a box for manage the service
         service_vbox = Gtk.Box(

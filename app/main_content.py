@@ -21,8 +21,8 @@ class MainContent:
         self.dynamic_page_vbox.set_hexpand(True)
         self.content_hbox.append(self.dynamic_page_vbox)
 
-    def block_buttons_to_sidebar(self) -> None:
-        """Block all buttons to sidebar."""
+    def unlock_buttons_to_sidebar(self) -> None:
+        """Unlock all buttons on sidebar."""
         # Observe the children of `sidebar_vbox`
         children_model = self.sidebar_vbox.observe_children()
         # Iterate through the children of `sidebar_vbox`
