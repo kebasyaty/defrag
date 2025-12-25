@@ -39,7 +39,7 @@ class MainContent:
             del self.__dict__["result_info_textview"]
 
     def on_subprocess_exit(self, process: Gio.Subprocess, res: Any) -> None:
-        """Get result of subprocess or error."""
+        """Get result of main subprocess or error."""
         # Read the output streams in the callback
         stdout_stream, stderr_stream = process.get_stdout_pipe(), process.get_stderr_pipe()
         # Reading from streams and converting to string result
@@ -62,7 +62,7 @@ class MainContent:
         self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
-        """Starts a subprocess asynchronously."""
+        """Starts a main subprocess asynchronously."""
         # Flags for proper I/O handling
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create the subprocess
