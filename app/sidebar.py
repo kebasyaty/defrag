@@ -73,6 +73,8 @@ class Sidebar:
         """Handler for a Cleaning button."""
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_cleaning.get_name())
+        # Check if BleachBit is installed on the user's computer
+
         # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
