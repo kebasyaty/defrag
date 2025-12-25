@@ -25,7 +25,7 @@ class Sidebar:
         self.content_hbox.append(self.sidebar_vbox)
 
         # Create a Cleaning button
-        self.btn_cleaning = Gtk.Button(sensitive=False)
+        self.btn_cleaning = Gtk.Button(name="btn_cleaning", sensitive=False)
         btn_cleaning_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_cleaning_icon = Gtk.Image.new_from_icon_name("user-trash-symbolic")
         btn_cleaning_label = Gtk.Label(label=gettext("Cleaning"))
@@ -36,7 +36,7 @@ class Sidebar:
         self.sidebar_vbox.append(self.btn_cleaning)
 
         # Create a Health button
-        self.btn_health = Gtk.Button()
+        self.btn_health = Gtk.Button(name="btn_health")
         btn_health_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_health_icon = Gtk.Image.new_from_icon_name("security-medium-rtl-symbolic")
         btn_health_label = Gtk.Label(label=gettext("Health"))
@@ -47,7 +47,7 @@ class Sidebar:
         self.sidebar_vbox.append(self.btn_health)
 
         # Create a Analysis button
-        self.btn_analysis = Gtk.Button()
+        self.btn_analysis = Gtk.Button(name="btn_analysis")
         btn_analysis_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_analysis_icon = Gtk.Image.new_from_icon_name("applications-science-symbolic")
         btn_analysis_label = Gtk.Label(label=gettext("Analysis"))
@@ -58,7 +58,7 @@ class Sidebar:
         self.sidebar_vbox.append(self.btn_analysis)
 
         # Create a Defrag button
-        self.btn_defrag = Gtk.Button()
+        self.btn_defrag = Gtk.Button(name="btn_defrag")
         btn_defrag_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_defrag_icon = Gtk.Image.new_from_icon_name("preferences-system-symbolic")
         btn_defrag_label = Gtk.Label(label=gettext("Defrag"))
@@ -70,8 +70,7 @@ class Sidebar:
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
-        self.unlock_buttons_to_sidebar()
-        self.btn_cleaning.set_sensitive(False)
+        self.unlock_buttons_to_sidebar(active_button_name=self.btn_cleaning.get_name())
         # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
@@ -112,8 +111,7 @@ class Sidebar:
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
-        self.unlock_buttons_to_sidebar()
-        self.btn_health.set_sensitive(False)
+        self.unlock_buttons_to_sidebar(active_button_name=self.btn_health.get_name())
         # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
@@ -132,8 +130,7 @@ class Sidebar:
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
-        self.unlock_buttons_to_sidebar()
-        self.btn_analysis.set_sensitive(False)
+        self.unlock_buttons_to_sidebar(active_button_name=self.btn_analysis.get_name())
         # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
@@ -152,8 +149,7 @@ class Sidebar:
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
-        self.unlock_buttons_to_sidebar()
-        self.btn_defrag.set_sensitive(False)
+        self.unlock_buttons_to_sidebar(active_button_name=self.btn_defrag.get_name())
         # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,

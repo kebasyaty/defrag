@@ -21,7 +21,7 @@ class MainContent:
         self.dynamic_page_vbox.set_hexpand(True)
         self.content_hbox.append(self.dynamic_page_vbox)
 
-    def unlock_buttons_to_sidebar(self) -> None:
+    def unlock_buttons_to_sidebar(self, active_button_name: str) -> None:
         """Unlock all buttons on sidebar."""
         # Observe the children of `sidebar_vbox`
         children_model = self.sidebar_vbox.observe_children()
@@ -30,6 +30,8 @@ class MainContent:
             child = children_model.get_item(idx)
             if isinstance(child, Gtk.Button):
                 child.set_sensitive(True)
+        # Lock active button
+        self.__dict__[active_button_name].set_sensitive(False)
 
     def clean_dynamic_page(self) -> None:
         """Remove all child elements in `dynamic_page_vbox`."""
