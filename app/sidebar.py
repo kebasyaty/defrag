@@ -17,12 +17,12 @@ class Sidebar:
 
     def __init__(self) -> None:  # noqa: D107
         # Create Sidebar box
-        sidebar_vbox = Gtk.Box(
+        self.sidebar_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
             halign=Gtk.Align.START,
         )
-        self.content_hbox.append(sidebar_vbox)
+        self.content_hbox.append(self.sidebar_vbox)
 
         # Create a Cleaning button
         self.btn_cleaning = Gtk.Button(sensitive=False)
@@ -33,7 +33,7 @@ class Sidebar:
         btn_cleaning_content_box.append(btn_cleaning_label)
         self.btn_cleaning.set_child(btn_cleaning_content_box)
         self.btn_cleaning.connect("clicked", self.on_btn_cleaning)
-        sidebar_vbox.append(self.btn_cleaning)
+        self.sidebar_vbox.append(self.btn_cleaning)
 
         # Create a Health button
         self.btn_health = Gtk.Button()
@@ -44,7 +44,7 @@ class Sidebar:
         btn_health_content_box.append(btn_health_label)
         self.btn_health.set_child(btn_health_content_box)
         self.btn_health.connect("clicked", self.on_btn_health)
-        sidebar_vbox.append(self.btn_health)
+        self.sidebar_vbox.append(self.btn_health)
 
         # Create a Analysis button
         self.btn_analysis = Gtk.Button()
@@ -55,7 +55,7 @@ class Sidebar:
         btn_analysis_content_box.append(btn_analysis_label)
         self.btn_analysis.set_child(btn_analysis_content_box)
         self.btn_analysis.connect("clicked", self.on_btn_analysis)
-        sidebar_vbox.append(self.btn_analysis)
+        self.sidebar_vbox.append(self.btn_analysis)
 
         # Create a Defrag button
         self.btn_defrag = Gtk.Button()
@@ -66,10 +66,11 @@ class Sidebar:
         btn_defrag_content_box.append(btn_defrag_label)
         self.btn_defrag.set_child(btn_defrag_content_box)
         self.btn_defrag.connect("clicked", self.on_btn_defrag)
-        sidebar_vbox.append(self.btn_defrag)
+        self.sidebar_vbox.append(self.btn_defrag)
 
     def on_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
+        self.block_buttons_to_sidebar()
         self.btn_cleaning.set_sensitive(False)
         # Create a box for manage the service
         service_vbox = Gtk.Box(
@@ -111,6 +112,7 @@ class Sidebar:
 
     def on_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
+        self.block_buttons_to_sidebar()
         self.btn_health.set_sensitive(False)
         # Create a box for manage the service
         service_vbox = Gtk.Box(
@@ -130,6 +132,7 @@ class Sidebar:
 
     def on_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
+        self.block_buttons_to_sidebar()
         self.btn_analysis.set_sensitive(False)
         # Create a box for manage the service
         service_vbox = Gtk.Box(
@@ -149,6 +152,7 @@ class Sidebar:
 
     def on_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
+        self.block_buttons_to_sidebar()
         self.btn_defrag.set_sensitive(False)
         # Create a box for manage the service
         service_vbox = Gtk.Box(
