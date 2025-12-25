@@ -74,7 +74,12 @@ class Sidebar:
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_cleaning.get_name())
         # Check if BleachBit is installed on the user's computer
-
+        if not IS_INSTALLED_BLEACHBIT:
+            self.simple_alert(
+                message="Warning",
+                detail="To clean the system, you need to install the BleachBit application.",
+                buttons=["OK"],
+            )
         # Create a box for manage the service
         service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,

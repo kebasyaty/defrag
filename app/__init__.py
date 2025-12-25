@@ -39,12 +39,12 @@ class Defrag(Adw.Application):
 
     def on_activate(self, app: Adw.Application) -> None:
         """Create main window."""
-        window = self.props.active_window
-        if not window:
-            window = MainWindow(
+        self.window = self.props.active_window
+        if not self.window:
+            self.window = MainWindow(
                 title=APP_NAME,
                 application=app,
                 default_width=640,
                 default_height=480,
             )
-        window.present()
+        self.window.present()
