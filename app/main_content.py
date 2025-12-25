@@ -21,6 +21,18 @@ class MainContent:
         self.dynamic_page_vbox.set_hexpand(True)
         self.content_hbox.append(self.dynamic_page_vbox)
 
+    def unlock_buttons_to_sidebar(self, active_button_name: str) -> None:
+        """Unlock all buttons on sidebar and lock active button."""
+        # Observe the children of `sidebar_vbox`
+        children_model = self.sidebar_vbox.observe_children()
+        # Iterate through the children of `sidebar_vbox`
+        for idx in range(children_model.get_n_items()):
+            child = children_model.get_item(idx)
+            if isinstance(child, Gtk.Button):
+                child.set_sensitive(True)
+        # Lock active button
+        self.__dict__[active_button_name].set_sensitive(False)
+
     def clean_dynamic_page(self) -> None:
         """Remove all child elements in `dynamic_page_vbox`."""
         # Observe the children of `dynamic_page_vbox`
@@ -39,7 +51,7 @@ class MainContent:
             del self.__dict__["result_info_textview"]
 
     def on_subprocess_exit(self, process: Gio.Subprocess, res: Any) -> None:
-        """Get result of subprocess or error."""
+        """Get result of main subprocess or error."""
         # Read the output streams in the callback
         stdout_stream, stderr_stream = process.get_stdout_pipe(), process.get_stderr_pipe()
         # Reading from streams and converting to string result
@@ -62,7 +74,7 @@ class MainContent:
         self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
-        """Starts a subprocess asynchronously."""
+        """Starts a main subprocess asynchronously."""
         # Flags for proper I/O handling
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create the subprocess

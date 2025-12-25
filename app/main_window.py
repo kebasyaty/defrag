@@ -53,3 +53,13 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
 
         # Render content for the Cleaning button
         self.on_btn_cleaning(None)
+
+    def simple_alert(self, message: str, detail: str, buttons: list[str]) -> None:
+        """Simple Alert."""
+        dialog = Gtk.AlertDialog(
+            modal=True,
+            message=message,
+            detail=detail,
+            buttons=buttons,
+        )
+        dialog.show(parent=self)
