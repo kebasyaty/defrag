@@ -14,10 +14,10 @@ def check_installed_bleachbit() -> None:
     """Check if BleachBit is installed on the user's computer."""
     # Flags for proper I/O handling
     flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
-    # Create the subprocess
+    # Create commands
     command_string = "ls /usr/share/applications | grep -qm1 bleachbit $1 && echo OK || echo 'NOT OK'"
     command_args = shlex.split(command_string)
-    print(command_args)  # noqa: T201
+    # Create the subprocess
     process = Gio.Subprocess.new(command_args, flags)
     # Asynchronously watch for the process termination
     # When it exits, the callback function will be triggered
