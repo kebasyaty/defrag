@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-22 18:21+0200\n"
+"POT-Creation-Date: 2025-12-25 18:25+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,63 +18,76 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/main_content.py:47
+#: app/main_content.py:59
 msgid "The operation was completed successfully."
 msgstr ""
 
-#: app/sidebar.py:27 app/sidebar.py:88
+#: app/sidebar.py:32 app/sidebar.py:111
 msgid "Cleaning"
 msgstr ""
 
-#: app/sidebar.py:38
+#: app/sidebar.py:43
 msgid "Health"
 msgstr ""
 
-#: app/sidebar.py:49
+#: app/sidebar.py:54
 msgid "Analysis"
 msgstr ""
 
-#: app/sidebar.py:60
+#: app/sidebar.py:65
 msgid "Defrag"
 msgstr ""
 
-#: app/sidebar.py:75
+#: app/sidebar.py:79
+msgid "Warning"
+msgstr ""
+
+#: app/sidebar.py:80
+msgid "To clean the system, you need to install the BleachBit application."
+msgstr ""
+
+#: app/sidebar.py:91
 msgid "Run BleachBit as user"
 msgstr ""
 
-#: app/sidebar.py:79
+#: app/sidebar.py:99
 msgid "Run BleachBit as administrator"
 msgstr ""
 
-#: app/sidebar.py:90
+#: app/sidebar.py:113
 msgid ""
 "Free up disk space and maintain privacy.\n"
-"The BleachBit application is used for this task.\n"
-"If this application is not on your computer,\n"
-"you will be prompted to install it."
+"The BleachBit application is used for this task."
 msgstr ""
 
-#: app/sidebar.py:106
+#: app/sidebar.py:128
 msgid "Run check health"
 msgstr ""
 
-#: app/sidebar.py:111
+#: app/sidebar.py:133
 msgid "Checking the integrity of HDD|SSD"
 msgstr ""
 
-#: app/sidebar.py:124
+#: app/sidebar.py:148
 msgid "Run analysis"
 msgstr ""
 
-#: app/sidebar.py:129
+#: app/sidebar.py:153
 msgid "Analysis a files fragmentation"
 msgstr ""
 
-#: app/sidebar.py:142
+#: app/sidebar.py:168
 msgid "Run defrag"
 msgstr ""
 
-#: app/sidebar.py:147
+#: app/sidebar.py:173
 msgid "Defragmentation"
 msgstr ""
+
+#~ msgid ""
+#~ "Free up disk space and maintain privacy.\n"
+#~ "The BleachBit application is used for this task.\n"
+#~ "If this application is not on your computer,\n"
+#~ "you will be prompted to install it."
+#~ msgstr ""
 

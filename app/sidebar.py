@@ -76,8 +76,8 @@ class Sidebar:
         # Check if BleachBit is installed on the user's computer
         if not IS_INSTALLED_BLEACHBIT:
             self.simple_alert(
-                message="Warning",
-                detail="To clean the system, you need to install the BleachBit application.",
+                message=gettext("Warning"),
+                detail=gettext("To clean the system, you need to install the BleachBit application."),
                 buttons=["OK"],
             )
         # Create a box for manage the service
@@ -110,10 +110,7 @@ class Sidebar:
         self.add_content_to_dynamic_page(
             title_page=gettext("Cleaning"),
             description_page=gettext(
-                "Free up disk space and maintain privacy.\n"
-                + "The BleachBit application is used for this task.\n"
-                + "If this application is not on your computer,\n"
-                + "you will be prompted to install it.",
+                "Free up disk space and maintain privacy.\n" + "The BleachBit application is used for this task.",
             ),
             service_box=service_vbox,
         )
