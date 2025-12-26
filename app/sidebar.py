@@ -100,38 +100,17 @@ class Sidebar:
             halign=Gtk.Align.START,
         )
         # add button `btn_user_bleachbit_run`
-        btn_user_content_box = Gtk.Box(
-            orientation=Gtk.Orientation.HORIZONTAL,
-            halign=Gtk.Align.START,
-            spacing=6,
+        btn_user_bleachbit_run = self.create_btn_run(
+            label=gettext("Run BleachBit as user"),
+            is_sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
-        btn_user_icon = Gtk.Image.new_from_icon_name("system-run-symbolic")
-        btn_user_label = Gtk.Label(label=gettext("Run BleachBit as user"))
-        btn_user_content_box.append(btn_user_icon)
-        btn_user_content_box.append(btn_user_label)
-        btn_user_bleachbit_run = Gtk.Button(
-            halign=Gtk.Align.START,
-            sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
-        )
-        btn_user_bleachbit_run.set_child(btn_user_content_box)
         btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
         service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
-        btn_admin_content_box = Gtk.Box(
-            orientation=Gtk.Orientation.HORIZONTAL,
-            halign=Gtk.Align.START,
-            spacing=6,
-        )
-        btn_admin_icon = Gtk.Image.new_from_icon_name("system-run-symbolic")
-        btn_admin_label = Gtk.Label(label=gettext("Run BleachBit as user"))
-        btn_admin_content_box.append(btn_admin_icon)
-        btn_admin_content_box.append(btn_admin_label)
-        btn_admin_bleachbit_run = Gtk.Button(
+        btn_admin_bleachbit_run = self.create_btn_run(
             label=gettext("Run BleachBit as administrator"),
-            halign=Gtk.Align.START,
-            sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
+            is_sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
-        btn_admin_bleachbit_run.set_child(btn_admin_content_box)
         btn_admin_bleachbit_run.connect(
             "clicked",
             self.on_subprocess_run,
@@ -157,7 +136,7 @@ class Sidebar:
             spacing=6,
         )
         # add button `btn_run`
-        btn_run = Gtk.Button(label=gettext("Run check health"))
+        btn_run = self.create_btn_run(label=gettext("Run check health"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         # Add content to `dynamic_page_vbox`
@@ -177,7 +156,7 @@ class Sidebar:
             spacing=6,
         )
         # add button `btn_run`
-        btn_run = Gtk.Button(label=gettext("Run analysis"))
+        btn_run = self.create_btn_run(label=gettext("Run analysis"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         # Add content to `dynamic_page_vbox`
@@ -197,7 +176,7 @@ class Sidebar:
             spacing=6,
         )
         # add button `btn_run`
-        btn_run = Gtk.Button(label=gettext("Run defrag"))
+        btn_run = self.create_btn_run(label=gettext("Run defrag"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         # Add content to `dynamic_page_vbox`
@@ -206,6 +185,26 @@ class Sidebar:
             description_page="???",
             service_box=service_vbox,
         )
+
+    def create_btn_run(
+        self,
+        label: str,
+        icon_name: str = "system-run-symbolic",
+        is_sensitive: bool = True,
+    ) -> Gtk.Button:
+        """Create a start button for the service."""
+        btn_content_box = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL,
+            halign=Gtk.Align.START,
+            spacing=6,
+        )
+        btn_icon = Gtk.Image.new_from_icon_name(icon_name)
+        btn_label = Gtk.Label(label=label)
+        btn_content_box.append(btn_icon)
+        btn_content_box.append(btn_label)
+        btn_run = Gtk.Button(halign=Gtk.Align.START, sensitive=is_sensitive)
+        btn_run.set_child(btn_content_box)
+        return btn_run
 
     def add_content_to_dynamic_page(
         self,
