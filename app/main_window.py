@@ -6,12 +6,12 @@ __all__ = ("MainWindow",)
 
 import os
 import shlex
-from typing import Any
 
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
 from app.main_content import MainContent
 from app.sidebar import Sidebar
+from app.translator import gettext
 
 
 class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
@@ -78,34 +78,21 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
         command_string = "rpm -q bleachbit"
         command_args = shlex.split(command_string)
         # Create the subprocess
-        process = Gio.Subprocess.new(command_args, flags)
-        # Asynchronously watch for the process termination
-        # When it exits, the callback function will be triggered
-        process.wait_async(None, self.check_installed_bleachbit_exit)
-
-    def check_installed_bleachbit_exit(self, process: Gio.Subprocess, res: Any) -> None:
-        """Get result of main subprocess or error."""
-        # Read the output streams in the callback
-        stdout_stream, stderr_stream = process.get_stdout_pipe(), process.get_stderr_pipe()
-        # Reading from streams and converting to string result
-        exit_code = process.get_exit_status()
-        if exit_code == 0:
-            if stdout_stream is not None:
-                stdout_bytes = stdout_stream.read_bytes(1024, None)
-                result_bytes = stdout_bytes.get_data()
-                if result_bytes is not None:
-                    result_str = result_bytes.decode("utf-8")
-                    self.IS_INSTALLED_BLEACHBIT = "bleachbit-" in result_str
-        else:
-            if stderr_stream is not None:
-                stderr_bytes = stderr_stream.read_bytes(1024, None)
-                error_bytes = stderr_bytes.get_data()
-                if error_bytes is not None:
-                    error_str = error_bytes.decode("utf-8")
-                    dialog = Gtk.AlertDialog(
-                        modal=True,
-                        message="ERROR",
-                        detail=error_str,
-                        buttons=["Cancel"],
-                    )
-                    dialog.show(self)
+        try:
+            process = Gio.Subprocess.new(command_args, flags)
+            # Run synchronously, send optional input, get output
+            success, stdout_buf, stderr_buf = process.communicate_utf8()
+            if success:
+                self.IS_INSTALLED_BLEACHBIT = "bleachbit-" in stdout_buf
+            else:
+                self.simple_alert(
+                    message=gettext("ERROR"),
+                    detail=stderr_buf,
+                    buttons=["Cancel"],
+                )
+        except Exception as err:  # noqa: BLE001
+            self.simple_alert(
+                message=gettext("ERROR"),
+                detail=f"An error occurred:\n{err}",
+                buttons=["OK"],
+            )
