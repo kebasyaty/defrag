@@ -142,7 +142,7 @@ class Sidebar:
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
-            description_page="???",
+            description_page=gettext("???"),
             service_box=service_vbox,
         )
 
@@ -162,7 +162,7 @@ class Sidebar:
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Analysis a files fragmentation"),
-            description_page="???",
+            description_page=gettext("???"),
             service_box=service_vbox,
         )
 
@@ -182,7 +182,7 @@ class Sidebar:
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Defragmentation"),
-            description_page="???",
+            description_page=gettext("???"),
             service_box=service_vbox,
         )
 
