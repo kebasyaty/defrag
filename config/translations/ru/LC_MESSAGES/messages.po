@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-26 15:38+0200\n"
+"POT-Creation-Date: 2025-12-26 16:15+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -75,23 +75,51 @@ msgstr "Запустить проверку здоровья"
 msgid "Checking the integrity of HDD|SSD"
 msgstr "Проверка целостности HDD|SSD"
 
-#: app/sidebar.py:159
+#: app/sidebar.py:146
+msgid ""
+"Integrity check of the Btrfs file system,\n"
+"which sequentially reads all data and metadata,\n"
+"verifies their checksums and,\n"
+"in the case of a multi-disk array (RAID),\n"
+"automatically restores damaged blocks using redundant copies,\n"
+"detecting and correcting errors without stopping the file system.\n"
+"This is an important tool for maintaining Btrfs health,\n"
+"especially in redundant configurations."
+msgstr ""
+"Проверка целостности файловой системы Btrfs,\n"
+"которая последовательно считывает все данные и метаданные,\n"
+"проверяет их контрольные суммы и,\n"
+"в случае многодискового массива (RAID),\n"
+"автоматически восстанавливает поврежденные блоки с помощью избыточных копий,\n"
+"обнаруживая и исправляя ошибки без остановки работы ФС.\n"
+"Это важный инструмент для поддержания здоровья Btrfs,\n"
+"особенно в конфигурациях с избыточностью."
+
+#: app/sidebar.py:168
 msgid "Run analysis"
 msgstr "Запустить анализ"
 
-#: app/sidebar.py:164
+#: app/sidebar.py:173
 msgid "Analysis a files fragmentation"
 msgstr "Анализ фрагментации файлов"
 
-#: app/sidebar.py:179
+#: app/sidebar.py:174
+msgid "Assess the overall state of file fragmentation."
+msgstr "Оцените общее состояние фрагментации файлов."
+
+#: app/sidebar.py:188
 msgid "Run defrag"
 msgstr "Запустить дефрагментацию"
 
-#: app/sidebar.py:184
+#: app/sidebar.py:193
 msgid "Defragmentation"
 msgstr "Дефрагментация"
 
-#: app/sidebar.py:241
+#: app/sidebar.py:194
+msgid "Optimize partitions formatted with the Btrfs file system."
+msgstr "Оптимизируйте разделы,\nотформатированные с помощью файловой системы Btrfs."
+
+#: app/sidebar.py:250
 msgid "INFO"
 msgstr "ИНФОРМАЦИЯ"
 

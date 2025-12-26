@@ -142,7 +142,16 @@ class Sidebar:
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
-            description_page=gettext("???"),
+            description_page=gettext(
+                "Integrity check of the Btrfs file system,\n"
+                + "which sequentially reads all data and metadata,\n"
+                + "verifies their checksums and,\n"
+                + "in the case of a multi-disk array (RAID),\n"
+                + "automatically restores damaged blocks using redundant copies,\n"
+                + "detecting and correcting errors without stopping the file system.\n"
+                + "This is an important tool for maintaining Btrfs health,\n"
+                + "especially in redundant configurations.",
+            ),
             service_box=service_vbox,
         )
 
@@ -162,7 +171,7 @@ class Sidebar:
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Analysis a files fragmentation"),
-            description_page=gettext("???"),
+            description_page=gettext("Assess the overall state of file fragmentation."),
             service_box=service_vbox,
         )
 
@@ -182,7 +191,7 @@ class Sidebar:
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Defragmentation"),
-            description_page=gettext("???"),
+            description_page=gettext("Optimize partitions formatted with the Btrfs file system."),
             service_box=service_vbox,
         )
 
