@@ -83,7 +83,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
             # Run synchronously, send optional input, get output
             success, stdout_buf, stderr_buf = process.communicate_utf8()
             if success:
-                self.IS_INSTALLED_BLEACHBIT = "bleachbit" in stdout_buf
+                self.IS_INSTALLED_BLEACHBIT = "bleachbit" not in stdout_buf
             else:
                 self.simple_alert(
                     message=gettext("ERROR"),

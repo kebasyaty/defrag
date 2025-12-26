@@ -74,9 +74,23 @@ class Sidebar:
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_cleaning.get_name())
         # Check if BleachBit is installed on the user's computer
         if not self.IS_INSTALLED_BLEACHBIT:
+            err_mag = gettext("To clean the system, you need to install the BleachBit application.")
+            installation_list = [
+                "# On Debian, Ubuntu, Mint",
+                "sudo apt install bleachbit",
+                "# On Fedora, CentOS, RHEL",
+                "sudo dnf install bleachbit",
+                "# On Arch Linux",
+                "sudo pacman -S bleachbit",
+                "# On OpenSUSE",
+                "sudo zypper install bleachbit",
+                "# On Alpine Linux",
+                "sudo apk add bleachbit",
+            ]
+            installation_str = "\n".join(installation_list)
             self.simple_alert(
                 message=gettext("Warning"),
-                detail=gettext("To clean the system, you need to install the BleachBit application."),
+                detail=f"{err_mag}\n\n{installation_str}",
                 buttons=["OK"],
             )
         # Create a box for manage the service
