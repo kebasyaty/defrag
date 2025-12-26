@@ -94,5 +94,5 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
             self.simple_alert(
                 message=gettext("ERROR"),
                 detail=f"An error occurred:\n{err}",
-                buttons=["OK"],
+                buttons=["Cancel"],
             )
