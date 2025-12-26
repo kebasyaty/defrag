@@ -9,7 +9,6 @@ from typing import Any
 
 from gi.repository import Gtk
 
-from app.constants import IS_INSTALLED_BLEACHBIT
 from app.translator import gettext
 
 
@@ -74,7 +73,7 @@ class Sidebar:
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_cleaning.get_name())
         # Check if BleachBit is installed on the user's computer
-        if not IS_INSTALLED_BLEACHBIT:
+        if not self.IS_INSTALLED_BLEACHBIT:
             self.simple_alert(
                 message=gettext("Warning"),
                 detail=gettext("To clean the system, you need to install the BleachBit application."),
@@ -90,7 +89,7 @@ class Sidebar:
         btn_user_bleachbit_run = Gtk.Button(
             label=gettext("Run BleachBit as user"),
             halign=Gtk.Align.START,
-            sensitive=IS_INSTALLED_BLEACHBIT,
+            sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
         btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
         service_vbox.append(btn_user_bleachbit_run)
@@ -98,7 +97,7 @@ class Sidebar:
         btn_admin_bleachbit_run = Gtk.Button(
             label=gettext("Run BleachBit as administrator"),
             halign=Gtk.Align.START,
-            sensitive=IS_INSTALLED_BLEACHBIT,
+            sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
         btn_admin_bleachbit_run.connect(
             "clicked",
@@ -206,9 +205,9 @@ class Sidebar:
             visible=False,
         )
         # add Label to info box
-        result_info_label = Gtk.Label(halign=Gtk.Align.START)
-        result_info_label.set_markup("<b>Info:</b>")
-        self.display_result_info_vbox.append(result_info_label)
+        self.result_info_label = Gtk.Label(halign=Gtk.Align.START)
+        self.result_info_label.set_markup("<b>INFO:</b>")
+        self.display_result_info_vbox.append(self.result_info_label)
         # add TextView (Label) to info box
         self.result_info_textview = Gtk.Label(halign=Gtk.Align.START)
         self.display_result_info_vbox.append(self.result_info_textview)

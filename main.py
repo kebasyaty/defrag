@@ -27,12 +27,10 @@ gi.require_version("Adw", "1")
 import sys  # noqa: E402
 
 from app import Defrag  # noqa: E402
-from app.check_bleachbit import check_installed_bleachbit  # noqa: E402
 
 
 def main() -> None:
     """Run Application."""
-    check_installed_bleachbit()
     app = Defrag()
     exit_status = app.run(sys.argv)
     sys.exit(exit_status)
