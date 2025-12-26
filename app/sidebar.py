@@ -86,19 +86,38 @@ class Sidebar:
             halign=Gtk.Align.START,
         )
         # add button `btn_user_bleachbit_run`
+        btn_user_content_box = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL,
+            halign=Gtk.Align.START,
+            spacing=6,
+        )
+        btn_user_icon = Gtk.Image.new_from_icon_name("system-run-symbolic")
+        btn_user_label = Gtk.Label(label=gettext("Run BleachBit as user"))
+        btn_user_content_box.append(btn_user_icon)
+        btn_user_content_box.append(btn_user_label)
         btn_user_bleachbit_run = Gtk.Button(
-            label=gettext("Run BleachBit as user"),
             halign=Gtk.Align.START,
             sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
+        btn_user_bleachbit_run.set_child(btn_user_content_box)
         btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
         service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
+        btn_admin_content_box = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL,
+            halign=Gtk.Align.START,
+            spacing=6,
+        )
+        btn_admin_icon = Gtk.Image.new_from_icon_name("system-run-symbolic")
+        btn_admin_label = Gtk.Label(label=gettext("Run BleachBit as user"))
+        btn_admin_content_box.append(btn_admin_icon)
+        btn_admin_content_box.append(btn_admin_label)
         btn_admin_bleachbit_run = Gtk.Button(
             label=gettext("Run BleachBit as administrator"),
             halign=Gtk.Align.START,
             sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
+        btn_admin_bleachbit_run.set_child(btn_admin_content_box)
         btn_admin_bleachbit_run.connect(
             "clicked",
             self.on_subprocess_run,
