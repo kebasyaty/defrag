@@ -108,4 +108,4 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
                         detail=error_str,
                         buttons=["Cancel"],
                     )
-                    dialog.show()
+                    dialog.show(self)
