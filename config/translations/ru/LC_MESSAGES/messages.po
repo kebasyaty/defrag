@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-25 18:25+0200\n"
+"POT-Creation-Date: 2025-12-26 16:15+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -19,43 +19,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/main_content.py:59
+#: app/main_content.py:67
 msgid "The operation was completed successfully."
 msgstr "Операция завершилась успешно."
 
-#: app/sidebar.py:32 app/sidebar.py:111
+#: app/main_content.py:75 app/main_window.py:89 app/main_window.py:95
+msgid "ERROR"
+msgstr "ОШИБКА"
+
+#: app/sidebar.py:31 app/sidebar.py:122
 msgid "Cleaning"
 msgstr "Очистка"
 
-#: app/sidebar.py:43
+#: app/sidebar.py:42
 msgid "Health"
 msgstr "Здоровье"
 
-#: app/sidebar.py:54
+#: app/sidebar.py:53
 msgid "Analysis"
 msgstr "Анализ"
 
-#: app/sidebar.py:65
+#: app/sidebar.py:64
 msgid "Defrag"
 msgstr "Дефрагментация"
 
-#: app/sidebar.py:79
-msgid "Warning"
-msgstr "Предупреждение"
-
-#: app/sidebar.py:80
+#: app/sidebar.py:77
 msgid "To clean the system, you need to install the BleachBit application."
 msgstr "Для очистки системы, необходимо установить приложение BleachBit."
 
-#: app/sidebar.py:91
+#: app/sidebar.py:92
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: app/sidebar.py:104
 msgid "Run BleachBit as user"
 msgstr "Запустите BleachBit от имени пользователя"
 
-#: app/sidebar.py:99
+#: app/sidebar.py:111
 msgid "Run BleachBit as administrator"
 msgstr "Запустите BleachBit от имени администратора"
 
-#: app/sidebar.py:113
+#: app/sidebar.py:124
 msgid ""
 "Free up disk space and maintain privacy.\n"
 "The BleachBit application is used for this task."
@@ -63,27 +67,59 @@ msgstr ""
 "Освободите дисковое пространство и сохраните конфиденциальность.\n"
 "Для этой задачи используется приложение BleachBit."
 
-#: app/sidebar.py:128
+#: app/sidebar.py:139
 msgid "Run check health"
 msgstr "Запустить проверку здоровья"
 
-#: app/sidebar.py:133
+#: app/sidebar.py:144
 msgid "Checking the integrity of HDD|SSD"
 msgstr "Проверка целостности HDD|SSD"
 
-#: app/sidebar.py:148
+#: app/sidebar.py:146
+msgid ""
+"Integrity check of the Btrfs file system,\n"
+"which sequentially reads all data and metadata,\n"
+"verifies their checksums and,\n"
+"in the case of a multi-disk array (RAID),\n"
+"automatically restores damaged blocks using redundant copies,\n"
+"detecting and correcting errors without stopping the file system.\n"
+"This is an important tool for maintaining Btrfs health,\n"
+"especially in redundant configurations."
+msgstr ""
+"Проверка целостности файловой системы Btrfs,\n"
+"которая последовательно считывает все данные и метаданные,\n"
+"проверяет их контрольные суммы и,\n"
+"в случае многодискового массива (RAID),\n"
+"автоматически восстанавливает поврежденные блоки с помощью избыточных копий,\n"
+"обнаруживая и исправляя ошибки без остановки работы ФС.\n"
+"Это важный инструмент для поддержания здоровья Btrfs,\n"
+"особенно в конфигурациях с избыточностью."
+
+#: app/sidebar.py:168
 msgid "Run analysis"
 msgstr "Запустить анализ"
 
-#: app/sidebar.py:153
+#: app/sidebar.py:173
 msgid "Analysis a files fragmentation"
 msgstr "Анализ фрагментации файлов"
 
-#: app/sidebar.py:168
+#: app/sidebar.py:174
+msgid "Assess the overall state of file fragmentation."
+msgstr "Оцените общее состояние фрагментации файлов."
+
+#: app/sidebar.py:188
 msgid "Run defrag"
 msgstr "Запустить дефрагментацию"
 
-#: app/sidebar.py:173
+#: app/sidebar.py:193
 msgid "Defragmentation"
 msgstr "Дефрагментация"
+
+#: app/sidebar.py:194
+msgid "Optimize partitions formatted with the Btrfs file system."
+msgstr "Оптимизируйте разделы,\nотформатированные с помощью файловой системы Btrfs."
+
+#: app/sidebar.py:250
+msgid "INFO"
+msgstr "ИНФОРМАЦИЯ"
 

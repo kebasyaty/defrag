@@ -47,8 +47,9 @@ class MainContent:
             self.dynamic_page_vbox.remove(child)
         # Additionally remove the following keys
         if len(child_list) > 0:
-            del self.__dict__["display_result_info_vbox"]
+            del self.__dict__["result_info_label"]
             del self.__dict__["result_info_textview"]
+            del self.__dict__["display_result_info_vbox"]
 
     def on_subprocess_exit(self, process: Gio.Subprocess, res: Any) -> None:
         """Get result of main subprocess or error."""
@@ -56,21 +57,25 @@ class MainContent:
         stdout_stream, stderr_stream = process.get_stdout_pipe(), process.get_stderr_pipe()
         # Reading from streams and converting to string result
         exit_code = process.get_exit_status()
-        result_str = gettext("The operation was completed successfully.")
         if exit_code == 0:
             if stdout_stream is not None:
                 stdout_bytes = stdout_stream.read_bytes(1024, None)
-                tmp_ = stdout_bytes.get_data()
-                if tmp_ is not None:
-                    result_str = tmp_.decode("utf-8")
+                result_bytes = stdout_bytes.get_data()
+                if result_bytes is not None:
+                    result_str = result_bytes.decode("utf-8")
+                    if len(result_str) == 0:
+                        result_str = gettext("The operation was completed successfully.")
+                    self.result_info_textview.set_label(result_str)
         else:
             if stderr_stream is not None:
                 stderr_bytes = stderr_stream.read_bytes(1024, None)
-                tmp_ = stderr_bytes.get_data()
-                if tmp_ is not None:
-                    result_str = tmp_.decode("utf-8")
+                error__bytes = stderr_bytes.get_data()
+                if error__bytes is not None:
+                    error_str = error__bytes.decode("utf-8")
+                    label_str = gettext("ERROR")
+                    self.result_info_label.set_markup(f"<b>{label_str}:</b>")
+                    self.result_info_textview.set_label(error_str)
         # Display the result of a subprocess
-        self.result_info_textview.set_label(result_str)
         self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:

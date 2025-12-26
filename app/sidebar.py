@@ -9,7 +9,6 @@ from typing import Any
 
 from gi.repository import Gtk
 
-from app.constants import IS_INSTALLED_BLEACHBIT
 from app.translator import gettext
 
 
@@ -74,10 +73,24 @@ class Sidebar:
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_cleaning.get_name())
         # Check if BleachBit is installed on the user's computer
-        if not IS_INSTALLED_BLEACHBIT:
+        if not self.IS_INSTALLED_BLEACHBIT:
+            err_mag = gettext("To clean the system, you need to install the BleachBit application.")
+            installation_list = [
+                "# On Debian, Ubuntu, Mint",
+                "sudo apt install bleachbit",
+                "# On Fedora, CentOS, RHEL",
+                "sudo dnf install bleachbit",
+                "# On Arch Linux",
+                "sudo pacman -S bleachbit",
+                "# On OpenSUSE",
+                "sudo zypper install bleachbit",
+                "# On Alpine Linux",
+                "sudo apk add bleachbit",
+            ]
+            installation_str = "\n".join(installation_list)
             self.simple_alert(
                 message=gettext("Warning"),
-                detail=gettext("To clean the system, you need to install the BleachBit application."),
+                detail=f"{err_mag}\n\n{installation_str}",
                 buttons=["OK"],
             )
         # Create a box for manage the service
@@ -87,18 +100,16 @@ class Sidebar:
             halign=Gtk.Align.START,
         )
         # add button `btn_user_bleachbit_run`
-        btn_user_bleachbit_run = Gtk.Button(
+        btn_user_bleachbit_run = self.create_btn_run(
             label=gettext("Run BleachBit as user"),
-            halign=Gtk.Align.START,
-            sensitive=IS_INSTALLED_BLEACHBIT,
+            is_sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
         btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
         service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
-        btn_admin_bleachbit_run = Gtk.Button(
+        btn_admin_bleachbit_run = self.create_btn_run(
             label=gettext("Run BleachBit as administrator"),
-            halign=Gtk.Align.START,
-            sensitive=IS_INSTALLED_BLEACHBIT,
+            is_sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
         btn_admin_bleachbit_run.connect(
             "clicked",
@@ -125,13 +136,22 @@ class Sidebar:
             spacing=6,
         )
         # add button `btn_run`
-        btn_run = Gtk.Button(label=gettext("Run check health"))
+        btn_run = self.create_btn_run(label=gettext("Run check health"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
-            description_page="???",
+            description_page=gettext(
+                "Integrity check of the Btrfs file system,\n"
+                + "which sequentially reads all data and metadata,\n"
+                + "verifies their checksums and,\n"
+                + "in the case of a multi-disk array (RAID),\n"
+                + "automatically restores damaged blocks using redundant copies,\n"
+                + "detecting and correcting errors without stopping the file system.\n"
+                + "This is an important tool for maintaining Btrfs health,\n"
+                + "especially in redundant configurations.",
+            ),
             service_box=service_vbox,
         )
 
@@ -145,13 +165,13 @@ class Sidebar:
             spacing=6,
         )
         # add button `btn_run`
-        btn_run = Gtk.Button(label=gettext("Run analysis"))
+        btn_run = self.create_btn_run(label=gettext("Run analysis"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Analysis a files fragmentation"),
-            description_page="???",
+            description_page=gettext("Assess the overall state of file fragmentation."),
             service_box=service_vbox,
         )
 
@@ -165,15 +185,35 @@ class Sidebar:
             spacing=6,
         )
         # add button `btn_run`
-        btn_run = Gtk.Button(label=gettext("Run defrag"))
+        btn_run = self.create_btn_run(label=gettext("Run defrag"))
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Defragmentation"),
-            description_page="???",
+            description_page=gettext("Optimize partitions formatted with the Btrfs file system."),
             service_box=service_vbox,
         )
+
+    def create_btn_run(
+        self,
+        label: str,
+        icon_name: str = "system-run-symbolic",
+        is_sensitive: bool = True,
+    ) -> Gtk.Button:
+        """Create a start button for the service."""
+        btn_content_box = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL,
+            halign=Gtk.Align.START,
+            spacing=6,
+        )
+        btn_icon = Gtk.Image.new_from_icon_name(icon_name)
+        btn_label = Gtk.Label(label=label)
+        btn_content_box.append(btn_icon)
+        btn_content_box.append(btn_label)
+        btn_run = Gtk.Button(halign=Gtk.Align.START, sensitive=is_sensitive)
+        btn_run.set_child(btn_content_box)
+        return btn_run
 
     def add_content_to_dynamic_page(
         self,
@@ -206,9 +246,10 @@ class Sidebar:
             visible=False,
         )
         # add Label to info box
-        result_info_label = Gtk.Label(halign=Gtk.Align.START)
-        result_info_label.set_markup("<b>Info:</b>")
-        self.display_result_info_vbox.append(result_info_label)
+        self.result_info_label = Gtk.Label(halign=Gtk.Align.START)
+        label_str = gettext("INFO")
+        self.result_info_label.set_markup(f"<b>{label_str}:</b>")
+        self.display_result_info_vbox.append(self.result_info_label)
         # add TextView (Label) to info box
         self.result_info_textview = Gtk.Label(halign=Gtk.Align.START)
         self.display_result_info_vbox.append(self.result_info_textview)

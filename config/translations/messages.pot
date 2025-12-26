@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-25 18:25+0200\n"
+"POT-Creation-Date: 2025-12-26 16:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,69 +17,97 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/main_content.py:59
+#: app/main_content.py:67
 msgid "The operation was completed successfully."
 msgstr ""
 
-#: app/sidebar.py:32 app/sidebar.py:111
+#: app/main_content.py:75 app/main_window.py:89 app/main_window.py:95
+msgid "ERROR"
+msgstr ""
+
+#: app/sidebar.py:31 app/sidebar.py:122
 msgid "Cleaning"
 msgstr ""
 
-#: app/sidebar.py:43
+#: app/sidebar.py:42
 msgid "Health"
 msgstr ""
 
-#: app/sidebar.py:54
+#: app/sidebar.py:53
 msgid "Analysis"
 msgstr ""
 
-#: app/sidebar.py:65
+#: app/sidebar.py:64
 msgid "Defrag"
 msgstr ""
 
-#: app/sidebar.py:79
-msgid "Warning"
-msgstr ""
-
-#: app/sidebar.py:80
+#: app/sidebar.py:77
 msgid "To clean the system, you need to install the BleachBit application."
 msgstr ""
 
-#: app/sidebar.py:91
+#: app/sidebar.py:92
+msgid "Warning"
+msgstr ""
+
+#: app/sidebar.py:104
 msgid "Run BleachBit as user"
 msgstr ""
 
-#: app/sidebar.py:99
+#: app/sidebar.py:111
 msgid "Run BleachBit as administrator"
 msgstr ""
 
-#: app/sidebar.py:113
+#: app/sidebar.py:124
 msgid ""
 "Free up disk space and maintain privacy.\n"
 "The BleachBit application is used for this task."
 msgstr ""
 
-#: app/sidebar.py:128
+#: app/sidebar.py:139
 msgid "Run check health"
 msgstr ""
 
-#: app/sidebar.py:133
+#: app/sidebar.py:144
 msgid "Checking the integrity of HDD|SSD"
 msgstr ""
 
-#: app/sidebar.py:148
-msgid "Run analysis"
-msgstr ""
-
-#: app/sidebar.py:153
-msgid "Analysis a files fragmentation"
+#: app/sidebar.py:146
+msgid ""
+"Integrity check of the Btrfs file system,\n"
+"which sequentially reads all data and metadata,\n"
+"verifies their checksums and,\n"
+"in the case of a multi-disk array (RAID),\n"
+"automatically restores damaged blocks using redundant copies,\n"
+"detecting and correcting errors without stopping the file system.\n"
+"This is an important tool for maintaining Btrfs health,\n"
+"especially in redundant configurations."
 msgstr ""
 
 #: app/sidebar.py:168
-msgid "Run defrag"
+msgid "Run analysis"
 msgstr ""
 
 #: app/sidebar.py:173
+msgid "Analysis a files fragmentation"
+msgstr ""
+
+#: app/sidebar.py:174
+msgid "Assess the overall state of file fragmentation."
+msgstr ""
+
+#: app/sidebar.py:188
+msgid "Run defrag"
+msgstr ""
+
+#: app/sidebar.py:193
 msgid "Defragmentation"
+msgstr ""
+
+#: app/sidebar.py:194
+msgid "Optimize partitions formatted with the Btrfs file system."
+msgstr ""
+
+#: app/sidebar.py:250
+msgid "INFO"
 msgstr ""
 

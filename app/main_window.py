@@ -5,11 +5,13 @@ from __future__ import annotations
 __all__ = ("MainWindow",)
 
 import os
+import shlex
 
-from gi.repository import Adw, Gtk  # pyright: ignore[reportMissingModuleSource]
+from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
 from app.main_content import MainContent
 from app.sidebar import Sidebar
+from app.translator import gettext
 
 
 class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
@@ -17,6 +19,10 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
         Adw.ApplicationWindow.__init__(self, **kwargs)
+
+        # Is installed BleachBit
+        self.IS_INSTALLED_BLEACHBIT: bool = False
+        self.check_installed_bleachbit()
 
         # Create the main box
         self.main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
@@ -63,3 +69,30 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
             buttons=buttons,
         )
         dialog.show(parent=self)
+
+    def check_installed_bleachbit(self) -> None:
+        """Check if BleachBit is installed on the user's computer."""
+        # Flags for proper I/O handling
+        flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
+        # Create commands
+        command_string = "rpm -q bleachbit"
+        command_args = shlex.split(command_string)
+        # Create the subprocess
+        try:
+            process = Gio.Subprocess.new(command_args, flags)
+            # Run synchronously, send optional input, get output
+            success, stdout_buf, stderr_buf = process.communicate_utf8()
+            if success:
+                self.IS_INSTALLED_BLEACHBIT = "bleachbit" in stdout_buf
+            else:
+                self.simple_alert(
+                    message=gettext("ERROR"),
+                    detail=stderr_buf,
+                    buttons=["Cancel"],
+                )
+        except Exception as err:  # noqa: BLE001
+            self.simple_alert(
+                message=gettext("ERROR"),
+                detail=f"An error occurred:\n{err}",
+                buttons=["Cancel"],
+            )
