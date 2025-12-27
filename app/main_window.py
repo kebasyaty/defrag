@@ -16,7 +16,7 @@ from app.translator import gettext
 
 
 class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
-    """Main Window."""
+    """Main application window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
         Adw.ApplicationWindow.__init__(self, **kwargs)
@@ -26,7 +26,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
         self.check_installed_bleachbit()
 
         # List of all disk partitions and their details
-        self.BTRFS_PARTITIONS_LIST = self.get_btrfs_partitions()
+        self.BTRFS_PARTITIONS_LIST: list[dict[str, str | float]] = self.get_btrfs_partitions()
 
         # Create the main box
         self.main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
