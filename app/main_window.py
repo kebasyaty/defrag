@@ -25,7 +25,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
         self.IS_INSTALLED_BLEACHBIT: bool = False
         self.check_installed_bleachbit()
 
-        # list of partitions with the Btrfs file system, on all disks
+        # List of partitions with the Btrfs file system, on all disks
         self.BTRFS_PARTITIONS_LIST = self.get_partitions()
 
         # Create the main box
