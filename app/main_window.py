@@ -25,7 +25,8 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
         self.IS_INSTALLED_BLEACHBIT: bool = False
         self.check_installed_bleachbit()
 
-        self.partitions_list = self.get_partitions()
+        # list of partitions with the Btrfs file system, on all disks
+        self.BTRFS_PARTITIONS_LIST = self.get_partitions()
 
         # Create the main box
         self.main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
