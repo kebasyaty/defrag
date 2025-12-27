@@ -4,6 +4,7 @@ from __future__ import annotations
 
 __all__ = ("DynamicPage",)
 
+import logging
 from typing import Any
 
 from gi.repository import Gio, Gtk
@@ -75,6 +76,8 @@ class DynamicPage:
                     label_str = gettext("ERROR")
                     self.result_info_label.set_markup(f"<b>{label_str}:</b>")
                     self.result_info_textview.set_label(error_str)
+                    # Log the exception and traceback
+                    logging.exception("Subprocess ended with an error")
         # Display the result of a subprocess
         self.display_result_info_vbox.set_visible(True)
 
