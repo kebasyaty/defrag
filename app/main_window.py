@@ -25,6 +25,8 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
         self.IS_INSTALLED_BLEACHBIT: bool = False
         self.check_installed_bleachbit()
 
+        self.partitions_list = self.get_partitions()
+
         # Create the main box
         self.main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
         self.main_vbox.set_hexpand(True)
@@ -60,8 +62,6 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
 
         # Render content for the Cleaning button
         self.on_btn_cleaning(None)
-
-        print(self.get_partitions())  # noqa: T201
 
     def simple_alert(self, message: str, detail: str, buttons: list[str]) -> None:
         """Simple Alert."""
