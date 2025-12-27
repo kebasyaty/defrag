@@ -7,6 +7,7 @@ __all__ = ("MainWindow",)
 import os
 import shlex
 
+import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
 from app.main_content import MainContent
@@ -96,3 +97,26 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
                 detail=f"An error occurred:\n{err}",
                 buttons=["Cancel"],
             )
+
+    def get_partitions() -> list:
+        """Retrieves a list of all disk partitions and their details."""
+        partitions_list = []
+        # all=False returns all mounted partitions
+        for partition in psutil.disk_partitions(all=False):
+            try:
+                usage = psutil.disk_usage(partition.mountpoint)
+                partitions_list.append(
+                    {
+                        "device": partition.device,
+                        "mountpoint": partition.mountpoint,
+                        "fstype": partition.fstype,
+                        "total_size_gb": round(usage.total / (1024**3), 2),
+                        "used_gb": round(usage.used / (1024**3), 2),
+                        "free_gb": round(usage.free / (1024**3), 2),
+                        "percent_used": usage.percent,
+                    },
+                )
+            except OSError:  # noqa: S112
+                # Handle cases where mountpoints might be inaccessible
+                continue
+        return partitions_list
