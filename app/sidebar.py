@@ -88,6 +88,7 @@ class Sidebar:
                 "sudo apk add bleachbit",
             ]
             installation_str = "\n".join(installation_list)
+            # Raise a modal window with an error message
             self.simple_alert(
                 message=gettext("Warning"),
                 detail=f"{err_mag}\n\n{installation_str}",

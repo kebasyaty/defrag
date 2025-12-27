@@ -91,6 +91,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
             if success:
                 self.IS_INSTALLED_BLEACHBIT = "bleachbit" in stdout_buf
             else:
+                # Raise a modal window with an error message
                 self.simple_alert(
                     message=gettext("ERROR"),
                     detail=stderr_buf,
@@ -99,7 +100,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
         except Exception as err:
             # Log the exception and traceback
             logging.exception("Subprocess ended with an error")
-            #
+            # Raise a modal window with an error message
             self.simple_alert(
                 message=gettext("ERROR"),
                 detail=f"An error occurred:\n{err}",
