@@ -107,7 +107,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
 
         Only BtrFS partitions.
         """
-        partitions_list = []
+        partitions_list: list[dict[str, str | float]] = []
         # all=False returns all mounted partitions
         for partition in psutil.disk_partitions(all=False):
             try:
