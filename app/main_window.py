@@ -26,7 +26,8 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
         self.check_installed_bleachbit()
 
         # List of all disk partitions and their details
-        self.BTRFS_PARTITIONS_LIST: list[dict[str, str | float]] = self.get_btrfs_partitions()
+        self.BTRFS_PARTITIONS_LIST: list[dict[str, str | float]] = []
+        self.update_info_btrfs_partitions()
 
         # Create the main box
         self.main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
@@ -101,8 +102,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
                 buttons=["Cancel"],
             )
 
-    @staticmethod
-    def get_btrfs_partitions() -> list[dict[str, str | float]]:
+    def update_info_btrfs_partitions(self) -> None:
         """Retrieves a list of all disk partitions and their details.
 
         Only BtrFS partitions.
@@ -128,4 +128,4 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
             except OSError:  # noqa: S112
                 # Handle cases where mountpoints might be inaccessible
                 continue
-        return partitions_list
+        self.BTRFS_PARTITIONS_LIST = partitions_list
