@@ -10,12 +10,12 @@ import shlex
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
-from app.main_content import MainContent
+from app.dynamic_page import DynamicPage
 from app.sidebar import Sidebar
 from app.translator import gettext
 
 
-class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
+class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
     """Main Window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
@@ -56,10 +56,12 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
 
         # Init mixins
         Sidebar.__init__(self)
-        MainContent.__init__(self)
+        DynamicPage.__init__(self)
 
         # Render content for the Cleaning button
         self.on_btn_cleaning(None)
+
+        print(self.get_partitions())  # noqa: T201
 
     def simple_alert(self, message: str, detail: str, buttons: list[str]) -> None:
         """Simple Alert."""
@@ -98,24 +100,27 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
                 buttons=["Cancel"],
             )
 
-    def get_partitions() -> list:
+    @staticmethod
+    def get_partitions() -> list[dict[str, str | float]]:
         """Retrieves a list of all disk partitions and their details."""
         partitions_list = []
         # all=False returns all mounted partitions
         for partition in psutil.disk_partitions(all=False):
             try:
-                usage = psutil.disk_usage(partition.mountpoint)
-                partitions_list.append(
-                    {
-                        "device": partition.device,
-                        "mountpoint": partition.mountpoint,
-                        "fstype": partition.fstype,
-                        "total_size_gb": round(usage.total / (1024**3), 2),
-                        "used_gb": round(usage.used / (1024**3), 2),
-                        "free_gb": round(usage.free / (1024**3), 2),
-                        "percent_used": usage.percent,
-                    },
-                )
+                fstype = partition.fstype
+                if fstype == "btrfs":
+                    usage = psutil.disk_usage(partition.mountpoint)
+                    partitions_list.append(
+                        {
+                            "device": partition.device,
+                            "mountpoint": partition.mountpoint,
+                            "fstype": fstype,
+                            "total_size_gb": round(usage.total / (1024**3), 2),
+                            "used_gb": round(usage.used / (1024**3), 2),
+                            "free_gb": round(usage.free / (1024**3), 2),
+                            "percent_used": usage.percent,
+                        },
+                    )
             except OSError:  # noqa: S112
                 # Handle cases where mountpoints might be inaccessible
                 continue

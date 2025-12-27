@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__all__ = ("MainContent",)
+__all__ = ("DynamicPage",)
 
 from typing import Any
 
@@ -11,7 +11,7 @@ from gi.repository import Gio, Gtk
 from app.translator import gettext
 
 
-class MainContent:
+class DynamicPage:
     """Main content area."""
 
     def __init__(self) -> None:  # noqa: D107
