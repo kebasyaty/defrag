@@ -4,6 +4,7 @@ from __future__ import annotations
 
 __all__ = ("MainWindow",)
 
+import logging
 import os
 import shlex
 
@@ -125,7 +126,9 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
                             "percent_used": usage.percent,
                         },
                     )
-            except OSError:  # noqa: S112
+            except OSError:
+                # Log the exception and traceback
+                logging.exception("An error occurred during operation")
                 # Handle cases where mountpoints might be inaccessible
                 continue
         self.BTRFS_PARTITIONS_LIST = partitions_list
