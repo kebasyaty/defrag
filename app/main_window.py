@@ -25,8 +25,8 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
         self.IS_INSTALLED_BLEACHBIT: bool = False
         self.check_installed_bleachbit()
 
-        # List of partitions with the Btrfs file system, on all disks
-        self.BTRFS_PARTITIONS_LIST = self.get_partitions()
+        # List of all disk partitions and their details
+        self.BTRFS_PARTITIONS_LIST = self.get_btrfs_partitions()
 
         # Create the main box
         self.main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
@@ -102,8 +102,11 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
             )
 
     @staticmethod
-    def get_partitions() -> list[dict[str, str | float]]:
-        """Retrieves a list of all disk partitions and their details."""
+    def get_btrfs_partitions() -> list[dict[str, str | float]]:
+        """Retrieves a list of all disk partitions and their details.
+
+        Only BtrFS partitions.
+        """
         partitions_list = []
         # all=False returns all mounted partitions
         for partition in psutil.disk_partitions(all=False):
