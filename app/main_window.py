@@ -96,7 +96,10 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
                     detail=stderr_buf,
                     buttons=["Cancel"],
                 )
-        except Exception as err:  # noqa: BLE001
+        except Exception as err:
+            # Log the exception and traceback
+            logging.exception("Subprocess ended with an error")
+            #
             self.simple_alert(
                 message=gettext("ERROR"),
                 detail=f"An error occurred:\n{err}",
@@ -128,7 +131,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
                     )
             except OSError:
                 # Log the exception and traceback
-                logging.exception("An error occurred during operation")
+                logging.exception("Mountpoint inaccessible")
                 # Handle cases where mountpoints might be inaccessible
                 continue
         self.BTRFS_PARTITIONS_LIST = partitions_list
