@@ -29,9 +29,9 @@ class Sidebar:
             orientation=Gtk.Orientation.HORIZONTAL,
             halign=Gtk.Align.CENTER,
             hexpand=True,
-            visible=False,
+            visible=True,
         )
-        progress_bar_icon = Gtk.Image.new_from_icon_name("user-trash-symbolic")
+        progress_bar_icon = Gtk.Image(icon_name="user-trash-symbolic")
         self.progress_bar_hbox.append(progress_bar_icon)
 
         # Create a Cleaning button
