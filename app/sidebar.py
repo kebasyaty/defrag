@@ -7,7 +7,7 @@ __all__ = ("Sidebar",)
 
 from typing import Any
 
-from gi.repository import Gtk
+from gi.repository import Adw, Gtk
 
 from app.translator import gettext
 
@@ -23,16 +23,6 @@ class Sidebar:
             halign=Gtk.Align.START,
         )
         self.content_hbox.append(self.sidebar_vbox)
-
-        # Create progress bar for subprocess
-        self.progress_bar_hbox = Gtk.Box(
-            orientation=Gtk.Orientation.HORIZONTAL,
-            halign=Gtk.Align.CENTER,
-            hexpand=True,
-            visible=True,
-        )
-        progress_bar_icon = Gtk.Image(icon_name="user-trash-symbolic")
-        self.progress_bar_hbox.append(progress_bar_icon)
 
         # Create a Cleaning button
         self.btn_cleaning = Gtk.Button(name="btn_cleaning", sensitive=False)
@@ -250,7 +240,14 @@ class Sidebar:
         service_box.set_margin_top(12)
         self.dynamic_page_vbox.append(service_box)
         # Add progress bar for subprocess
-        self.dynamic_page_vbox.append(self.progress_bar_hbox)
+        self.progressbar_spinner = Adw.Spinner(
+            halign=Gtk.Align.START,
+            margin_top=24,
+            width_request=48,
+            height_request=48,
+            visible=True,
+        )
+        self.dynamic_page_vbox.append(self.progressbar_spinner)
         # Add info box for display result
         self.display_result_info_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
