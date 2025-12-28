@@ -24,6 +24,16 @@ class Sidebar:
         )
         self.content_hbox.append(self.sidebar_vbox)
 
+        # Create progress bar for subprocess
+        self.progress_bar_hbox = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL,
+            halign=Gtk.Align.CENTER,
+            hexpand=True,
+            visible=False,
+        )
+        progress_bar_icon = Gtk.Image.new_from_icon_name("user-trash-symbolic")
+        self.progress_bar_hbox.append(progress_bar_icon)
+
         # Create a Cleaning button
         self.btn_cleaning = Gtk.Button(name="btn_cleaning", sensitive=False)
         btn_cleaning_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
@@ -236,9 +246,11 @@ class Sidebar:
             margin_top=12,
         )
         self.dynamic_page_vbox.append(description_label)
-        # Add a box for manage the service
+        # Add box for control of service
         service_box.set_margin_top(12)
         self.dynamic_page_vbox.append(service_box)
+        # Add progress bar for subprocess
+        self.dynamic_page_vbox.append(self.progress_bar_hbox)
         # Add info box for display result
         self.display_result_info_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
