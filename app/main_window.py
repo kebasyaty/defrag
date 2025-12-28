@@ -15,6 +15,8 @@ from app.fresh_page import FreshPage
 from app.sidebar import Sidebar
 from app.translator import gettext
 
+logger = logging.getLogger(__name__)
+
 
 class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
     """Main application window."""
@@ -102,7 +104,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
                 )
         except Exception as err:
             # Log the exception and traceback
-            logging.exception("Checking for BleachBit presence failed with an error")
+            logger.exception("Checking for BleachBit presence failed with an error")
             # Raise a modal window with an error message
             self.simple_alert(
                 message=gettext("ERROR"),
@@ -135,7 +137,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
                     )
             except OSError:
                 # Log the exception and traceback
-                logging.exception("Mountpoint inaccessible")
+                logger.exception("Mountpoint inaccessible")
                 # Handle cases where mountpoints might be inaccessible
                 continue
         self.BTRFS_PARTITIONS_LIST = partitions_list
