@@ -69,7 +69,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
     def simple_alert(self, message: str, detail: str, buttons: list[str]) -> None:
         """Simple Alert.
 
-        Uses a simple synchronous method.
+        Uses the synchronous method.
         """
         dialog = Gtk.AlertDialog(
             modal=True,
