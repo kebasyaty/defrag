@@ -243,10 +243,10 @@ class Sidebar:
         self.progressbar_spinner = Adw.Spinner(
             halign=Gtk.Align.START,
             margin_top=24,
-            margin_start=160,
+            margin_start=24,
             width_request=48,
             height_request=48,
-            visible=True,
+            visible=False,
         )
         self.dynamic_page_vbox.append(self.progressbar_spinner)
         # Add info box for display result
