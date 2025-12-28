@@ -67,7 +67,10 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         self.on_btn_cleaning(None)
 
     def simple_alert(self, message: str, detail: str, buttons: list[str]) -> None:
-        """Simple Alert."""
+        """Simple Alert.
+
+        Uses a simple synchronous method.
+        """
         dialog = Gtk.AlertDialog(
             modal=True,
             message=message,
