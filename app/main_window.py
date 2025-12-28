@@ -11,12 +11,12 @@ import shlex
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
-from app.dynamic_page import DynamicPage
+from app.fresh_page import FreshPage
 from app.sidebar import Sidebar
 from app.translator import gettext
 
 
-class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
+class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
     """Main application window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
@@ -61,7 +61,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
 
         # Init mixins
         Sidebar.__init__(self)
-        DynamicPage.__init__(self)
+        FreshPage.__init__(self)
 
         # Render content for the Cleaning button
         self.on_btn_cleaning(None)

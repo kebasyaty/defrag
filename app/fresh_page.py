@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__all__ = ("DynamicPage",)
+__all__ = ("FreshPage",)
 
 import logging
 from typing import Any
@@ -12,8 +12,11 @@ from gi.repository import Gio, Gtk
 from app.translator import gettext
 
 
-class DynamicPage:
-    """Main content area."""
+class FreshPage:
+    """An area with dynamically updated content.
+
+    Located to the left of the sidebar.
+    """
 
     def __init__(self) -> None:  # noqa: D107
         # Create a page for dynamic content
