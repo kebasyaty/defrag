@@ -79,14 +79,14 @@ class DynamicPage:
                     self.result_info_textview.set_label(error_str)
                     # Log the exception and traceback
                     logging.exception(error_str, exc_info=False)
-        # Hide progress bar
+        # Stop progress bar
         self.progressbar_spinner.set_visible(False)
         # Display the result of a subprocess
         self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
         """Starts a main subprocess asynchronously."""
-        # Show progress bar
+        # Run progress bar
         self.progressbar_spinner.set_visible(True)
         # Flags for proper I/O handling
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
