@@ -1,21 +1,23 @@
-"""Main Window."""
+"""Main application window."""
 
 from __future__ import annotations
 
 __all__ = ("MainWindow",)
 
+import logging
 import os
 import shlex
 
+import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
-from app.main_content import MainContent
+from app.fresh_page import FreshPage
 from app.sidebar import Sidebar
 from app.translator import gettext
 
 
-class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
-    """Main Window."""
+class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
+    """Main application window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
         Adw.ApplicationWindow.__init__(self, **kwargs)
@@ -23,6 +25,10 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
         # Is installed BleachBit
         self.IS_INSTALLED_BLEACHBIT: bool = False
         self.check_installed_bleachbit()
+
+        # List of all disk partitions and their details
+        self.BTRFS_PARTITIONS_LIST: list[dict[str, str | float]] = []
+        self.update_info_btrfs_partitions()
 
         # Create the main box
         self.main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
@@ -55,7 +61,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
 
         # Init mixins
         Sidebar.__init__(self)
-        MainContent.__init__(self)
+        FreshPage.__init__(self)
 
         # Render content for the Cleaning button
         self.on_btn_cleaning(None)
@@ -85,14 +91,48 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, MainContent):
             if success:
                 self.IS_INSTALLED_BLEACHBIT = "bleachbit" in stdout_buf
             else:
+                # Raise a modal window with an error message
                 self.simple_alert(
                     message=gettext("ERROR"),
                     detail=stderr_buf,
                     buttons=["Cancel"],
                 )
-        except Exception as err:  # noqa: BLE001
+        except Exception as err:
+            # Log the exception and traceback
+            logging.exception("Checking for BleachBit presence failed with an error")
+            # Raise a modal window with an error message
             self.simple_alert(
                 message=gettext("ERROR"),
-                detail=f"An error occurred:\n{err}",
+                detail=str(err),
                 buttons=["Cancel"],
             )
+
+    def update_info_btrfs_partitions(self) -> None:
+        """Retrieves a list of all disk partitions and their details.
+
+        Only BtrFS partitions.
+        """
+        partitions_list: list[dict[str, str | float]] = []
+        # all=False returns all mounted partitions
+        for partition in psutil.disk_partitions(all=False):
+            try:
+                fstype = partition.fstype
+                if fstype == "btrfs":
+                    usage = psutil.disk_usage(partition.mountpoint)
+                    partitions_list.append(
+                        {
+                            "device": partition.device,
+                            "mountpoint": partition.mountpoint,
+                            "fstype": fstype,
+                            "total_size_gb": round(usage.total / (1024**3), 2),
+                            "used_gb": round(usage.used / (1024**3), 2),
+                            "free_gb": round(usage.free / (1024**3), 2),
+                            "percent_used": usage.percent,
+                        },
+                    )
+            except OSError:
+                # Log the exception and traceback
+                logging.exception("Mountpoint inaccessible")
+                # Handle cases where mountpoints might be inaccessible
+                continue
+        self.BTRFS_PARTITIONS_LIST = partitions_list

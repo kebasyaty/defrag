@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-__all__ = ("MainContent",)
+__all__ = ("FreshPage",)
 
+import logging
 from typing import Any
 
 from gi.repository import Gio, Gtk
@@ -11,8 +12,11 @@ from gi.repository import Gio, Gtk
 from app.translator import gettext
 
 
-class MainContent:
-    """Main content area."""
+class FreshPage:
+    """An area with dynamically updated content.
+
+    Located to the left of the sidebar.
+    """
 
     def __init__(self) -> None:  # noqa: D107
         # Create a page for dynamic content
@@ -48,6 +52,7 @@ class MainContent:
         # Additionally remove the following keys
         if len(child_list) > 0:
             del self.__dict__["result_info_label"]
+            del self.__dict__["progressbar_spinner"]
             del self.__dict__["result_info_textview"]
             del self.__dict__["display_result_info_vbox"]
 
@@ -75,11 +80,17 @@ class MainContent:
                     label_str = gettext("ERROR")
                     self.result_info_label.set_markup(f"<b>{label_str}:</b>")
                     self.result_info_textview.set_label(error_str)
+                    # Log the exception and traceback
+                    logging.exception(error_str, exc_info=False)
+        # Stop progress bar
+        self.progressbar_spinner.set_visible(False)
         # Display the result of a subprocess
         self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
         """Starts a main subprocess asynchronously."""
+        # Run progress bar
+        self.progressbar_spinner.set_visible(True)
         # Flags for proper I/O handling
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create the subprocess
