@@ -99,11 +99,11 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, DynamicPage):
                 )
         except Exception as err:
             # Log the exception and traceback
-            logging.exception("Subprocess ended with an error")
+            logging.exception("Checking for BleachBit presence failed with an error")
             # Raise a modal window with an error message
             self.simple_alert(
                 message=gettext("ERROR"),
-                detail=f"An error occurred:\n{err}",
+                detail=str(err),
                 buttons=["Cancel"],
             )
 
