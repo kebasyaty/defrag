@@ -26,7 +26,7 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Add a top label
         self.top_label = Gtk.Label(
-            label=gettext("The operation will take some time."),
+            label=gettext("The process will take some time."),
             halign=Gtk.Align.CENTER,
             margin_top=24,
         )
@@ -46,6 +46,7 @@ class SpinnerDialog(Gtk.Dialog):
             label=gettext("Please wait..."),
             halign=Gtk.Align.CENTER,
             margin_top=24,
+            margin_bottom=24,
         )
         content_area.append(self.bottom_label)
 

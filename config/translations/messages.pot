@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-29 17:28+0200\n"
+"POT-Creation-Date: 2025-12-29 17:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,14 +26,14 @@ msgid "Operation started"
 msgstr ""
 
 #: app/dialogs.py:29
-msgid "The operation will take some time."
+msgid "The process will take some time."
 msgstr ""
 
 #: app/dialogs.py:46
 msgid "Please wait..."
 msgstr ""
 
-#: app/dialogs.py:53
+#: app/dialogs.py:54
 msgid "Abort"
 msgstr ""
 
