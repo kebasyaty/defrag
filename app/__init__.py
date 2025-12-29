@@ -19,16 +19,16 @@
 
 from __future__ import annotations
 
-__all__ = ("Defrag",)
+__all__ = ("Application",)
 
 
 from gi.repository import Adw, GLib
 
+from app.app_window import ApplicationWindow
 from app.constants import APP_ID, APP_NAME
-from app.main_window import MainWindow
 
 
-class Defrag(Adw.Application):
+class Application(Adw.Application):
     """HDD/SSD defragmentation with BTRFS file system."""
 
     def __init__(self) -> None:  # noqa: D107
@@ -41,7 +41,7 @@ class Defrag(Adw.Application):
         """Create main window."""
         self.window = self.props.active_window
         if not self.window:
-            self.window = MainWindow(
+            self.window = ApplicationWindow(
                 title=APP_NAME,
                 application=app,
                 default_width=640,

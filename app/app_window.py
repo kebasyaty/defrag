@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__all__ = ("MainWindow",)
+__all__ = ("ApplicationWindow",)
 
 import logging
 import os
@@ -11,12 +11,15 @@ import shlex
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
+from app.dialogs import SpinnerDialog
 from app.fresh_page import FreshPage
 from app.sidebar import Sidebar
 from app.translator import gettext
 
+logger = logging.getLogger(__name__)
 
-class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
+
+class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
     """Main application window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
@@ -66,16 +69,6 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         # Render content for the Cleaning button
         self.on_btn_cleaning(None)
 
-    def simple_alert(self, message: str, detail: str, buttons: list[str]) -> None:
-        """Simple Alert."""
-        dialog = Gtk.AlertDialog(
-            modal=True,
-            message=message,
-            detail=detail,
-            buttons=buttons,
-        )
-        dialog.show(parent=self)
-
     def check_installed_bleachbit(self) -> None:
         """Check if BleachBit is installed on the user's computer."""
         # Flags for proper I/O handling
@@ -92,16 +85,16 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
                 self.IS_INSTALLED_BLEACHBIT = "bleachbit" in stdout_buf
             else:
                 # Raise a modal window with an error message
-                self.simple_alert(
+                self.sync_alert_dialog(
                     message=gettext("ERROR"),
                     detail=stderr_buf,
                     buttons=["Cancel"],
                 )
         except Exception as err:
             # Log the exception and traceback
-            logging.exception("Checking for BleachBit presence failed with an error")
+            logger.exception("Checking for BleachBit presence failed with an error")
             # Raise a modal window with an error message
-            self.simple_alert(
+            self.sync_alert_dialog(
                 message=gettext("ERROR"),
                 detail=str(err),
                 buttons=["Cancel"],
@@ -132,7 +125,31 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
                     )
             except OSError:
                 # Log the exception and traceback
-                logging.exception("Mountpoint inaccessible")
+                logger.exception("Mountpoint inaccessible")
                 # Handle cases where mountpoints might be inaccessible
                 continue
         self.BTRFS_PARTITIONS_LIST = partitions_list
+
+    def sync_alert_dialog(
+        self,
+        message: str,
+        detail: str,
+        buttons: list[str],
+    ) -> None:
+        """Simple Alert.
+
+        Dialog uses the synchronous show() method.
+        """
+        dialog = Gtk.AlertDialog(
+            modal=True,
+            message=message,
+            detail=detail,
+            buttons=buttons,
+        )
+        dialog.show(parent=self)
+
+    def show_spinner_dialog(self) -> None:
+        """Show the (progress bar) Spinner."""
+        # Create and show the progress dialog
+        progress_dialog = SpinnerDialog(parent=self)
+        progress_dialog.show()
