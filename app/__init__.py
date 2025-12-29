@@ -24,8 +24,8 @@ __all__ = ("App",)
 
 from gi.repository import Adw, GLib
 
+from app.app_window import ApplicationWindow
 from app.constants import APP_ID, APP_NAME
-from app.main_window import MainWindow
 
 
 class App(Adw.Application):
@@ -41,7 +41,7 @@ class App(Adw.Application):
         """Create main window."""
         self.window = self.props.active_window
         if not self.window:
-            self.window = MainWindow(
+            self.window = ApplicationWindow(
                 title=APP_NAME,
                 application=app,
                 default_width=640,

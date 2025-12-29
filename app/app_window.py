@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__all__ = ("MainWindow",)
+__all__ = ("ApplicationWindow",)
 
 import logging
 import os
@@ -18,7 +18,7 @@ from app.translator import gettext
 logger = logging.getLogger(__name__)
 
 
-class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
+class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
     """Main application window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
