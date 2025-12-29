@@ -74,7 +74,7 @@ class Sidebar:
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_cleaning.get_name())
         # Check if BleachBit is installed on the user's computer
         if not self.IS_INSTALLED_BLEACHBIT:
-            err_mag = gettext("To clean the system, you need to install the BleachBit application.")
+            err_mag = gettext("To clean the system,\n" + "you need to install the BleachBit application.")
             installation_list = [
                 "# On Debian, Ubuntu, Mint",
                 "sudo apt install bleachbit",

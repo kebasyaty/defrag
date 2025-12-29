@@ -60,8 +60,12 @@ msgid "Defrag"
 msgstr "Дефрагментация"
 
 #: app/sidebar.py:77
-msgid "To clean the system, you need to install the BleachBit application."
-msgstr "Для очистки системы, необходимо установить приложение BleachBit."
+msgid ""
+"To clean the system,\n"
+"you need to install the BleachBit application."
+msgstr ""
+"Для очистки системы,\n"
+"необходимо установить приложение BleachBit."
 
 #: app/sidebar.py:93
 msgid "Warning"
