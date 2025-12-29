@@ -89,7 +89,7 @@ class Sidebar:
             ]
             installation_str = "\n".join(installation_list)
             # Raise a modal window with an error message
-            self.simple_alert(
+            self.simple_alert_dialog(
                 message=gettext("Warning"),
                 detail=f"{err_mag}\n\n{installation_str}",
                 buttons=["OK"],

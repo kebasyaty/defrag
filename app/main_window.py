@@ -84,7 +84,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
                 self.IS_INSTALLED_BLEACHBIT = "bleachbit" in stdout_buf
             else:
                 # Raise a modal window with an error message
-                self.simple_alert(
+                self.simple_alert_dialog(
                     message=gettext("ERROR"),
                     detail=stderr_buf,
                     buttons=["Cancel"],
@@ -93,7 +93,7 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
             # Log the exception and traceback
             logger.exception("Checking for BleachBit presence failed with an error")
             # Raise a modal window with an error message
-            self.simple_alert(
+            self.simple_alert_dialog(
                 message=gettext("ERROR"),
                 detail=str(err),
                 buttons=["Cancel"],
@@ -129,7 +129,12 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
                 continue
         self.BTRFS_PARTITIONS_LIST = partitions_list
 
-    def simple_alert(self, message: str, detail: str, buttons: list[str]) -> None:
+    def simple_alert_dialog(
+        self,
+        message: str,
+        detail: str,
+        buttons: list[str],
+    ) -> None:
         """Simple Alert.
 
         Dialog uses the synchronous show() method.
