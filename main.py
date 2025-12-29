@@ -28,12 +28,12 @@ gi.require_version("Gtk", "4.0")
 
 import sys  # noqa: E402
 
-from app import App  # noqa: E402
+from app import Application  # noqa: E402
 
 
 def main() -> None:
     """Run Application."""
-    app = App()
+    app = Application()
     exit_status = app.run(sys.argv)
     sys.exit(exit_status)
 
