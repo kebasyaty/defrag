@@ -11,6 +11,7 @@ import shlex
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
+from app.dialogs import SpinnerDialog
 from app.fresh_page import FreshPage
 from app.sidebar import Sidebar
 from app.translator import gettext
@@ -146,3 +147,9 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
             buttons=buttons,
         )
         dialog.show(parent=self)
+
+    def show_spinner_dialog(self) -> None:
+        """Show the (progress bar) Spinner."""
+        # Create and show the progress dialog
+        progress_dialog = SpinnerDialog(parent=self)
+        progress_dialog.show()

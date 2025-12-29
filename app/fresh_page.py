@@ -54,7 +54,6 @@ class FreshPage:
         # Additionally remove the following keys
         if len(child_list) > 0:
             del self.__dict__["result_info_label"]
-            del self.__dict__["progressbar_spinner"]
             del self.__dict__["result_info_textview"]
             del self.__dict__["display_result_info_vbox"]
 
@@ -84,15 +83,15 @@ class FreshPage:
                     self.result_info_textview.set_label(error_str)
                     # Log ERROR.
                     logger.error(error_str)
-        # Stop progress bar
-        self.progressbar_spinner.set_visible(False)
+        # Stop the (progress bar) Spinner
+        # ...
         # Display the result of a subprocess
         self.display_result_info_vbox.set_visible(True)
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
         """Starts a main subprocess asynchronously."""
-        # Run progress bar
-        self.progressbar_spinner.set_visible(True)
+        # Show the (progress bar) Spinner
+        self.show_spinner_dialog()
         # Flags for proper I/O handling
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create the subprocess

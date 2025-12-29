@@ -2,30 +2,50 @@
 
 from __future__ import annotations
 
-__all__ = ("ProgressDialog",)
+__all__ = ("SpinnerDialog",)
 
-from gi.repository import Gtk
+from gi.repository import Adw, Gtk
 
 
-class ProgressDialog(Gtk.Dialog):
-    """Custom dialog with progress bar."""
+class SpinnerDialog(Gtk.Dialog):
+    """Custom dialog with (progress bar) Spinner."""
 
     def __init__(self, parent):  # noqa: D107
-        super().__init__(title="Progress", transient_for=parent, modal=True)
+        super().__init__(
+            title="Starting operation",
+            transient_for=parent,
+            modal=True,
+            deletable=False,
+        )
         self.set_default_size(300, 100)
 
         # Get the content area
         content_area = self.get_content_area()
 
-        # Add a label
-        self.label = Gtk.Label(label="Starting operation...")
-        content_area.append(self.label)
+        # Add a top label
+        self.top_label = Gtk.Label(
+            label="The operation will take some time.",
+            halign=Gtk.Align.CENTER,
+            margin_top=24,
+        )
+        content_area.append(self.top_label)
 
-        # Add the progress bar
-        self.progressbar = Gtk.ProgressBar()
-        self.progressbar.set_fraction(0.0)
-        self.progressbar.set_show_text(True)
-        content_area.append(self.progressbar)
+        # Add the (progress bar) Spinner
+        self.progressbar_spinner = Adw.Spinner(
+            halign=Gtk.Align.CENTER,
+            width_request=48,
+            height_request=48,
+            margin_top=24,
+        )
+        content_area.append(self.progressbar_spinner)
+
+        # Add a bottom label
+        self.bottom_label = Gtk.Label(
+            label="Please wait...",
+            halign=Gtk.Align.CENTER,
+            margin_top=24,
+        )
+        content_area.append(self.bottom_label)
 
         # Add an "Abort" button
         self.add_button("Abort", Gtk.ResponseType.CANCEL)
@@ -34,6 +54,5 @@ class ProgressDialog(Gtk.Dialog):
     def on_response(self, dialog, response) -> None:
         """Handle button response."""
         if response == Gtk.ResponseType.CANCEL:
-            print("Operation aborted by user.")  # noqa: T201
             # Stopping the subprocess
             self.destroy()

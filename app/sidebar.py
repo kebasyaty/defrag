@@ -7,7 +7,7 @@ __all__ = ("Sidebar",)
 
 from typing import Any
 
-from gi.repository import Adw, Gtk
+from gi.repository import Gtk
 
 from app.translator import gettext
 
@@ -239,16 +239,6 @@ class Sidebar:
         # Add box for control of service
         service_box.set_margin_top(12)
         self.dynamic_page_vbox.append(service_box)
-        # Add progress bar for subprocess
-        self.progressbar_spinner = Adw.Spinner(
-            halign=Gtk.Align.START,
-            margin_top=24,
-            margin_start=24,
-            width_request=48,
-            height_request=48,
-            visible=False,
-        )
-        self.dynamic_page_vbox.append(self.progressbar_spinner)
         # Add info box for display result
         self.display_result_info_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
