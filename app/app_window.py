@@ -7,6 +7,7 @@ __all__ = ("ApplicationWindow",)
 import logging
 import os
 import shlex
+from typing import Literal
 
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
@@ -134,7 +135,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         self,
         message: str,
         detail: str,
-        buttons: list[str],
+        buttons: list[Literal["Cancel", "OK"]],
     ) -> None:
         """Simple Alert.
 
