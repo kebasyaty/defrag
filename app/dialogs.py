@@ -11,19 +11,29 @@ class ProgressDialog(Gtk.Dialog):
     """Custom dialog with progress bar."""
 
     def __init__(self, parent):  # noqa: D107
-        super().__init__(title="Progress")
-        self.set_parent(parent=parent)
-        self.add_button("_Cancel", Gtk.ResponseType.CANCEL)
+        super().__init__(title="Progress", transient_for=parent, modal=True)
         self.set_default_size(300, 100)
 
-        # Content area
+        # Get the content area
         content_area = self.get_content_area()
+
+        # Add a label
         self.label = Gtk.Label(label="Starting operation...")
-        content_area.pack_start(self.label, True, True, 10)
+        content_area.append(self.label)
 
-        self.progress_bar = Gtk.ProgressBar()
-        self.progress_bar.set_fraction(0.0)
-        self.progress_bar.set_show_text(True)  # Show percentage text
-        content_area.pack_start(self.progress_bar, True, True, 10)
+        # Add the progress bar
+        self.progressbar = Gtk.ProgressBar()
+        self.progressbar.set_fraction(0.0)
+        self.progressbar.set_show_text(True)
+        content_area.append(self.progressbar)
 
-        self.show_all()
+        # Add an "Abort" button
+        self.add_button("Abort", Gtk.ResponseType.CANCEL)
+        self.connect("response", self.on_response)
+
+    def on_response(self, dialog, response) -> None:
+        """Handle button response."""
+        if response == Gtk.ResponseType.CANCEL:
+            print("Operation aborted by user.")  # noqa: T201
+            # Stopping the subprocess
+            self.destroy()

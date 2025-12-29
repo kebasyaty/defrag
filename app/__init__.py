@@ -19,7 +19,7 @@
 
 from __future__ import annotations
 
-__all__ = ("Defrag",)
+__all__ = ("App",)
 
 
 from gi.repository import Adw, GLib
@@ -28,7 +28,7 @@ from app.constants import APP_ID, APP_NAME
 from app.main_window import MainWindow
 
 
-class Defrag(Adw.Application):
+class App(Adw.Application):
     """HDD/SSD defragmentation with BTRFS file system."""
 
     def __init__(self) -> None:  # noqa: D107
