@@ -68,19 +68,6 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         # Render content for the Cleaning button
         self.on_btn_cleaning(None)
 
-    def simple_alert(self, message: str, detail: str, buttons: list[str]) -> None:
-        """Simple Alert.
-
-        Dialog uses the synchronous show() method.
-        """
-        dialog = Gtk.AlertDialog(
-            modal=True,
-            message=message,
-            detail=detail,
-            buttons=buttons,
-        )
-        dialog.show(parent=self)
-
     def check_installed_bleachbit(self) -> None:
         """Check if BleachBit is installed on the user's computer."""
         # Flags for proper I/O handling
@@ -141,3 +128,16 @@ class MainWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
                 # Handle cases where mountpoints might be inaccessible
                 continue
         self.BTRFS_PARTITIONS_LIST = partitions_list
+
+    def simple_alert(self, message: str, detail: str, buttons: list[str]) -> None:
+        """Simple Alert.
+
+        Dialog uses the synchronous show() method.
+        """
+        dialog = Gtk.AlertDialog(
+            modal=True,
+            message=message,
+            detail=detail,
+            buttons=buttons,
+        )
+        dialog.show(parent=self)
