@@ -6,13 +6,15 @@ __all__ = ("SpinnerDialog",)
 
 from gi.repository import Adw, Gtk
 
+from app.translator import gettext
+
 
 class SpinnerDialog(Gtk.Dialog):
     """Custom dialog with (progress bar) Spinner."""
 
     def __init__(self, parent):  # noqa: D107
         super().__init__(
-            title="Starting operation",
+            title=gettext("Operation started"),
             transient_for=parent,
             modal=True,
             deletable=False,
@@ -24,7 +26,7 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Add a top label
         self.top_label = Gtk.Label(
-            label="The operation will take some time.",
+            label=gettext("The process will take some time."),
             halign=Gtk.Align.CENTER,
             margin_top=24,
         )
@@ -41,14 +43,15 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Add a bottom label
         self.bottom_label = Gtk.Label(
-            label="Please wait...",
+            label=gettext("Please wait..."),
             halign=Gtk.Align.CENTER,
             margin_top=24,
+            margin_bottom=24,
         )
         content_area.append(self.bottom_label)
 
         # Add an "Abort" button
-        self.add_button("Abort", Gtk.ResponseType.CANCEL)
+        self.add_button(gettext("Abort"), Gtk.ResponseType.CANCEL)
         self.connect("response", self.on_response)
 
     def on_response(self, dialog, response) -> None:

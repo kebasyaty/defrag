@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-26 16:15+0200\n"
+"POT-Creation-Date: 2025-12-29 17:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/main_content.py:67
-msgid "The operation was completed successfully."
-msgstr ""
-
-#: app/main_content.py:75 app/main_window.py:89 app/main_window.py:95
+#: app/app_window.py:89 app/app_window.py:98 app/fresh_page.py:81
 msgid "ERROR"
 msgstr ""
 
-#: app/sidebar.py:31 app/sidebar.py:122
+#: app/dialogs.py:17
+msgid "Operation started"
+msgstr ""
+
+#: app/dialogs.py:29
+msgid "The process will take some time."
+msgstr ""
+
+#: app/dialogs.py:46
+msgid "Please wait..."
+msgstr ""
+
+#: app/dialogs.py:54
+msgid "Abort"
+msgstr ""
+
+#: app/fresh_page.py:73
+msgid "The operation was completed successfully."
+msgstr ""
+
+#: app/sidebar.py:31 app/sidebar.py:123
 msgid "Cleaning"
 msgstr ""
 
@@ -42,36 +58,38 @@ msgid "Defrag"
 msgstr ""
 
 #: app/sidebar.py:77
-msgid "To clean the system, you need to install the BleachBit application."
+msgid ""
+"To clean the system,\n"
+"you need to install the BleachBit application."
 msgstr ""
 
-#: app/sidebar.py:92
+#: app/sidebar.py:93
 msgid "Warning"
 msgstr ""
 
-#: app/sidebar.py:104
+#: app/sidebar.py:105
 msgid "Run BleachBit as user"
 msgstr ""
 
-#: app/sidebar.py:111
+#: app/sidebar.py:112
 msgid "Run BleachBit as administrator"
 msgstr ""
 
-#: app/sidebar.py:124
+#: app/sidebar.py:125
 msgid ""
 "Free up disk space and maintain privacy.\n"
 "The BleachBit application is used for this task."
 msgstr ""
 
-#: app/sidebar.py:139
+#: app/sidebar.py:140
 msgid "Run check health"
 msgstr ""
 
-#: app/sidebar.py:144
+#: app/sidebar.py:145
 msgid "Checking the integrity of HDD|SSD"
 msgstr ""
 
-#: app/sidebar.py:146
+#: app/sidebar.py:147
 msgid ""
 "Integrity check of the Btrfs file system,\n"
 "which sequentially reads all data and metadata,\n"
@@ -83,31 +101,31 @@ msgid ""
 "especially in redundant configurations."
 msgstr ""
 
-#: app/sidebar.py:168
+#: app/sidebar.py:169
 msgid "Run analysis"
 msgstr ""
 
-#: app/sidebar.py:173
+#: app/sidebar.py:174
 msgid "Analysis a files fragmentation"
 msgstr ""
 
-#: app/sidebar.py:174
+#: app/sidebar.py:175
 msgid "Assess the overall state of file fragmentation."
 msgstr ""
 
-#: app/sidebar.py:188
+#: app/sidebar.py:189
 msgid "Run defrag"
 msgstr ""
 
-#: app/sidebar.py:193
+#: app/sidebar.py:194
 msgid "Defragmentation"
 msgstr ""
 
-#: app/sidebar.py:194
-msgid "Optimize partitions formatted with the Btrfs file system."
+#: app/sidebar.py:195
+msgid "Optimize partitions formatted with the BtrFS file system."
 msgstr ""
 
-#: app/sidebar.py:250
+#: app/sidebar.py:251
 msgid "INFO"
 msgstr ""
 
