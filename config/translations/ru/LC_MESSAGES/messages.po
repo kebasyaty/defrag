@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-29 17:32+0200\n"
+"POT-Creation-Date: 2025-12-29 17:41+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -137,10 +137,10 @@ msgid "Defragmentation"
 msgstr "Дефрагментация"
 
 #: app/sidebar.py:195
-msgid "Optimize partitions formatted with the Btrfs file system."
+msgid "Optimize partitions formatted with the BtrFS file system."
 msgstr ""
 "Оптимизируйте разделы,\n"
-"отформатированные с помощью файловой системы Btrfs."
+"отформатированные с помощью файловой системы BtrFS."
 
 #: app/sidebar.py:251
 msgid "INFO"

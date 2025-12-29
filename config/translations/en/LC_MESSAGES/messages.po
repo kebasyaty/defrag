@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-29 17:32+0200\n"
+"POT-Creation-Date: 2025-12-29 17:41+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -59,7 +59,9 @@ msgid "Defrag"
 msgstr ""
 
 #: app/sidebar.py:77
-msgid "To clean the system, you need to install the BleachBit application."
+msgid ""
+"To clean the system,\n"
+"you need to install the BleachBit application."
 msgstr ""
 
 #: app/sidebar.py:93
@@ -121,7 +123,7 @@ msgid "Defragmentation"
 msgstr ""
 
 #: app/sidebar.py:195
-msgid "Optimize partitions formatted with the Btrfs file system."
+msgid "Optimize partitions formatted with the BtrFS file system."
 msgstr ""
 
 #: app/sidebar.py:251
@@ -142,5 +144,11 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "The operation will take some time."
+#~ msgstr ""
+
+#~ msgid "To clean the system, you need to install the BleachBit application."
+#~ msgstr ""
+
+#~ msgid "Optimize partitions formatted with the Btrfs file system."
 #~ msgstr ""
 

@@ -192,7 +192,7 @@ class Sidebar:
         # Add content to `dynamic_page_vbox`
         self.add_content_to_dynamic_page(
             title_page=gettext("Defragmentation"),
-            description_page=gettext("Optimize partitions formatted with the Btrfs file system."),
+            description_page=gettext("Optimize partitions formatted with the BtrFS file system."),
             service_box=service_vbox,
         )
 
