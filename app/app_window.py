@@ -8,7 +8,7 @@ import logging
 import os
 import shlex
 import threading
-from typing import Literal
+from typing import Any, Literal
 
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
@@ -152,6 +152,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
 
     def run_async_subprocess(
         self,
+        widget: Any,
         command_str: str,
         is_abort_btn: bool = True,
     ) -> None:
