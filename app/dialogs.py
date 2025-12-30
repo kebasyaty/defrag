@@ -88,6 +88,8 @@ class SpinnerDialog(Gtk.Dialog):
             if success:
                 window.result_info_textview.set_label(stdout_buf)
             else:
+                label_str = gettext("ERROR")
+                window.result_info_label.set_markup(f"<b>{label_str}:</b>")
                 window.result_info_textview.set_label(stderr_buf)
 
         except Exception:
