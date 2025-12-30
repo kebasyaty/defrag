@@ -7,6 +7,7 @@ __all__ = ("ApplicationWindow",)
 import logging
 import os
 import shlex
+import threading
 from typing import Literal
 
 import psutil
@@ -153,4 +154,8 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         """Show the (progress bar) Spinner."""
         # Create and show the progress dialog
         progress_dialog = SpinnerDialog(parent=self)
-        progress_dialog.show()
+        # Start the long operation in a new thread
+        thread = threading.Thread(target=progress_dialog.run_operation)
+        thread.start()
+        # Present the dialog
+        progress_dialog.present()
