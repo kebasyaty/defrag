@@ -8,7 +8,7 @@ import logging
 import shlex
 import signal
 
-from gi.repository import Adw, Gio, Gtk
+from gi.repository import Adw, Gio, GLib, Gtk
 
 from app.translator import gettext
 
@@ -125,5 +125,5 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Display the result of a subprocess
         self.app_window.display_result_info_vbox.set_visible(True)
-        # Stop the (progress bar) Spinner
-        self.destroy()
+        # Close dialog the (progress bar) Spinner
+        GLib.idle_add(self.destroy)
