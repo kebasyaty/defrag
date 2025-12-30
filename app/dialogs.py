@@ -32,7 +32,7 @@ class SpinnerDialog(Gtk.Dialog):
         )
         self.set_default_size(300, 100)
 
-        # Add application window
+        # Add application window (To access parent fields and methods)
         self.app_window = parent
 
         # Split the command string into a list of arguments
