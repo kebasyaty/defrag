@@ -90,8 +90,6 @@ class FreshPage:
 
     def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
         """Starts a main subprocess asynchronously."""
-        # Show the (progress bar) Spinner
-        self.show_spinner_dialog()
         # Flags for proper I/O handling
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create the subprocess
