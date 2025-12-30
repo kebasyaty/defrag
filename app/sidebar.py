@@ -222,7 +222,7 @@ class Sidebar:
         description_page: str,
         service_box: Gtk.Box,
     ) -> None:
-        """Add content to dynamic page."""
+        """Add content to fresh page."""
         # Remove all child elements in `fresh_page_vbox`
         self.refreshing_page()
         # Add Title of page
