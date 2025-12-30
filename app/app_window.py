@@ -153,7 +153,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         )
         dialog.show(parent=self)
 
-    def run_async_subprocess(
+    def on_async_subprocess_run(
         self,
         widget: Any,
         command_str: str,
