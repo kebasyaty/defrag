@@ -40,6 +40,8 @@ class SpinnerDialog(Gtk.Dialog):
             self.app_window.result_info_textview.set_label(
                 gettext("The main application window is unavailable."),
             )
+            # Display the result of a subprocess
+            self.app_window.display_result_info_vbox.set_visible(True)
             # Stop the (progress bar) Spinner
             self.destroy()
 
@@ -92,7 +94,7 @@ class SpinnerDialog(Gtk.Dialog):
                 gettext("Premature termination of a process by the user."),
             )
             # Display the result of a subprocess
-            self.display_result_info_vbox.set_visible(True)
+            self.app_window.display_result_info_vbox.set_visible(True)
             # Close dialog
             self.destroy()
 
