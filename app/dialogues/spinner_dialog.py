@@ -1,4 +1,4 @@
-"""Custom Dialogs."""
+"""Custom dialog with (progress bar) Spinner."""
 
 from __future__ import annotations
 

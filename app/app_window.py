@@ -13,7 +13,7 @@ from typing import Any, Literal
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
-from app.dialogs import SpinnerDialog
+from app.dialogues import SpinnerDialog
 from app.fresh_page import FreshPage
 from app.sidebar import Sidebar
 from app.translator import gettext
@@ -161,7 +161,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
     ) -> None:
         """Starts a subprocess asynchronously.
 
-        Show the (progress bar) Spinner.
+        Uses the (progress bar) Spinner.
         """
         # Create and show the progress dialog
         progress_dialog = SpinnerDialog(
