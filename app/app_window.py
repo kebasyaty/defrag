@@ -163,6 +163,10 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
 
         Uses the (progress bar) Spinner.
         """
+        # Clean a message to information box of service
+        self.result_info_textview.set_label("")
+        # Hide the information box with the result from the subprocess
+        self.display_result_info_vbox.set_visible(False)
         # Create and show the progress dialog
         progress_dialog = SpinnerDialog(
             parent=self,

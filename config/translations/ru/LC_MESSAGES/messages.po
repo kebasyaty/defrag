@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-30 12:45+0200\n"
+"POT-Creation-Date: 2025-12-30 19:37+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -19,40 +19,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/app_window.py:91 app/app_window.py:100 app/dialogs.py:116
-#: app/dialogs.py:125 app/fresh_page.py:85
+#: app/app_window.py:94 app/app_window.py:103
+#: app/dialogues/spinner_dialog.py:113 app/dialogues/spinner_dialog.py:122
 msgid "ERROR"
 msgstr "ОШИБКА"
 
-#: app/dialogs.py:23
-msgid "Operation started"
-msgstr "Операция запущена"
+#: app/fresh_page.py:108
+msgid "INFO"
+msgstr "ИНФОРМАЦИЯ"
 
-#: app/dialogs.py:36
-msgid "The main application window is unavailable."
-msgstr "Главное окно приложения недоступно."
-
-#: app/dialogs.py:49
-msgid "The process will take some time."
-msgstr "Процесс займет некоторое время."
-
-#: app/dialogs.py:67
-msgid "Please wait..."
-msgstr "Пожалуйста, подождите..."
-
-#: app/dialogs.py:75
-msgid "Abort"
-msgstr "Прервать"
-
-#: app/dialogs.py:87
-msgid "Premature termination of a process by the user."
-msgstr "Преждевременное завершение процесса пользователем."
-
-#: app/dialogs.py:109 app/fresh_page.py:73
-msgid "The operation was completed successfully."
-msgstr "Операция завершилась успешно."
-
-#: app/sidebar.py:31 app/sidebar.py:123
+#: app/sidebar.py:31 app/sidebar.py:129
 msgid "Cleaning"
 msgstr "Очистка"
 
@@ -84,11 +60,11 @@ msgstr "Предупреждение"
 msgid "Run BleachBit as user"
 msgstr "Запустите BleachBit от имени пользователя"
 
-#: app/sidebar.py:112
+#: app/sidebar.py:117
 msgid "Run BleachBit as administrator"
 msgstr "Запустите BleachBit от имени администратора"
 
-#: app/sidebar.py:125
+#: app/sidebar.py:131
 msgid ""
 "Free up disk space and maintain privacy.\n"
 "The BleachBit application is used for this task."
@@ -96,15 +72,15 @@ msgstr ""
 "Освободите дисковое пространство и сохраните конфиденциальность.\n"
 "Для этой задачи используется приложение BleachBit."
 
-#: app/sidebar.py:140
+#: app/sidebar.py:146
 msgid "Run check health"
 msgstr "Запустить проверку здоровья"
 
-#: app/sidebar.py:145
+#: app/sidebar.py:151
 msgid "Checking the integrity of HDD|SSD"
 msgstr "Проверка целостности HDD|SSD"
 
-#: app/sidebar.py:147
+#: app/sidebar.py:153
 msgid ""
 "Integrity check of the Btrfs file system,\n"
 "which sequentially reads all data and metadata,\n"
@@ -125,33 +101,53 @@ msgstr ""
 "Это важный инструмент для поддержания здоровья Btrfs,\n"
 "особенно в конфигурациях с избыточностью."
 
-#: app/sidebar.py:169
+#: app/sidebar.py:175
 msgid "Run analysis"
 msgstr "Запустить анализ"
 
-#: app/sidebar.py:174
+#: app/sidebar.py:180
 msgid "Analysis a files fragmentation"
 msgstr "Анализ фрагментации файлов"
 
-#: app/sidebar.py:175
+#: app/sidebar.py:181
 msgid "Assess the overall state of file fragmentation."
 msgstr "Оцените общее состояние фрагментации файлов."
 
-#: app/sidebar.py:189
+#: app/sidebar.py:195
 msgid "Run defrag"
 msgstr "Запустить дефрагментацию"
 
-#: app/sidebar.py:194
+#: app/sidebar.py:200
 msgid "Defragmentation"
 msgstr "Дефрагментация"
 
-#: app/sidebar.py:195
+#: app/sidebar.py:201
 msgid "Optimize partitions formatted with the BtrFS file system."
 msgstr ""
 "Оптимизируйте разделы,\n"
 "отформатированные с помощью файловой системы BtrFS."
 
-#: app/sidebar.py:251
-msgid "INFO"
-msgstr "ИНФОРМАЦИЯ"
+#: app/dialogues/spinner_dialog.py:28
+msgid "Operation started"
+msgstr "Операция запущена"
+
+#: app/dialogues/spinner_dialog.py:46
+msgid "The process will take some time."
+msgstr "Процесс займет некоторое время."
+
+#: app/dialogues/spinner_dialog.py:63
+msgid "Please wait..."
+msgstr "Пожалуйста, подождите..."
+
+#: app/dialogues/spinner_dialog.py:72
+msgid "Abort"
+msgstr "Прервать"
+
+#: app/dialogues/spinner_dialog.py:84
+msgid "Premature termination of a process by the user."
+msgstr "Преждевременное завершение процесса пользователем."
+
+#: app/dialogues/spinner_dialog.py:106
+msgid "The operation is completed."
+msgstr "Операция завершена."
 
