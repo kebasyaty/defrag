@@ -96,14 +96,14 @@ class SpinnerDialog(Gtk.Dialog):
                 window.result_info_label.set_markup(f"<b>{label_str}:</b>")
                 window.result_info_textview.set_label(stderr_buf)
 
-        except Exception:
+        except Exception as err:
             err_msg = "Subprocess ended with an error"
             # Log the exception and traceback
             logger.exception(err_msg)
             # Add a error message to information box of service
             label_str = gettext("ERROR")
             window.result_info_label.set_markup(f"<b>{label_str}:</b>")
-            window.result_info_textview.set_label(err_msg)
+            window.result_info_textview.set_label(f"{err_msg}:\n{err}")
 
         # Display the result of a subprocess
         self.display_result_info_vbox.set_visible(True)
