@@ -89,6 +89,8 @@ class SpinnerDialog(Gtk.Dialog):
                 # Add a message to information box of service
                 window.result_info_textview.set_label(stdout_buf)
             else:
+                # Log ERROR.
+                logger.error(stderr_buf)
                 # Add a error message to information box of service
                 label_str = gettext("ERROR")
                 window.result_info_label.set_markup(f"<b>{label_str}:</b>")
