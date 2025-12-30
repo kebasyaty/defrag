@@ -93,6 +93,8 @@ class SpinnerDialog(Gtk.Dialog):
             )
 
             if success:
+                if len(stdout_buf) == 0:
+                    stdout_buf = gettext("The operation was completed successfully.")
                 # Add a message to information box of service
                 app_window.result_info_textview.set_label(stdout_buf)
             else:
