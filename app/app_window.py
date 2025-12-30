@@ -58,11 +58,14 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         self.main_vbox.append(self.content_hbox)
 
         # Create command for run gui applications as administrator
-        self.gui_as_root_command = ["pkexec", "env"] + [
-            f"{key}={value}"
-            for key, value in os.environ.copy().items()
-            if key in ["WAYLAND_DISPLAY", "XDG_RUNTIME_DIR", "DISPLAY", "XAUTHORITY"]
-        ]
+        self.gui_as_root_command: str = shlex.join(
+            ["pkexec", "env"]
+            + [
+                f"{key}={value}"
+                for key, value in os.environ.copy().items()
+                if key in ["WAYLAND_DISPLAY", "XDG_RUNTIME_DIR", "DISPLAY", "XAUTHORITY"]
+            ],
+        )
 
         # Init mixins
         Sidebar.__init__(self)

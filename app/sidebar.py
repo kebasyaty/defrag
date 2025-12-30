@@ -105,7 +105,7 @@ class Sidebar:
             label=gettext("Run BleachBit as user"),
             is_sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
-        btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
+        btn_user_bleachbit_run.connect("clicked", self.run_async_subprocess, "bleachbit")
         service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
         btn_admin_bleachbit_run = self.create_btn_run(
@@ -114,8 +114,8 @@ class Sidebar:
         )
         btn_admin_bleachbit_run.connect(
             "clicked",
-            self.on_subprocess_run,
-            [*self.gui_as_root_command, "bleachbit"],
+            self.run_async_subprocess,
+            f"{self.gui_as_root_command} bleachbit",
         )
         service_vbox.append(btn_admin_bleachbit_run)
         # Add content to `fresh_page_vbox`
@@ -138,7 +138,7 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run check health"))
-        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        btn_run.connect("clicked", self.run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_fresh_page(
@@ -167,7 +167,7 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run analysis"))
-        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        btn_run.connect("clicked", self.run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_fresh_page(
