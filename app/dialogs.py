@@ -59,18 +59,18 @@ class SpinnerDialog(Gtk.Dialog):
         content_area.append(self.progressbar_spinner)
 
         # Add a bottom label
-        if is_abort_btn:
-            self.bottom_label = Gtk.Label(
-                label=gettext("Please wait..."),
-                halign=Gtk.Align.CENTER,
-                margin_top=24,
-                margin_bottom=24,
-            )
-            content_area.append(self.bottom_label)
+        self.bottom_label = Gtk.Label(
+            label=gettext("Please wait..."),
+            halign=Gtk.Align.CENTER,
+            margin_top=24,
+            margin_bottom=24,
+        )
+        content_area.append(self.bottom_label)
 
         # Add an "Abort" button
-        self.add_button(gettext("Abort"), Gtk.ResponseType.CANCEL)
-        self.connect("response", self.on_response)
+        if is_abort_btn:
+            self.add_button(gettext("Abort"), Gtk.ResponseType.CANCEL)
+            self.connect("response", self.on_response)
 
     def on_response(self, dialog, response) -> None:
         """Handle button response."""
