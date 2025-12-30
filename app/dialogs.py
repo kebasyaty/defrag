@@ -68,8 +68,15 @@ class SpinnerDialog(Gtk.Dialog):
             # Close dialog
             self.destroy()
 
-    def run_operation(self, window: Adw.ApplicationWindow, command_str: str) -> None:
+    def run_operation(self, command_str: str) -> None:
         """For start a operation in a separate thread."""
+        app_window = self.get_parent()
+        if app_window is None:
+            err_msg = "The main application window is unavailable."
+            # Log ERROR.
+            logger.error(err_msg)
+            # Stop the (progress bar) Spinner
+            self.destroy()
         # Split the command string into a list of arguments
         command_args = shlex.split(command_str)
         # Define flags to pipe stdout and stderr
@@ -87,14 +94,14 @@ class SpinnerDialog(Gtk.Dialog):
 
             if success:
                 # Add a message to information box of service
-                window.result_info_textview.set_label(stdout_buf)
+                app_window.result_info_textview.set_label(stdout_buf)
             else:
                 # Log ERROR.
                 logger.error(stderr_buf)
                 # Add a error message to information box of service
                 label_str = gettext("ERROR")
-                window.result_info_label.set_markup(f"<b>{label_str}:</b>")
-                window.result_info_textview.set_label(stderr_buf)
+                app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
+                app_window.result_info_textview.set_label(stderr_buf)
 
         except Exception as err:
             err_msg = "Subprocess ended with an error"
@@ -102,8 +109,8 @@ class SpinnerDialog(Gtk.Dialog):
             logger.exception(err_msg)
             # Add a error message to information box of service
             label_str = gettext("ERROR")
-            window.result_info_label.set_markup(f"<b>{label_str}:</b>")
-            window.result_info_textview.set_label(f"{err_msg}:\n{err}")
+            app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
+            app_window.result_info_textview.set_label(f"{err_msg}:\n{err}")
 
         # Display the result of a subprocess
         self.display_result_info_vbox.set_visible(True)
