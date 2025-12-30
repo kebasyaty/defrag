@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class SpinnerDialog(Gtk.Dialog):
     """Custom dialog with (progress bar) Spinner."""
 
-    def __init__(self, parent, command_str: str):  # noqa: D107
+    def __init__(self, parent, command_str: str, is_abort_btn: bool = True):  # noqa: D107
         super().__init__(
             title=gettext("Operation started"),
             transient_for=parent,
@@ -51,13 +51,14 @@ class SpinnerDialog(Gtk.Dialog):
         content_area.append(self.progressbar_spinner)
 
         # Add a bottom label
-        self.bottom_label = Gtk.Label(
-            label=gettext("Please wait..."),
-            halign=Gtk.Align.CENTER,
-            margin_top=24,
-            margin_bottom=24,
-        )
-        content_area.append(self.bottom_label)
+        if is_abort_btn:
+            self.bottom_label = Gtk.Label(
+                label=gettext("Please wait..."),
+                halign=Gtk.Align.CENTER,
+                margin_top=24,
+                margin_bottom=24,
+            )
+            content_area.append(self.bottom_label)
 
         # Add an "Abort" button
         self.add_button(gettext("Abort"), Gtk.ResponseType.CANCEL)
