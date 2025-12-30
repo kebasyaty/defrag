@@ -22,10 +22,10 @@ class FreshPage:
 
     def __init__(self) -> None:  # noqa: D107
         # Create a page for dynamic content
-        self.dynamic_page_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.dynamic_page_vbox.set_margin_start(30)
-        self.dynamic_page_vbox.set_hexpand(True)
-        self.content_hbox.append(self.dynamic_page_vbox)
+        self.fresh_page_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.fresh_page_vbox.set_margin_start(30)
+        self.fresh_page_vbox.set_hexpand(True)
+        self.content_hbox.append(self.fresh_page_vbox)
 
     def unlock_buttons_to_sidebar(self, active_button_name: str) -> None:
         """Unlock all buttons on sidebar and lock active button."""
@@ -39,18 +39,18 @@ class FreshPage:
         # Lock active button
         self.__dict__[active_button_name].set_sensitive(False)
 
-    def clean_dynamic_page(self) -> None:
-        """Remove all child elements in `dynamic_page_vbox`."""
-        # Observe the children of `dynamic_page_vbox`
-        children_model = self.dynamic_page_vbox.observe_children()
-        # Iterate through the children of `dynamic_page_vbox`
+    def refreshing_page(self) -> None:
+        """Remove all child elements in `fresh_page_vbox`."""
+        # Observe the children of `fresh_page_vbox`
+        children_model = self.fresh_page_vbox.observe_children()
+        # Iterate through the children of `fresh_page_vbox`
         child_list: list[Gtk.Widget] = []
         for idx in range(children_model.get_n_items()):
             child = children_model.get_item(idx)
             if isinstance(child, Gtk.Widget):
                 child_list.append(child)
         for child in child_list:
-            self.dynamic_page_vbox.remove(child)
+            self.fresh_page_vbox.remove(child)
         # Additionally remove the following keys
         if len(child_list) > 0:
             del self.__dict__["result_info_label"]
