@@ -7,7 +7,8 @@ __all__ = ("ApplicationWindow",)
 import logging
 import os
 import shlex
-from typing import Literal
+import threading
+from typing import Any, Literal
 
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
@@ -57,11 +58,14 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         self.main_vbox.append(self.content_hbox)
 
         # Create command for run gui applications as administrator
-        self.gui_as_root_command = ["pkexec", "env"] + [
-            f"{key}={value}"
-            for key, value in os.environ.copy().items()
-            if key in ["WAYLAND_DISPLAY", "XDG_RUNTIME_DIR", "DISPLAY", "XAUTHORITY"]
-        ]
+        self.gui_as_root_command: str = shlex.join(
+            ["pkexec", "env"]
+            + [
+                f"{key}={value}"
+                for key, value in os.environ.copy().items()
+                if key in ["WAYLAND_DISPLAY", "XDG_RUNTIME_DIR", "DISPLAY", "XAUTHORITY"]
+            ],
+        )
 
         # Init mixins
         Sidebar.__init__(self)
@@ -75,8 +79,8 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         # Flags for proper I/O handling
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create commands
-        command_string = "rpm -q bleachbit"
-        command_args = shlex.split(command_string)
+        command_str = "which bleachbit"
+        command_args = shlex.split(command_str)
         # Create the subprocess
         try:
             process = Gio.Subprocess.new(command_args, flags)
@@ -149,8 +153,24 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         )
         dialog.show(parent=self)
 
-    def show_spinner_dialog(self) -> None:
-        """Show the (progress bar) Spinner."""
+    def run_async_subprocess(
+        self,
+        widget: Any,
+        command_str: str,
+        is_abort_btn: bool = True,
+    ) -> None:
+        """Starts a subprocess asynchronously.
+
+        Show the (progress bar) Spinner.
+        """
         # Create and show the progress dialog
-        progress_dialog = SpinnerDialog(parent=self)
-        progress_dialog.show()
+        progress_dialog = SpinnerDialog(
+            parent=self,
+            command_str=command_str,
+            is_abort_btn=is_abort_btn,
+        )
+        # Start the long operation in a new thread
+        thread = threading.Thread(target=progress_dialog.run_operation)
+        thread.start()
+        # Present the dialog
+        progress_dialog.present()

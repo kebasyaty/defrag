@@ -105,7 +105,12 @@ class Sidebar:
             label=gettext("Run BleachBit as user"),
             is_sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
-        btn_user_bleachbit_run.connect("clicked", self.on_subprocess_run, ["bleachbit"])
+        btn_user_bleachbit_run.connect(
+            "clicked",
+            self.run_async_subprocess,
+            "bleachbit",
+            False,
+        )
         service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
         btn_admin_bleachbit_run = self.create_btn_run(
@@ -114,12 +119,13 @@ class Sidebar:
         )
         btn_admin_bleachbit_run.connect(
             "clicked",
-            self.on_subprocess_run,
-            [*self.gui_as_root_command, "bleachbit"],
+            self.run_async_subprocess,
+            f"{self.gui_as_root_command} bleachbit",
+            False,
         )
         service_vbox.append(btn_admin_bleachbit_run)
-        # Add content to `dynamic_page_vbox`
-        self.add_content_to_dynamic_page(
+        # Add content to `fresh_page_vbox`
+        self.add_content_to_fresh_page(
             title_page=gettext("Cleaning"),
             description_page=gettext(
                 "Free up disk space and maintain privacy.\n" + "The BleachBit application is used for this task.",
@@ -138,10 +144,10 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run check health"))
-        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        btn_run.connect("clicked", self.run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
-        # Add content to `dynamic_page_vbox`
-        self.add_content_to_dynamic_page(
+        # Add content to `fresh_page_vbox`
+        self.add_content_to_fresh_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
             description_page=gettext(
                 "Integrity check of the Btrfs file system,\n"
@@ -167,10 +173,10 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run analysis"))
-        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        btn_run.connect("clicked", self.run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
-        # Add content to `dynamic_page_vbox`
-        self.add_content_to_dynamic_page(
+        # Add content to `fresh_page_vbox`
+        self.add_content_to_fresh_page(
             title_page=gettext("Analysis a files fragmentation"),
             description_page=gettext("Assess the overall state of file fragmentation."),
             service_box=service_vbox,
@@ -187,10 +193,10 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run defrag"))
-        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        btn_run.connect("clicked", self.run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
-        # Add content to `dynamic_page_vbox`
-        self.add_content_to_dynamic_page(
+        # Add content to `fresh_page_vbox`
+        self.add_content_to_fresh_page(
             title_page=gettext("Defragmentation"),
             description_page=gettext("Optimize partitions formatted with the BtrFS file system."),
             service_box=service_vbox,
@@ -216,29 +222,29 @@ class Sidebar:
         btn_run.set_child(btn_content_box)
         return btn_run
 
-    def add_content_to_dynamic_page(
+    def add_content_to_fresh_page(
         self,
         title_page: str,
         description_page: str,
         service_box: Gtk.Box,
     ) -> None:
-        """Add content to dynamic page."""
-        # Remove all child elements in `dynamic_page_vbox`
-        self.clean_dynamic_page()
+        """Add content to fresh page."""
+        # Remove all child elements in `fresh_page_vbox`
+        self.refreshing_page()
         # Add Title of page
         title_label = Gtk.Label(halign=Gtk.Align.START)
         title_label.set_markup(f"<b>{title_page}</b>")
-        self.dynamic_page_vbox.append(title_label)
+        self.fresh_page_vbox.append(title_label)
         # Add description of page
         description_label = Gtk.Label(
             label=description_page,
             halign=Gtk.Align.START,
             margin_top=12,
         )
-        self.dynamic_page_vbox.append(description_label)
+        self.fresh_page_vbox.append(description_label)
         # Add box for control of service
         service_box.set_margin_top(12)
-        self.dynamic_page_vbox.append(service_box)
+        self.fresh_page_vbox.append(service_box)
         # Add info box for display result
         self.display_result_info_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
@@ -254,4 +260,4 @@ class Sidebar:
         # add TextView (Label) to info box
         self.result_info_textview = Gtk.Label(halign=Gtk.Align.START)
         self.display_result_info_vbox.append(self.result_info_textview)
-        self.dynamic_page_vbox.append(self.display_result_info_vbox)
+        self.fresh_page_vbox.append(self.display_result_info_vbox)

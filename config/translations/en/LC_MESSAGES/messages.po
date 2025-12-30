@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-29 17:41+0200\n"
+"POT-Creation-Date: 2025-12-30 12:45+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,27 +18,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/app_window.py:89 app/app_window.py:98 app/fresh_page.py:81
+#: app/app_window.py:91 app/app_window.py:100 app/dialogs.py:116
+#: app/dialogs.py:125 app/fresh_page.py:85
 msgid "ERROR"
 msgstr ""
 
-#: app/dialogs.py:17
+#: app/dialogs.py:23
 msgid "Operation started"
 msgstr ""
 
-#: app/dialogs.py:29
+#: app/dialogs.py:36
+msgid "The main application window is unavailable."
+msgstr ""
+
+#: app/dialogs.py:49
 msgid "The process will take some time."
 msgstr ""
 
-#: app/dialogs.py:46
+#: app/dialogs.py:67
 msgid "Please wait..."
 msgstr ""
 
-#: app/dialogs.py:54
+#: app/dialogs.py:75
 msgid "Abort"
 msgstr ""
 
-#: app/fresh_page.py:73
+#: app/dialogs.py:87
+msgid "Premature termination of a process by the user."
+msgstr ""
+
+#: app/dialogs.py:109 app/fresh_page.py:73
 msgid "The operation was completed successfully."
 msgstr ""
 
@@ -129,26 +138,4 @@ msgstr ""
 #: app/sidebar.py:251
 msgid "INFO"
 msgstr ""
-
-#~ msgid ""
-#~ "Free up disk space and maintain privacy.\n"
-#~ "The BleachBit application is used for this task.\n"
-#~ "If this application is not on your computer,\n"
-#~ "you will be prompted to install it."
-#~ msgstr ""
-
-#~ msgid "Optimize partitions with the Btrfs file system."
-#~ msgstr ""
-
-#~ msgid "Starting operation"
-#~ msgstr ""
-
-#~ msgid "The operation will take some time."
-#~ msgstr ""
-
-#~ msgid "To clean the system, you need to install the BleachBit application."
-#~ msgstr ""
-
-#~ msgid "Optimize partitions formatted with the Btrfs file system."
-#~ msgstr ""
 
