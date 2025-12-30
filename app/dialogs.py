@@ -32,18 +32,8 @@ class SpinnerDialog(Gtk.Dialog):
         )
         self.set_default_size(300, 100)
 
-        self.app_window = self.get_parent()
-        if self.app_window is None:
-            # Log ERROR.
-            logger.error("The main application window is unavailable.")
-            # Add a message to information box of service
-            self.app_window.result_info_textview.set_label(
-                gettext("The main application window is unavailable."),
-            )
-            # Display the result of a subprocess
-            self.app_window.display_result_info_vbox.set_visible(True)
-            # Stop the (progress bar) Spinner
-            self.destroy()
+        # Add application window
+        self.app_window = parent
 
         # Split the command string into a list of arguments
         self.command_args = shlex.split(command_str)
