@@ -59,3 +59,11 @@ class SpinnerDialog(Gtk.Dialog):
         if response == Gtk.ResponseType.CANCEL:
             # Stopping the process
             self.destroy()
+
+    def run_operation(self) -> None:
+        """For start a operation in a separate thread."""
+        # Some kind of work
+        # ...
+
+        # Close dialog
+        self.destroy()
