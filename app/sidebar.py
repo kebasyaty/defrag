@@ -224,7 +224,7 @@ class Sidebar:
     ) -> None:
         """Add content to dynamic page."""
         # Remove all child elements in `fresh_page_vbox`
-        self.clean_dynamic_page()
+        self.refreshing_page()
         # Add Title of page
         title_label = Gtk.Label(halign=Gtk.Align.START)
         title_label.set_markup(f"<b>{title_page}</b>")
