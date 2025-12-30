@@ -6,6 +6,7 @@ __all__ = ("SpinnerDialog",)
 
 import logging
 import shlex
+import signal
 
 from gi.repository import Adw, Gio, Gtk
 
@@ -66,8 +67,7 @@ class SpinnerDialog(Gtk.Dialog):
         """Handle button response."""
         if response == Gtk.ResponseType.CANCEL:
             # Stopping the process
-            # ...
-
+            self.process.send_signal(signal.SIGTERM)
             # Close dialog
             self.destroy()
 
@@ -84,15 +84,13 @@ class SpinnerDialog(Gtk.Dialog):
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create the subprocess
         try:
-            process = Gio.Subprocess.new(self.command_args, flags)
-
+            self.process = Gio.Subprocess.new(self.command_args, flags)
             # Run synchronously, send optional input, get output
             # Returns a tuple: (success, stdout_buf, stderr_buf)
-            success, stdout_buf, stderr_buf = process.communicate_utf8(
+            success, stdout_buf, stderr_buf = self.process.communicate_utf8(
                 stdin_buf=None,
                 cancellable=None,
             )
-
             if success:
                 if len(stdout_buf) == 0:
                     stdout_buf = gettext("The operation was completed successfully.")
