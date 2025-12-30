@@ -58,6 +58,9 @@ class SpinnerDialog(Gtk.Dialog):
         """Handle button response."""
         if response == Gtk.ResponseType.CANCEL:
             # Stopping the process
+            # ...
+
+            # Close dialog
             self.destroy()
 
     def run_operation(self) -> None:
