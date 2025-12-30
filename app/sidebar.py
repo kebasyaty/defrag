@@ -105,7 +105,12 @@ class Sidebar:
             label=gettext("Run BleachBit as user"),
             is_sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
-        btn_user_bleachbit_run.connect("clicked", self.run_async_subprocess, "bleachbit")
+        btn_user_bleachbit_run.connect(
+            "clicked",
+            self.run_async_subprocess,
+            "bleachbit",
+            False,
+        )
         service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
         btn_admin_bleachbit_run = self.create_btn_run(
@@ -116,6 +121,7 @@ class Sidebar:
             "clicked",
             self.run_async_subprocess,
             f"{self.gui_as_root_command} bleachbit",
+            False,
         )
         service_vbox.append(btn_admin_bleachbit_run)
         # Add content to `fresh_page_vbox`
