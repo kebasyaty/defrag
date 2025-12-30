@@ -4,9 +4,14 @@ from __future__ import annotations
 
 __all__ = ("SpinnerDialog",)
 
-from gi.repository import Adw, Gtk
+import logging
+import shlex
+
+from gi.repository import Adw, Gio, Gtk
 
 from app.translator import gettext
+
+logger = logging.getLogger(__name__)
 
 
 class SpinnerDialog(Gtk.Dialog):
@@ -63,10 +68,35 @@ class SpinnerDialog(Gtk.Dialog):
             # Close dialog
             self.destroy()
 
-    def run_operation(self) -> None:
+    def run_operation(self, window: Adw.ApplicationWindow, command_str: str) -> None:
         """For start a operation in a separate thread."""
-        # Some kind of work
-        # ...
+        # Split the command string into a list of arguments
+        command_args = shlex.split(command_str)
+        # Define flags to pipe stdout and stderr
+        flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
+        # Create the subprocess
+        try:
+            process = Gio.Subprocess.new(command_args, flags)
 
-        # Close dialog
+            # Run synchronously, send optional input, get output
+            # Returns a tuple: (success, stdout_buf, stderr_buf)
+            success, stdout_buf, stderr_buf = process.communicate_utf8(
+                stdin_buf=None,
+                cancellable=None,
+            )
+
+            if success:
+                window.result_info_textview.set_label(stdout_buf)
+            else:
+                window.result_info_textview.set_label(stderr_buf)
+
+        except Exception:
+            # Log the exception and traceback
+            logger.exception("Subprocess ended with an error")
+            # Stop the (progress bar) Spinner
+            self.destroy()
+
+        # Display the result of a subprocess
+        self.display_result_info_vbox.set_visible(True)
+        # Stop the (progress bar) Spinner
         self.destroy()

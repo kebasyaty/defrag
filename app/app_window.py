@@ -75,8 +75,8 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         # Flags for proper I/O handling
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create commands
-        command_string = "rpm -q bleachbit"
-        command_args = shlex.split(command_string)
+        command_str = "which bleachbit"
+        command_args = shlex.split(command_str)
         # Create the subprocess
         try:
             process = Gio.Subprocess.new(command_args, flags)
