@@ -29,12 +29,12 @@ class SpinnerDialog(Gtk.Dialog):
 
         self.app_window = self.get_parent()
         if self.app_window is None:
-            err_msg = "The main application window is unavailable."
             # Log ERROR.
-            logger.error(err_msg)
+            logger.error("The main application window is unavailable.")
             # Add a message to information box of service
-            msg = gettext(err_msg)
-            self.app_window.result_info_textview.set_label(msg)
+            self.app_window.result_info_textview.set_label(
+                gettext("The main application window is unavailable."),
+            )
             # Stop the (progress bar) Spinner
             self.destroy()
 
@@ -80,12 +80,12 @@ class SpinnerDialog(Gtk.Dialog):
         if response == Gtk.ResponseType.CANCEL:
             # Stopping the process
             self.process.send_signal(signal.SIGTERM)
-            #
-            info_msg = gettext("???")
             # Log ERROR.
-            logger.info(info_msg)
+            logger.info("Premature termination of a process by the user.")
             # Add a message to information box of service
-            self.app_window.result_info_textview.set_label(info_msg)
+            self.app_window.result_info_textview.set_label(
+                gettext("Premature termination of a process by the user."),
+            )
             # Display the result of a subprocess
             self.display_result_info_vbox.set_visible(True)
             # Close dialog

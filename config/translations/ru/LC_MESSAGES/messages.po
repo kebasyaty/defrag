@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-29 17:41+0200\n"
+"POT-Creation-Date: 2025-12-30 12:45+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -19,27 +19,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/app_window.py:89 app/app_window.py:98 app/fresh_page.py:81
+#: app/app_window.py:91 app/app_window.py:100 app/dialogs.py:116
+#: app/dialogs.py:125 app/fresh_page.py:85
 msgid "ERROR"
 msgstr "ОШИБКА"
 
-#: app/dialogs.py:17
+#: app/dialogs.py:23
 msgid "Operation started"
 msgstr "Операция запущена"
 
-#: app/dialogs.py:29
+#: app/dialogs.py:36
+msgid "The main application window is unavailable."
+msgstr "Главное окно приложения недоступно."
+
+#: app/dialogs.py:49
 msgid "The process will take some time."
 msgstr "Процесс займет некоторое время."
 
-#: app/dialogs.py:46
+#: app/dialogs.py:67
 msgid "Please wait..."
 msgstr "Пожалуйста, подождите..."
 
-#: app/dialogs.py:54
+#: app/dialogs.py:75
 msgid "Abort"
 msgstr "Прервать"
 
-#: app/fresh_page.py:73
+#: app/dialogs.py:87
+msgid "Premature termination of a process by the user."
+msgstr "Преждевременное завершение процесса пользователем."
+
+#: app/dialogs.py:109 app/fresh_page.py:73
 msgid "The operation was completed successfully."
 msgstr "Операция завершилась успешно."
 
