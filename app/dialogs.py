@@ -18,7 +18,12 @@ logger = logging.getLogger(__name__)
 class SpinnerDialog(Gtk.Dialog):
     """Custom dialog with (progress bar) Spinner."""
 
-    def __init__(self, parent, command_str: str, is_abort_btn: bool = True):  # noqa: D107
+    def __init__(  # noqa: D107
+        self,
+        parent: Adw.ApplicationWindow,
+        command_str: str,
+        is_abort_btn: bool = True,
+    ):
         super().__init__(
             title=gettext("Operation started"),
             transient_for=parent,
