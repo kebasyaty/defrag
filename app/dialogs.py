@@ -27,6 +27,17 @@ class SpinnerDialog(Gtk.Dialog):
         )
         self.set_default_size(300, 100)
 
+        self.app_window = self.get_parent()
+        if self.app_window is None:
+            err_msg = "The main application window is unavailable."
+            # Log ERROR.
+            logger.error(err_msg)
+            # Add a message to information box of service
+            msg = gettext(err_msg)
+            self.app_window.result_info_textview.set_label(msg)
+            # Stop the (progress bar) Spinner
+            self.destroy()
+
         # Split the command string into a list of arguments
         self.command_args = shlex.split(command_str)
 
@@ -69,18 +80,19 @@ class SpinnerDialog(Gtk.Dialog):
         if response == Gtk.ResponseType.CANCEL:
             # Stopping the process
             self.process.send_signal(signal.SIGTERM)
+            #
+            info_msg = gettext("???")
+            # Log ERROR.
+            logger.info(info_msg)
+            # Add a message to information box of service
+            self.app_window.result_info_textview.set_label(info_msg)
+            # Display the result of a subprocess
+            self.display_result_info_vbox.set_visible(True)
             # Close dialog
             self.destroy()
 
     def run_operation(self) -> None:
         """For start a operation in a separate thread."""
-        app_window = self.get_parent()
-        if app_window is None:
-            err_msg = "The main application window is unavailable."
-            # Log ERROR.
-            logger.error(err_msg)
-            # Stop the (progress bar) Spinner
-            self.destroy()
         # Define flags to pipe stdout and stderr
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create the subprocess
@@ -96,14 +108,14 @@ class SpinnerDialog(Gtk.Dialog):
                 if len(stdout_buf) == 0:
                     stdout_buf = gettext("The operation was completed successfully.")
                 # Add a message to information box of service
-                app_window.result_info_textview.set_label(stdout_buf)
+                self.app_window.result_info_textview.set_label(stdout_buf)
             else:
                 # Log ERROR.
                 logger.error(stderr_buf)
                 # Add a error message to information box of service
                 label_str = gettext("ERROR")
-                app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
-                app_window.result_info_textview.set_label(stderr_buf)
+                self.app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
+                self.app_window.result_info_textview.set_label(stderr_buf)
 
         except Exception as err:
             err_msg = "Subprocess ended with an error"
@@ -111,8 +123,8 @@ class SpinnerDialog(Gtk.Dialog):
             logger.exception(err_msg)
             # Add a error message to information box of service
             label_str = gettext("ERROR")
-            app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
-            app_window.result_info_textview.set_label(f"{err_msg}:\n{err}")
+            self.app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
+            self.app_window.result_info_textview.set_label(f"{err_msg}:\n{err}")
 
         # Display the result of a subprocess
         self.display_result_info_vbox.set_visible(True)
