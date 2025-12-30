@@ -119,7 +119,7 @@ class Sidebar:
         )
         service_vbox.append(btn_admin_bleachbit_run)
         # Add content to `fresh_page_vbox`
-        self.add_content_to_dynamic_page(
+        self.add_content_to_fresh_page(
             title_page=gettext("Cleaning"),
             description_page=gettext(
                 "Free up disk space and maintain privacy.\n" + "The BleachBit application is used for this task.",
@@ -141,7 +141,7 @@ class Sidebar:
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
-        self.add_content_to_dynamic_page(
+        self.add_content_to_fresh_page(
             title_page=gettext("Checking the integrity of HDD|SSD"),
             description_page=gettext(
                 "Integrity check of the Btrfs file system,\n"
@@ -170,7 +170,7 @@ class Sidebar:
         btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
-        self.add_content_to_dynamic_page(
+        self.add_content_to_fresh_page(
             title_page=gettext("Analysis a files fragmentation"),
             description_page=gettext("Assess the overall state of file fragmentation."),
             service_box=service_vbox,
@@ -187,10 +187,10 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run defrag"))
-        btn_run.connect("clicked", self.on_subprocess_run, ["ls", "-l"])
+        btn_run.connect("clicked", self.run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
-        self.add_content_to_dynamic_page(
+        self.add_content_to_fresh_page(
             title_page=gettext("Defragmentation"),
             description_page=gettext("Optimize partitions formatted with the BtrFS file system."),
             service_box=service_vbox,
@@ -216,7 +216,7 @@ class Sidebar:
         btn_run.set_child(btn_content_box)
         return btn_run
 
-    def add_content_to_dynamic_page(
+    def add_content_to_fresh_page(
         self,
         title_page: str,
         description_page: str,
