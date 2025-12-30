@@ -150,10 +150,13 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         )
         dialog.show(parent=self)
 
-    def show_spinner_dialog(self) -> None:
-        """Show the (progress bar) Spinner."""
+    def run_async_subprocess(self, command_str: str) -> None:
+        """Show the (progress bar) Spinner.
+
+        Starts a subprocess asynchronously.
+        """
         # Create and show the progress dialog
-        progress_dialog = SpinnerDialog(parent=self)
+        progress_dialog = SpinnerDialog(parent=self, command_str=command_str)
         # Start the long operation in a new thread
         thread = threading.Thread(target=progress_dialog.run_operation)
         thread.start()

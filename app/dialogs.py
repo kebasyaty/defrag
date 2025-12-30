@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 class SpinnerDialog(Gtk.Dialog):
     """Custom dialog with (progress bar) Spinner."""
 
-    def __init__(self, parent):  # noqa: D107
+    def __init__(self, parent, command_str: str):  # noqa: D107
         super().__init__(
             title=gettext("Operation started"),
             transient_for=parent,
@@ -25,6 +25,9 @@ class SpinnerDialog(Gtk.Dialog):
             deletable=False,
         )
         self.set_default_size(300, 100)
+
+        # Split the command string into a list of arguments
+        self.command_args = shlex.split(command_str)
 
         # Get the content area
         content_area = self.get_content_area()
@@ -68,7 +71,7 @@ class SpinnerDialog(Gtk.Dialog):
             # Close dialog
             self.destroy()
 
-    def run_operation(self, command_str: str) -> None:
+    def run_operation(self) -> None:
         """For start a operation in a separate thread."""
         app_window = self.get_parent()
         if app_window is None:
@@ -77,13 +80,11 @@ class SpinnerDialog(Gtk.Dialog):
             logger.error(err_msg)
             # Stop the (progress bar) Spinner
             self.destroy()
-        # Split the command string into a list of arguments
-        command_args = shlex.split(command_str)
         # Define flags to pipe stdout and stderr
         flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
         # Create the subprocess
         try:
-            process = Gio.Subprocess.new(command_args, flags)
+            process = Gio.Subprocess.new(self.command_args, flags)
 
             # Run synchronously, send optional input, get output
             # Returns a tuple: (success, stdout_buf, stderr_buf)
