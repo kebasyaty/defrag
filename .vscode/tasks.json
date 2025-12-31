@@ -94,21 +94,21 @@
       "label": "Babel: Run Update Translations",
       "type": "shell",
       "command": [
-        "uv run pybabel extract -o config/translations/messages.pot app;",
-        "uv run pybabel update -i config/translations/messages.pot -d config/translations"
+        "uv run pybabel extract -o defrag/config/translations/messages.pot app;",
+        "uv run pybabel update -i defrag/config/translations/messages.pot -d defrag/config/translations"
       ],
       "problemMatcher": []
     },
     {
       "label": "Babel: Run Compile Translations",
       "type": "shell",
-      "command": ["uv run pybabel compile -d config/translations"],
+      "command": ["uv run pybabel compile -d defrag/config/translations"],
       "problemMatcher": []
     },
     {
       "label": "UV: Run App",
       "type": "shell",
-      "command": ["uv run python main.py"],
+      "command": ["uv run python defrag/main.py"],
       "problemMatcher": []
     }
   ]
