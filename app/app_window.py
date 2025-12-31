@@ -159,7 +159,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         command_str: str,
         is_abort_btn: bool = True,
     ) -> None:
-        """Handler of button click for run subprocess.
+        """Handler of button click for run asynchronous subprocess.
 
         Uses the (progress bar) SpinnerDialog.
         """
