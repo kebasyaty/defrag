@@ -10,25 +10,23 @@
 #                                            6'     dP
 #                                            Ybmmmd'
 #
-#
 # Copyright (c) 2025 Gennady Kostyunin
-# Defrag is free software under terms of the GPL-3.0 License.
-# Repository https://github.com/kebasyaty/defrag
+# SPDX-License-Identifier: GPL-3.0-or-later
 #
-"""Application."""
+"""Defrag - HDD/SSD defragmentation with BTRFS file system."""
 
 from __future__ import annotations
 
-__all__ = ("Application",)
+__all__ = ("Defrag",)
 
 
 from gi.repository import Adw, GLib
 
-from app.app_window import ApplicationWindow
-from app.constants import APP_ID, APP_NAME
+from defrag.constants import APP_ID, APP_NAME
+from defrag.window import DefragWindow
 
 
-class Application(Adw.Application):
+class Defrag(Adw.Application):
     """HDD/SSD defragmentation with BTRFS file system."""
 
     def __init__(self) -> None:  # noqa: D107
@@ -38,10 +36,10 @@ class Application(Adw.Application):
             GLib.set_application_name(APP_NAME)
 
     def on_activate(self, app: Adw.Application) -> None:
-        """Create main window."""
+        """Create app window."""
         self.window = self.props.active_window
         if not self.window:
-            self.window = ApplicationWindow(
+            self.window = DefragWindow(
                 title=APP_NAME,
                 application=app,
                 default_width=640,

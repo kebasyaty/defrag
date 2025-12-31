@@ -1,8 +1,12 @@
+# Defrag - HDD/SSD defragmentation with BTRFS file system.
+# Copyright (c) 2025 Gennady Kostyunin
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 """Main application window."""
 
 from __future__ import annotations
 
-__all__ = ("ApplicationWindow",)
+__all__ = ("DefragWindow",)
 
 import logging
 import os
@@ -13,15 +17,13 @@ from typing import Any, Literal
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
-from app.dialogues import SpinnerDialog
-from app.fresh_page import FreshPage
-from app.sidebar import Sidebar
-from app.translator import gettext
-
-logger = logging.getLogger(__name__)
+from defrag.dialogues import SpinnerDialog
+from defrag.fresh_page import FreshPage
+from defrag.sidebar import Sidebar
+from defrag.translator import gettext
 
 
-class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
+class DefragWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
     """Main application window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
@@ -72,7 +74,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         FreshPage.__init__(self)
 
         # Render content for the Cleaning button
-        self.on_btn_cleaning(None)
+        self._on_sidebar_btn_cleaning(None)
 
     def check_installed_bleachbit(self) -> None:
         """Check if BleachBit is installed on the user's computer."""
@@ -97,7 +99,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
                 )
         except Exception as err:
             # Log the exception and traceback
-            logger.exception("Checking for BleachBit presence failed with an error")
+            logging.exception("Checking for BleachBit presence failed with an error.")
             # Raise a modal window with an error message
             self.sync_alert_dialog(
                 message=gettext("ERROR"),
@@ -130,7 +132,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
                     )
             except OSError:
                 # Log the exception and traceback
-                logger.exception("Mountpoint inaccessible")
+                logging.info("Info: Mountpoint inaccessible.")
                 # Handle cases where mountpoints might be inaccessible
                 continue
         self.BTRFS_PARTITIONS_LIST = partitions_list
@@ -153,7 +155,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         )
         dialog.show(parent=self)
 
-    def on_run_async_subprocess(
+    def _on_run_async_subprocess(
         self,
         widget: Any,
         command_str: str,

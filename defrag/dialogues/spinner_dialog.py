@@ -1,3 +1,7 @@
+# Defrag - HDD/SSD defragmentation with BTRFS file system.
+# Copyright (c) 2025 Gennady Kostyunin
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 """Custom dialog with (progress bar) Spinner."""
 
 from __future__ import annotations
@@ -10,9 +14,7 @@ import signal
 
 from gi.repository import Adw, Gio, GLib, Gtk
 
-from app.translator import gettext
-
-logger = logging.getLogger(__name__)
+from defrag.translator import gettext
 
 
 class SpinnerDialog(Gtk.Dialog):
@@ -78,7 +80,7 @@ class SpinnerDialog(Gtk.Dialog):
             # Stopping the process
             self.process.send_signal(signal.SIGTERM)
             # Log ERROR.
-            logger.info("Premature termination of a process by the user.")
+            logging.info("Premature termination of a process by the user.")
             # Add a message to information box of service
             self.app_window.result_info_textview.set_label(
                 gettext("Premature termination of a process by the user."),
@@ -108,7 +110,7 @@ class SpinnerDialog(Gtk.Dialog):
                 self.app_window.result_info_textview.set_label(stdout_buf)
             else:
                 # Log ERROR.
-                logger.error(stderr_buf)
+                logging.error(stderr_buf)
                 # Add a error message to information box of service
                 label_str = gettext("ERROR")
                 self.app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
@@ -117,7 +119,7 @@ class SpinnerDialog(Gtk.Dialog):
         except Exception as err:
             err_msg = "Subprocess ended with an error"
             # Log the exception and traceback
-            logger.exception(err_msg)
+            logging.exception(err_msg)
             # Add a error message to information box of service
             label_str = gettext("ERROR")
             self.app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
