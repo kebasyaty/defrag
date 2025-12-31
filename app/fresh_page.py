@@ -4,14 +4,10 @@ from __future__ import annotations
 
 __all__ = ("FreshPage",)
 
-import logging
-from typing import Any
 
-from gi.repository import Gio, Gtk
+from gi.repository import Gtk
 
 from app.translator import gettext
-
-logger = logging.getLogger(__name__)
 
 
 class FreshPage:
@@ -57,43 +53,62 @@ class FreshPage:
             del self.__dict__["result_info_textview"]
             del self.__dict__["display_result_info_vbox"]
 
-    def on_subprocess_exit(self, process: Gio.Subprocess, res: Any) -> None:
-        """Get result of main subprocess or error."""
-        # Read the output streams in the callback
-        stdout_stream, stderr_stream = process.get_stdout_pipe(), process.get_stderr_pipe()
-        # Reading from streams and converting to string result
-        exit_code = process.get_exit_status()
-        if exit_code == 0:
-            if stdout_stream is not None:
-                stdout_bytes = stdout_stream.read_bytes(1024, None)
-                result_bytes = stdout_bytes.get_data()
-                if result_bytes is not None:
-                    result_str = result_bytes.decode("utf-8")
-                    if len(result_str) == 0:
-                        result_str = gettext("The operation was completed successfully.")
-                    # Add a message to information box of service
-                    self.result_info_textview.set_label(result_str)
-        else:
-            if stderr_stream is not None:
-                stderr_bytes = stderr_stream.read_bytes(1024, None)
-                error__bytes = stderr_bytes.get_data()
-                if error__bytes is not None:
-                    error_str = error__bytes.decode("utf-8")
-                    # Log ERROR.
-                    logger.error(error_str)
-                    # Add a error message to information box of service
-                    label_str = gettext("ERROR")
-                    self.result_info_label.set_markup(f"<b>{label_str}:</b>")
-                    self.result_info_textview.set_label(error_str)
-        # Display the result of a subprocess
-        self.display_result_info_vbox.set_visible(True)
+    def create_btn_run(
+        self,
+        label: str,
+        icon_name: str = "system-run-symbolic",
+        is_sensitive: bool = True,
+    ) -> Gtk.Button:
+        """Create a start button for the service."""
+        btn_content_box = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL,
+            halign=Gtk.Align.START,
+            spacing=6,
+        )
+        btn_icon = Gtk.Image.new_from_icon_name(icon_name)
+        btn_label = Gtk.Label(label=label)
+        btn_content_box.append(btn_icon)
+        btn_content_box.append(btn_label)
+        btn_run = Gtk.Button(halign=Gtk.Align.START, sensitive=is_sensitive)
+        btn_run.set_child(btn_content_box)
+        return btn_run
 
-    def on_subprocess_run(self, widget: Any, command_args: list[str]) -> None:
-        """Starts a main subprocess asynchronously."""
-        # Flags for proper I/O handling
-        flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
-        # Create the subprocess
-        process = Gio.Subprocess.new(command_args, flags)
-        # Asynchronously watch for the process termination
-        # When it exits, the callback function will be triggered
-        process.wait_async(callback=self.on_subprocess_exit)
+    def add_content_to_fresh_page(
+        self,
+        title_page: str,
+        description_page: str,
+        service_box: Gtk.Box,
+    ) -> None:
+        """Add content to fresh page."""
+        # Remove all child elements in `fresh_page_vbox`
+        self.refreshing_page()
+        # Add Title of page
+        title_label = Gtk.Label(halign=Gtk.Align.START)
+        title_label.set_markup(f"<b>{title_page}</b>")
+        self.fresh_page_vbox.append(title_label)
+        # Add description of page
+        description_label = Gtk.Label(
+            label=description_page,
+            halign=Gtk.Align.START,
+            margin_top=12,
+        )
+        self.fresh_page_vbox.append(description_label)
+        # Add box for control of service
+        service_box.set_margin_top(12)
+        self.fresh_page_vbox.append(service_box)
+        # Add info box for display result
+        self.display_result_info_vbox = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=6,
+            margin_top=24,
+            visible=False,
+        )
+        # add Label to info box
+        self.result_info_label = Gtk.Label(halign=Gtk.Align.START)
+        label_str = gettext("INFO")
+        self.result_info_label.set_markup(f"<b>{label_str}:</b>")
+        self.display_result_info_vbox.append(self.result_info_label)
+        # add TextView (Label) to info box
+        self.result_info_textview = Gtk.Label(halign=Gtk.Align.START)
+        self.display_result_info_vbox.append(self.result_info_textview)
+        self.fresh_page_vbox.append(self.display_result_info_vbox)

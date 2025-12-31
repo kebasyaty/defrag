@@ -13,7 +13,7 @@ from typing import Any, Literal
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
-from app.dialogs import SpinnerDialog
+from app.dialogues import SpinnerDialog
 from app.fresh_page import FreshPage
 from app.sidebar import Sidebar
 from app.translator import gettext
@@ -153,16 +153,20 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         )
         dialog.show(parent=self)
 
-    def run_async_subprocess(
+    def on_run_async_subprocess(
         self,
         widget: Any,
         command_str: str,
         is_abort_btn: bool = True,
     ) -> None:
-        """Starts a subprocess asynchronously.
+        """Handler of button click for run subprocess.
 
-        Show the (progress bar) Spinner.
+        Uses the (progress bar) SpinnerDialog.
         """
+        # Clean a message to information box of service
+        self.result_info_textview.set_label("")
+        # Hide the information box with the result from the subprocess
+        self.display_result_info_vbox.set_visible(False)
         # Create and show the progress dialog
         progress_dialog = SpinnerDialog(
             parent=self,

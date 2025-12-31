@@ -1,4 +1,4 @@
-"""Custom Dialogs."""
+"""Custom dialog with (progress bar) Spinner."""
 
 from __future__ import annotations
 
@@ -85,7 +85,7 @@ class SpinnerDialog(Gtk.Dialog):
             )
             # Display the result of a subprocess
             self.app_window.display_result_info_vbox.set_visible(True)
-            # Close dialog
+            # Close dialog the (progress bar) SpinnerDialog
             self.destroy()
 
     def run_operation(self) -> None:
@@ -103,7 +103,7 @@ class SpinnerDialog(Gtk.Dialog):
             )
             if success:
                 if len(stdout_buf) == 0:
-                    stdout_buf = gettext("The operation was completed successfully.")
+                    stdout_buf = gettext("The operation is completed.")
                 # Add a message to information box of service
                 self.app_window.result_info_textview.set_label(stdout_buf)
             else:
@@ -125,5 +125,5 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Display the result of a subprocess
         self.app_window.display_result_info_vbox.set_visible(True)
-        # Close dialog the (progress bar) Spinner
+        # Close dialog the (progress bar) SpinnerDialog
         GLib.idle_add(self.destroy)

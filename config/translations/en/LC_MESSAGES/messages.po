@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-30 12:45+0200\n"
+"POT-Creation-Date: 2025-12-30 19:37+0200\n"
 "PO-Revision-Date: 2025-12-17 21:36+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,40 +18,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/app_window.py:91 app/app_window.py:100 app/dialogs.py:116
-#: app/dialogs.py:125 app/fresh_page.py:85
+#: app/app_window.py:94 app/app_window.py:103
+#: app/dialogues/spinner_dialog.py:113 app/dialogues/spinner_dialog.py:122
 msgid "ERROR"
 msgstr ""
 
-#: app/dialogs.py:23
-msgid "Operation started"
+#: app/fresh_page.py:108
+msgid "INFO"
 msgstr ""
 
-#: app/dialogs.py:36
-msgid "The main application window is unavailable."
-msgstr ""
-
-#: app/dialogs.py:49
-msgid "The process will take some time."
-msgstr ""
-
-#: app/dialogs.py:67
-msgid "Please wait..."
-msgstr ""
-
-#: app/dialogs.py:75
-msgid "Abort"
-msgstr ""
-
-#: app/dialogs.py:87
-msgid "Premature termination of a process by the user."
-msgstr ""
-
-#: app/dialogs.py:109 app/fresh_page.py:73
-msgid "The operation was completed successfully."
-msgstr ""
-
-#: app/sidebar.py:31 app/sidebar.py:123
+#: app/sidebar.py:31 app/sidebar.py:129
 msgid "Cleaning"
 msgstr ""
 
@@ -81,25 +57,25 @@ msgstr ""
 msgid "Run BleachBit as user"
 msgstr ""
 
-#: app/sidebar.py:112
+#: app/sidebar.py:117
 msgid "Run BleachBit as administrator"
 msgstr ""
 
-#: app/sidebar.py:125
+#: app/sidebar.py:131
 msgid ""
 "Free up disk space and maintain privacy.\n"
 "The BleachBit application is used for this task."
 msgstr ""
 
-#: app/sidebar.py:140
+#: app/sidebar.py:146
 msgid "Run check health"
 msgstr ""
 
-#: app/sidebar.py:145
+#: app/sidebar.py:151
 msgid "Checking the integrity of HDD|SSD"
 msgstr ""
 
-#: app/sidebar.py:147
+#: app/sidebar.py:153
 msgid ""
 "Integrity check of the Btrfs file system,\n"
 "which sequentially reads all data and metadata,\n"
@@ -111,31 +87,57 @@ msgid ""
 "especially in redundant configurations."
 msgstr ""
 
-#: app/sidebar.py:169
+#: app/sidebar.py:175
 msgid "Run analysis"
 msgstr ""
 
-#: app/sidebar.py:174
+#: app/sidebar.py:180
 msgid "Analysis a files fragmentation"
 msgstr ""
 
-#: app/sidebar.py:175
+#: app/sidebar.py:181
 msgid "Assess the overall state of file fragmentation."
 msgstr ""
 
-#: app/sidebar.py:189
+#: app/sidebar.py:195
 msgid "Run defrag"
 msgstr ""
 
-#: app/sidebar.py:194
+#: app/sidebar.py:200
 msgid "Defragmentation"
 msgstr ""
 
-#: app/sidebar.py:195
+#: app/sidebar.py:201
 msgid "Optimize partitions formatted with the BtrFS file system."
 msgstr ""
 
-#: app/sidebar.py:251
-msgid "INFO"
+#: app/dialogues/spinner_dialog.py:28
+msgid "Operation started"
 msgstr ""
+
+#: app/dialogues/spinner_dialog.py:46
+msgid "The process will take some time."
+msgstr ""
+
+#: app/dialogues/spinner_dialog.py:63
+msgid "Please wait..."
+msgstr ""
+
+#: app/dialogues/spinner_dialog.py:72
+msgid "Abort"
+msgstr ""
+
+#: app/dialogues/spinner_dialog.py:84
+msgid "Premature termination of a process by the user."
+msgstr ""
+
+#: app/dialogues/spinner_dialog.py:106
+msgid "The operation is completed."
+msgstr ""
+
+#~ msgid "The main application window is unavailable."
+#~ msgstr ""
+
+#~ msgid "The operation was completed successfully."
+#~ msgstr ""
 
