@@ -1,3 +1,7 @@
+# Defrag - HDD/SSD defragmentation with BTRFS file system.
+# Copyright (c) 2025 Gennady Kostyunin
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 """Left side of the application."""
 
 from __future__ import annotations
@@ -9,7 +13,7 @@ from typing import Any
 
 from gi.repository import Gtk
 
-from app.translator import gettext
+from defrag.translator import gettext
 
 
 class Sidebar:
@@ -32,7 +36,7 @@ class Sidebar:
         btn_cleaning_content_box.append(btn_cleaning_icon)
         btn_cleaning_content_box.append(btn_cleaning_label)
         self.btn_cleaning.set_child(btn_cleaning_content_box)
-        self.btn_cleaning.connect("clicked", self.on_btn_cleaning)
+        self.btn_cleaning.connect("clicked", self._on_sidebar_btn_cleaning)
         self.sidebar_vbox.append(self.btn_cleaning)
 
         # Create a Health button
@@ -43,7 +47,7 @@ class Sidebar:
         btn_health_content_box.append(btn_health_icon)
         btn_health_content_box.append(btn_health_label)
         self.btn_health.set_child(btn_health_content_box)
-        self.btn_health.connect("clicked", self.on_btn_health)
+        self.btn_health.connect("clicked", self._on_sidebar_btn_health)
         self.sidebar_vbox.append(self.btn_health)
 
         # Create a Analysis button
@@ -54,7 +58,7 @@ class Sidebar:
         btn_analysis_content_box.append(btn_analysis_icon)
         btn_analysis_content_box.append(btn_analysis_label)
         self.btn_analysis.set_child(btn_analysis_content_box)
-        self.btn_analysis.connect("clicked", self.on_btn_analysis)
+        self.btn_analysis.connect("clicked", self._on_sidebar_btn_analysis)
         self.sidebar_vbox.append(self.btn_analysis)
 
         # Create a Defrag button
@@ -65,10 +69,10 @@ class Sidebar:
         btn_defrag_content_box.append(btn_defrag_icon)
         btn_defrag_content_box.append(btn_defrag_label)
         self.btn_defrag.set_child(btn_defrag_content_box)
-        self.btn_defrag.connect("clicked", self.on_btn_defrag)
+        self.btn_defrag.connect("clicked", self._on_sidebar_btn_defrag)
         self.sidebar_vbox.append(self.btn_defrag)
 
-    def on_btn_cleaning(self, widget: Any) -> None:
+    def _on_sidebar_btn_cleaning(self, widget: Any) -> None:
         """Handler for a Cleaning button."""
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_cleaning.get_name())
@@ -107,7 +111,7 @@ class Sidebar:
         )
         btn_user_bleachbit_run.connect(
             "clicked",
-            self.on_run_async_subprocess,
+            self._on_run_async_subprocess,
             "bleachbit",
             False,
         )
@@ -119,7 +123,7 @@ class Sidebar:
         )
         btn_admin_bleachbit_run.connect(
             "clicked",
-            self.on_run_async_subprocess,
+            self._on_run_async_subprocess,
             f"{self.gui_as_root_command} bleachbit",
             False,
         )
@@ -133,7 +137,7 @@ class Sidebar:
             service_box=service_vbox,
         )
 
-    def on_btn_health(self, widget: Any) -> None:
+    def _on_sidebar_btn_health(self, widget: Any) -> None:
         """Handler for a Health button."""
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_health.get_name())
@@ -144,7 +148,7 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run check health"))
-        btn_run.connect("clicked", self.on_run_async_subprocess, "ls -l")
+        btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_fresh_page(
@@ -162,7 +166,7 @@ class Sidebar:
             service_box=service_vbox,
         )
 
-    def on_btn_analysis(self, widget: Any) -> None:
+    def _on_sidebar_btn_analysis(self, widget: Any) -> None:
         """Handler for a Analysis button."""
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_analysis.get_name())
@@ -173,7 +177,7 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run analysis"))
-        btn_run.connect("clicked", self.on_run_async_subprocess, "ls -l")
+        btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_fresh_page(
@@ -182,7 +186,7 @@ class Sidebar:
             service_box=service_vbox,
         )
 
-    def on_btn_defrag(self, widget: Any) -> None:
+    def _on_sidebar_btn_defrag(self, widget: Any) -> None:
         """Handler for a Defrag button."""
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_defrag.get_name())
@@ -193,7 +197,7 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run defrag"))
-        btn_run.connect("clicked", self.on_run_async_subprocess, "ls -l")
+        btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_fresh_page(

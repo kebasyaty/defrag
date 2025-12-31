@@ -1,3 +1,7 @@
+# Defrag - HDD/SSD defragmentation with BTRFS file system.
+# Copyright (c) 2025 Gennady Kostyunin
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 """Right side of the application."""
 
 from __future__ import annotations
@@ -7,7 +11,7 @@ __all__ = ("FreshPage",)
 
 from gi.repository import Gtk
 
-from app.translator import gettext
+from defrag.translator import gettext
 
 
 class FreshPage:

@@ -7,11 +7,7 @@ authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
 license = "GPL-3.0"
 license-files = ["LICENSE"]
 requires-python = ">=3.12,<4.0"
-dependencies = [
-    "babel>=2.17.0",
-    "psutil>=7.2.0",
-    "pygobject>=3.54.5",
-]
+dependencies = ["babel>=2.17.0", "psutil>=7.2.0", "pygobject>=3.54.5"]
 
 [tool.uv]
 package = false
@@ -23,17 +19,14 @@ dev = []
 lint = ["pre-commit>=4.5.0", "pyrefly>=0.46.0", "ruff>=0.14.6"]
 test = ["pytest>=9.0.1"]
 docs = []
-types = [
-    "pygobject-stubs>=2.14.0",
-    "types-psutil>=7.1.3.20251211",
-]
+types = ["pygobject-stubs>=2.14.0", "types-psutil>=7.1.3.20251211"]
 
 [tool.ruff]
 fix = true
 line-length = 120
 indent-width = 4
-src = ["main.py", "app", "tests"]
-include = ["*.py", "**/pyproject.toml", "app/**/*.py", "tests/**/*.py"]
+src = ["main.py", "defrag", "tests"]
+include = ["*.py", "**/pyproject.toml", "defrag/**/*.py", "tests/**/*.py"]
 exclude = [
     ".bzr",
     ".direnv",
@@ -143,8 +136,8 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.pyrefly]
-project-includes = ["*.py", "app", "tests"]
-search-path = ["main.py", "app", "tests"]
+project-includes = ["*.py", "defrag", "tests"]
+search-path = ["main.py", "defrag", "tests"]
 ignore-errors-in-generated-code = true
 untyped_def_behavior = "check-and-infer-return-any"
 
