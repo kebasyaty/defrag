@@ -85,7 +85,7 @@ class SpinnerDialog(Gtk.Dialog):
             )
             # Display the result of a subprocess
             self.app_window.display_result_info_vbox.set_visible(True)
-            # Close dialog the (progress bar) Spinner
+            # Close dialog the (progress bar) SpinnerDialog
             self.destroy()
 
     def run_operation(self) -> None:
@@ -125,5 +125,5 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Display the result of a subprocess
         self.app_window.display_result_info_vbox.set_visible(True)
-        # Close dialog the (progress bar) Spinner
+        # Close dialog the (progress bar) SpinnerDialog
         GLib.idle_add(self.destroy)

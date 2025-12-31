@@ -107,7 +107,7 @@ class Sidebar:
         )
         btn_user_bleachbit_run.connect(
             "clicked",
-            self.on_async_subprocess_run,
+            self.on_run_async_subprocess,
             "bleachbit",
             False,
         )
@@ -119,7 +119,7 @@ class Sidebar:
         )
         btn_admin_bleachbit_run.connect(
             "clicked",
-            self.on_async_subprocess_run,
+            self.on_run_async_subprocess,
             f"{self.gui_as_root_command} bleachbit",
             False,
         )
@@ -144,7 +144,7 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run check health"))
-        btn_run.connect("clicked", self.on_async_subprocess_run, "ls -l")
+        btn_run.connect("clicked", self.on_run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_fresh_page(
@@ -173,7 +173,7 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run analysis"))
-        btn_run.connect("clicked", self.on_async_subprocess_run, "ls -l")
+        btn_run.connect("clicked", self.on_run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_fresh_page(
@@ -193,7 +193,7 @@ class Sidebar:
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=gettext("Run defrag"))
-        btn_run.connect("clicked", self.on_async_subprocess_run, "ls -l")
+        btn_run.connect("clicked", self.on_run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_fresh_page(

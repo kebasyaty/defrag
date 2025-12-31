@@ -153,7 +153,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
         )
         dialog.show(parent=self)
 
-    def on_async_subprocess_run(
+    def on_run_async_subprocess(
         self,
         widget: Any,
         command_str: str,
@@ -161,7 +161,7 @@ class ApplicationWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
     ) -> None:
         """Handler of button click for run subprocess.
 
-        Uses the (progress bar) Spinner.
+        Uses the (progress bar) SpinnerDialog.
         """
         # Clean a message to information box of service
         self.result_info_textview.set_label("")
