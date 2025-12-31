@@ -86,7 +86,7 @@ class SpinnerDialog(Gtk.Dialog):
             # Display the result of a subprocess
             self.app_window.display_result_info_vbox.set_visible(True)
             # Close dialog the (progress bar) Spinner
-            GLib.idle_add(self.destroy)
+            self.destroy()
 
     def run_operation(self) -> None:
         """For start a operation in a separate thread."""
