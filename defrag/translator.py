@@ -27,10 +27,10 @@ def _get_current_locale() -> str:
     with contextlib.suppress(locale.Error):
         locale.setlocale(locale.LC_ALL, "")
     # Get language code
-    language_code = locale.getlocale()[0]
+    language_code: str | None = locale.getlocale()[0]
     # To get a simple two-letter language code (e.g., 'en', 'fr').
     # Normalize the code and extract the first two characters.
-    return locale.normalize(language_code).split("_")[0] if language_code else "en"
+    return locale.normalize(language_code).split("_")[0] if language_code is not None else "en"
 
 
 # Current operating system locale (By default = en)
