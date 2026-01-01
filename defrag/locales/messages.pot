@@ -1,81 +1,75 @@
-# English translations for PROJECT.
-# Copyright (C) 2025 ORGANIZATION
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-30 19:37+0200\n"
-"PO-Revision-Date: 2025-12-17 21:36+0200\n"
+"POT-Creation-Date: 2026-01-01 12:31+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: en\n"
-"Language-Team: en <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/app_window.py:94 app/app_window.py:103
-#: app/dialogues/spinner_dialog.py:113 app/dialogues/spinner_dialog.py:122
-msgid "ERROR"
-msgstr ""
-
-#: app/fresh_page.py:108
+#: defrag/fresh_page.py:112
 msgid "INFO"
 msgstr ""
 
-#: app/sidebar.py:31 app/sidebar.py:129
+#: defrag/sidebar.py:35 defrag/sidebar.py:133
 msgid "Cleaning"
 msgstr ""
 
-#: app/sidebar.py:42
+#: defrag/sidebar.py:46
 msgid "Health"
 msgstr ""
 
-#: app/sidebar.py:53
+#: defrag/sidebar.py:57
 msgid "Analysis"
 msgstr ""
 
-#: app/sidebar.py:64
+#: defrag/sidebar.py:68
 msgid "Defrag"
 msgstr ""
 
-#: app/sidebar.py:77
+#: defrag/sidebar.py:81
 msgid ""
 "To clean the system,\n"
 "you need to install the BleachBit application."
 msgstr ""
 
-#: app/sidebar.py:93
+#: defrag/sidebar.py:97
 msgid "Warning"
 msgstr ""
 
-#: app/sidebar.py:105
+#: defrag/sidebar.py:109
 msgid "Run BleachBit as user"
 msgstr ""
 
-#: app/sidebar.py:117
+#: defrag/sidebar.py:121
 msgid "Run BleachBit as administrator"
 msgstr ""
 
-#: app/sidebar.py:131
+#: defrag/sidebar.py:135
 msgid ""
 "Free up disk space and maintain privacy.\n"
 "The BleachBit application is used for this task."
 msgstr ""
 
-#: app/sidebar.py:146
+#: defrag/sidebar.py:150
 msgid "Run check health"
 msgstr ""
 
-#: app/sidebar.py:151
+#: defrag/sidebar.py:155
 msgid "Checking the integrity of HDD|SSD"
 msgstr ""
 
-#: app/sidebar.py:153
+#: defrag/sidebar.py:157
 msgid ""
 "Integrity check of the Btrfs file system,\n"
 "which sequentially reads all data and metadata,\n"
@@ -87,57 +81,57 @@ msgid ""
 "especially in redundant configurations."
 msgstr ""
 
-#: app/sidebar.py:175
+#: defrag/sidebar.py:179
 msgid "Run analysis"
 msgstr ""
 
-#: app/sidebar.py:180
+#: defrag/sidebar.py:184
 msgid "Analysis a files fragmentation"
 msgstr ""
 
-#: app/sidebar.py:181
+#: defrag/sidebar.py:185
 msgid "Assess the overall state of file fragmentation."
 msgstr ""
 
-#: app/sidebar.py:195
+#: defrag/sidebar.py:199
 msgid "Run defrag"
 msgstr ""
 
-#: app/sidebar.py:200
+#: defrag/sidebar.py:204
 msgid "Defragmentation"
 msgstr ""
 
-#: app/sidebar.py:201
+#: defrag/sidebar.py:205
 msgid "Optimize partitions formatted with the BtrFS file system."
 msgstr ""
 
-#: app/dialogues/spinner_dialog.py:28
+#: defrag/dialogues/spinner_dialog.py:115
+#: defrag/dialogues/spinner_dialog.py:124 defrag/window.py:96
+#: defrag/window.py:105
+msgid "ERROR"
+msgstr ""
+
+#: defrag/dialogues/spinner_dialog.py:30
 msgid "Operation started"
 msgstr ""
 
-#: app/dialogues/spinner_dialog.py:46
+#: defrag/dialogues/spinner_dialog.py:48
 msgid "The process will take some time."
 msgstr ""
 
-#: app/dialogues/spinner_dialog.py:63
+#: defrag/dialogues/spinner_dialog.py:65
 msgid "Please wait..."
 msgstr ""
 
-#: app/dialogues/spinner_dialog.py:72
+#: defrag/dialogues/spinner_dialog.py:74
 msgid "Abort"
 msgstr ""
 
-#: app/dialogues/spinner_dialog.py:84
+#: defrag/dialogues/spinner_dialog.py:86
 msgid "Premature termination of a process by the user."
 msgstr ""
 
-#: app/dialogues/spinner_dialog.py:106
+#: defrag/dialogues/spinner_dialog.py:108
 msgid "The operation is completed."
 msgstr ""
-
-#~ msgid "The main application window is unavailable."
-#~ msgstr ""
-
-#~ msgid "The operation was completed successfully."
-#~ msgstr ""
 

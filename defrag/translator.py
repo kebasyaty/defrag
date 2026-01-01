@@ -7,13 +7,19 @@
 from __future__ import annotations
 
 __all__ = (
-    "gettext",
+    "_",
     "ngettext",
 )
 
 import contextlib
-import gettext as _gettext
+import gettext
 import locale
+from pathlib import Path
+
+# Define the translation domain
+APP_DOMAIN = "messages"
+# Define the directory where locale files will be stored
+LOCALE_DIR = Path(__file__).parent / "locales"
 
 
 def _get_current_locale() -> str:
@@ -31,15 +37,16 @@ def _get_current_locale() -> str:
 
 
 # Current operating system locale (By default = en)
-DEFAULT_LOCALE: str = _get_current_locale()
+CURRENT_LOCALE: str = _get_current_locale()
 
-TRANSLATOR: _gettext.NullTranslations = _gettext.translation(
-    domain="messages",
-    localedir="config/translations",
-    languages=[DEFAULT_LOCALE],
+TRANSLATOR: gettext.NullTranslations = gettext.translation(
+    domain=APP_DOMAIN,
+    localedir=LOCALE_DIR,
+    languages=[CURRENT_LOCALE],
     class_=None,
     fallback=True,
 )
 
-gettext = TRANSLATOR.gettext
+# Alias the gettext function for convenience
+_ = TRANSLATOR.gettext
 ngettext = TRANSLATOR.ngettext
