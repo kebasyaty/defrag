@@ -6,10 +6,7 @@
 
 from __future__ import annotations
 
-__all__ = (
-    "_",
-    "ngettext",
-)
+__all__ = ("_",)
 
 import contextlib
 import gettext
@@ -49,4 +46,3 @@ TRANSLATOR: gettext.NullTranslations = gettext.translation(
 
 # Alias the gettext function for convenience
 _ = TRANSLATOR.gettext
-ngettext = TRANSLATOR.ngettext
