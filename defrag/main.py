@@ -6,6 +6,8 @@
 
 from __future__ import annotations
 
+__all__ = ("main",)
+
 import logging
 
 import gi
@@ -19,17 +21,11 @@ except Exception:
     logging.exception("Error: GObject dependencies not met.")
     exit()
 
-import sys
 
 from defrag import Defrag
 
 
-def main() -> None:
+def main() -> int:
     """Run the application `Defrag`."""
     app = Defrag()
-    exit_status = app.run(None)
-    sys.exit(exit_status)
-
-
-if __name__ == "__main__":
-    main()
+    return app.run(None)
