@@ -6,14 +6,17 @@
 
 from __future__ import annotations
 
-__all__ = (
-    "gettext",
-    "ngettext",
-)
+__all__ = ("_",)
 
 import contextlib
-import gettext as _gettext
+import gettext
 import locale
+from pathlib import Path
+
+# Define the translation domain
+APP_DOMAIN: str = "messages"
+# Define the directory where locale files will be stored
+LOCALE_DIR: Path = Path(__file__).parent / "locales"
 
 
 def _get_current_locale() -> str:
@@ -24,22 +27,22 @@ def _get_current_locale() -> str:
     with contextlib.suppress(locale.Error):
         locale.setlocale(locale.LC_ALL, "")
     # Get language code
-    language_code = locale.getlocale()[0]
+    language_code: str | None = locale.getlocale()[0]
     # To get a simple two-letter language code (e.g., 'en', 'fr').
     # Normalize the code and extract the first two characters.
-    return locale.normalize(language_code).split("_")[0] if language_code else "en"
+    return locale.normalize(language_code).split("_")[0] if language_code is not None else "en"
 
 
 # Current operating system locale (By default = en)
-DEFAULT_LOCALE: str = _get_current_locale()
+CURRENT_LOCALE: str = _get_current_locale()
 
-TRANSLATOR: _gettext.NullTranslations = _gettext.translation(
-    domain="messages",
-    localedir="config/translations",
-    languages=[DEFAULT_LOCALE],
+TRANSLATOR: gettext.NullTranslations = gettext.translation(
+    domain=APP_DOMAIN,
+    localedir=LOCALE_DIR,
+    languages=[CURRENT_LOCALE],
     class_=None,
     fallback=True,
 )
 
-gettext = TRANSLATOR.gettext
-ngettext = TRANSLATOR.ngettext
+# Alias the gettext function for convenience
+_ = TRANSLATOR.gettext

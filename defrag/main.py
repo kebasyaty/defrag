@@ -6,30 +6,13 @@
 
 from __future__ import annotations
 
-import logging
+__all__ = ("main",)
 
-import gi
-
-try:
-    gi.require_version("Adw", "1")
-    gi.require_version("Gio", "2.0")
-    gi.require_version("GLib", "2.0")
-    gi.require_version("Gtk", "4.0")
-except Exception:
-    logging.exception("Error: GObject dependencies not met.")
-    exit()
-
-import sys
 
 from defrag import Defrag
 
 
-def main() -> None:
+def main() -> int:
     """Run the application `Defrag`."""
     app = Defrag()
-    exit_status = app.run(None)
-    sys.exit(exit_status)
-
-
-if __name__ == "__main__":
-    main()
+    return app.run(None)

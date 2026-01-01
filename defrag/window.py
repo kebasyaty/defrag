@@ -20,7 +20,7 @@ from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSo
 from defrag.dialogues import SpinnerDialog
 from defrag.fresh_page import FreshPage
 from defrag.sidebar import Sidebar
-from defrag.translator import gettext
+from defrag.translator import _
 
 
 class DefragWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
@@ -93,7 +93,7 @@ class DefragWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
             else:
                 # Raise a modal window with an error message
                 self.sync_alert_dialog(
-                    message=gettext("ERROR"),
+                    message=_("ERROR"),
                     detail=stderr_buf,
                     buttons=["Cancel"],
                 )
@@ -102,7 +102,7 @@ class DefragWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
             logging.exception("Checking for BleachBit presence failed with an error.")
             # Raise a modal window with an error message
             self.sync_alert_dialog(
-                message=gettext("ERROR"),
+                message=_("ERROR"),
                 detail=str(err),
                 buttons=["Cancel"],
             )

@@ -11,7 +11,7 @@ __all__ = ("FreshPage",)
 
 from gi.repository import Gtk
 
-from defrag.translator import gettext
+from defrag.translator import _
 
 
 class FreshPage:
@@ -109,7 +109,7 @@ class FreshPage:
         )
         # add Label to info box
         self.result_info_label = Gtk.Label(halign=Gtk.Align.START)
-        label_str = gettext("INFO")
+        label_str = _("INFO")
         self.result_info_label.set_markup(f"<b>{label_str}:</b>")
         self.display_result_info_vbox.append(self.result_info_label)
         # add TextView (Label) to info box

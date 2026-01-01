@@ -14,7 +14,7 @@ import signal
 
 from gi.repository import Adw, Gio, GLib, Gtk
 
-from defrag.translator import gettext
+from defrag.translator import _
 
 
 class SpinnerDialog(Gtk.Dialog):
@@ -27,7 +27,7 @@ class SpinnerDialog(Gtk.Dialog):
         is_abort_btn: bool = True,
     ):
         super().__init__(
-            title=gettext("Operation started"),
+            title=_("Operation started"),
             transient_for=parent,
             modal=True,
             deletable=False,
@@ -45,7 +45,7 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Add a top label
         self.top_label = Gtk.Label(
-            label=gettext("The process will take some time."),
+            label=_("The process will take some time."),
             halign=Gtk.Align.CENTER,
             margin_top=24,
         )
@@ -62,7 +62,7 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Add a bottom label
         self.bottom_label = Gtk.Label(
-            label=gettext("Please wait..."),
+            label=_("Please wait..."),
             halign=Gtk.Align.CENTER,
             margin_top=24,
             margin_bottom=24,
@@ -71,7 +71,7 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Add an "Abort" button
         if is_abort_btn:
-            self.add_button(gettext("Abort"), Gtk.ResponseType.CANCEL)
+            self.add_button(_("Abort"), Gtk.ResponseType.CANCEL)
             self.connect("response", self.on_response)
 
     def on_response(self, dialog, response) -> None:
@@ -83,7 +83,7 @@ class SpinnerDialog(Gtk.Dialog):
             logging.info("Premature termination of a process by the user.")
             # Add a message to information box of service
             self.app_window.result_info_textview.set_label(
-                gettext("Premature termination of a process by the user."),
+                _("Premature termination of a process by the user."),
             )
             # Display the result of a subprocess
             self.app_window.display_result_info_vbox.set_visible(True)
@@ -105,14 +105,14 @@ class SpinnerDialog(Gtk.Dialog):
             )
             if success:
                 if len(stdout_buf) == 0:
-                    stdout_buf = gettext("The operation is completed.")
+                    stdout_buf = _("The operation is completed.")
                 # Add a message to information box of service
                 self.app_window.result_info_textview.set_label(stdout_buf)
             else:
                 # Log ERROR.
                 logging.error(stderr_buf)
                 # Add a error message to information box of service
-                label_str = gettext("ERROR")
+                label_str = _("ERROR")
                 self.app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
                 self.app_window.result_info_textview.set_label(stderr_buf)
 
@@ -121,7 +121,7 @@ class SpinnerDialog(Gtk.Dialog):
             # Log the exception and traceback
             logging.exception(err_msg)
             # Add a error message to information box of service
-            label_str = gettext("ERROR")
+            label_str = _("ERROR")
             self.app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
             self.app_window.result_info_textview.set_label(f"{err_msg}:\n{err}")
 
