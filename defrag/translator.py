@@ -14,9 +14,9 @@ import locale
 from pathlib import Path
 
 # Define the translation domain
-APP_DOMAIN = "messages"
+APP_DOMAIN: str = "messages"
 # Define the directory where locale files will be stored
-LOCALE_DIR = Path(__file__).parent / "locales"
+LOCALE_DIR: Path = Path(__file__).parent / "locales"
 
 
 def _get_current_locale() -> str:
