@@ -34,7 +34,7 @@ except Exception:
 
 from gi.repository import Adw, GLib
 
-from defrag.constants import APP_ID, APP_NAME
+from defrag.config import APP_ID, APP_NAME
 from defrag.window import DefragWindow
 
 
