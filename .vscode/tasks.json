@@ -108,7 +108,7 @@
     {
       "label": "UV: Run App",
       "type": "shell",
-      "command": ["m4 defrag/defrag.in | uv run python $1"],
+      "command": ["m4 defrag/defrag.m4 | uv run python $1"],
       "problemMatcher": []
     }
   ]
