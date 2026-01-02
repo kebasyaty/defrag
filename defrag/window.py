@@ -17,13 +17,13 @@ from typing import Any, Literal
 import psutil
 from gi.repository import Adw, Gio, Gtk  # pyright: ignore[reportMissingModuleSource]
 
+from defrag.blank_page import BlankPage
 from defrag.dialogues import SpinnerDialog
-from defrag.fresh_page import FreshPage
 from defrag.sidebar import Sidebar
 from defrag.translator import _
 
 
-class DefragWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
+class DefragWindow(Adw.ApplicationWindow, Sidebar, BlankPage):
     """Main application window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
@@ -71,7 +71,7 @@ class DefragWindow(Adw.ApplicationWindow, Sidebar, FreshPage):
 
         # Init mixins
         Sidebar.__init__(self)
-        FreshPage.__init__(self)
+        BlankPage.__init__(self)
 
         # Render content for the Cleaning button
         self._on_sidebar_btn_cleaning(None)
