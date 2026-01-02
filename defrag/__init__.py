@@ -34,7 +34,12 @@ except Exception:
 
 from gi.repository import Adw, GLib
 
-from defrag.config import APP_ID, APP_NAME
+from defrag.config import (
+    APP_ID,
+    APP_NAME,
+    WINDOW_DEFAULT_HEIGHT,
+    WINDOW_DEFAULT_WIDTH,
+)
 from defrag.window import DefragWindow
 
 
@@ -54,7 +59,7 @@ class Defrag(Adw.Application):
             self.window = DefragWindow(
                 title=APP_NAME,
                 application=app,
-                default_width=640,
-                default_height=480,
+                default_width=WINDOW_DEFAULT_WIDTH,
+                default_height=WINDOW_DEFAULT_HEIGHT,
             )
         self.window.present()

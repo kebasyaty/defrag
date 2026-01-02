@@ -8,6 +8,8 @@ List of variables:
 
 - `APP_NAME` - Application name.
 - `APP_ID` - Application ID.
+- `WINDOW_DEFAULT_WIDTH` - Default application window width.
+- `WINDOW_DEFAULT_HEIGHT` - WINDOW_DEFAULT_HEIGHT.
 """
 
 from __future__ import annotations
@@ -22,3 +24,7 @@ __all__ = (
 APP_NAME: str = "Defrag"
 # Application ID
 APP_ID: str = "com.example.Defrag"
+# Default application window width
+WINDOW_DEFAULT_WIDTH: int = 640
+# Default application window height
+WINDOW_DEFAULT_HEIGHT: int = 480
