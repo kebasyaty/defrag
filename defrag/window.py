@@ -8,7 +8,8 @@ from __future__ import annotations
 
 __all__ = ("DefragWindow",)
 
-
+import os
+import shlex
 import threading
 from typing import Any, Literal
 
@@ -33,6 +34,16 @@ class DefragWindow(
 
         # Init mixin
         WinToolsMixin.__init__(self)
+
+        # Create command for run gui applications as administrator
+        self.gui_as_root_command: str = shlex.join(
+            ["pkexec", "env"]
+            + [
+                f"{key}={value}"
+                for key, value in os.environ.copy().items()
+                if key in ["WAYLAND_DISPLAY", "XDG_RUNTIME_DIR", "DISPLAY", "XAUTHORITY"]
+            ],
+        )
 
         # Create the main box
         self.main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)

@@ -9,7 +9,6 @@ from __future__ import annotations
 __all__ = ("WinToolsMixin",)
 
 import logging
-import os
 import shlex
 
 import psutil
@@ -29,16 +28,6 @@ class WinToolsMixin:
         # List of all disk partitions and their details
         self.BTRFS_PARTITIONS_LIST: list[dict[str, str | float]] = []
         self.update_info_btrfs_partitions()
-
-        # Create command for run gui applications as administrator
-        self.gui_as_root_command: str = shlex.join(
-            ["pkexec", "env"]
-            + [
-                f"{key}={value}"
-                for key, value in os.environ.copy().items()
-                if key in ["WAYLAND_DISPLAY", "XDG_RUNTIME_DIR", "DISPLAY", "XAUTHORITY"]
-            ],
-        )
 
     def check_installed_bleachbit(self) -> None:
         """Check if BleachBit is installed on the user's computer."""
