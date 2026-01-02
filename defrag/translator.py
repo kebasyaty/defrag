@@ -11,12 +11,8 @@ __all__ = ("_",)
 import contextlib
 import gettext
 import locale
-from pathlib import Path
 
-# Define the translation domain
-APP_DOMAIN: str = "messages"
-# Define the directory where locale files will be stored
-LOCALE_DIR: Path = Path(__file__).parent / "locales"
+from defrag import config
 
 
 def _get_current_locale() -> str:
@@ -33,16 +29,15 @@ def _get_current_locale() -> str:
     return locale.normalize(language_code).split("_")[0] if language_code is not None else "en"
 
 
-# Current operating system locale (By default = en)
-CURRENT_LOCALE: str = _get_current_locale()
+config.CURRENT_LOCALE = _get_current_locale()
 
-TRANSLATOR: gettext.NullTranslations = gettext.translation(
-    domain=APP_DOMAIN,
-    localedir=LOCALE_DIR,
-    languages=[CURRENT_LOCALE],
+_TRANSLATOR: gettext.NullTranslations = gettext.translation(
+    domain=config.APP_DOMAIN,
+    localedir=config.LOCALE_DIR,
+    languages=[config.CURRENT_LOCALE],
     class_=None,
     fallback=True,
 )
 
 # Alias the gettext function for convenience
-_ = TRANSLATOR.gettext
+_ = _TRANSLATOR.gettext
