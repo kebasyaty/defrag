@@ -6,6 +6,8 @@
 
 from __future__ import annotations
 
+__all__ = ("WinToolsMixin",)
+
 import logging
 import os
 import shlex
