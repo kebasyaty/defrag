@@ -28,7 +28,8 @@ jobs:
       - name: Install system dependencies (macOS)
         if: runner.os == 'macOS'
         run: |
-          brew install pkg-config gtk4
+          brew install pkg-config gtk4 gettext
+          brew link gettext --force
 
       - uses: astral-sh/setup-uv@v6
         with:
