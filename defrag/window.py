@@ -23,9 +23,9 @@ from defrag.utils import WinToolsMixin
 
 class DefragWindow(
     Adw.ApplicationWindow,
+    WinToolsMixin,
     Sidebar,
     BlankPage,
-    WinToolsMixin,
 ):
     """Main application window."""
 
