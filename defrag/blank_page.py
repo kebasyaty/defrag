@@ -109,6 +109,7 @@ class BlankPage:
         )
         self.result_info_textview = Gtk.Label(
             halign=Gtk.Align.START,
+            valign=Gtk.Align.START,
             wrap=True,
             justify=Gtk.Justification.LEFT,
             selectable=True,
