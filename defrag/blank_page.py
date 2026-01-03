@@ -101,6 +101,18 @@ class BlankPage:
         self.result_info_label.set_markup(f"<b>{label_str}:</b>")
         self.display_result_info_vbox.append(self.result_info_label)
         # add TextView (Label) to info box
-        self.result_info_textview = Gtk.Label(halign=Gtk.Align.START)
-        self.display_result_info_vbox.append(self.result_info_textview)
+        scrolled_window = Gtk.ScrolledWindow(
+            hexpand=True,
+            vexpand=True,
+            hscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
+            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
+        )
+        self.result_info_textview = Gtk.Label(
+            halign=Gtk.Align.START,
+            wrap=True,
+            justify=Gtk.Justification.LEFT,
+            selectable=True,
+        )
+        scrolled_window.set_child(self.result_info_textview)
+        self.display_result_info_vbox.append(scrolled_window)
         self.blank_page_vbox.append(self.display_result_info_vbox)
