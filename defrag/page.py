@@ -17,7 +17,7 @@ from defrag.translator import _
 class Page:
     """An area with dynamically updated content.
 
-    Located to the left of the sidebar.
+    Located to the right of the sidebar.
     """
 
     def __init__(self) -> None:  # noqa: D107
