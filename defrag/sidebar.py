@@ -140,8 +140,8 @@ class Sidebar:
             False,
         )
         service_vbox.append(btn_admin_bleachbit_run)
-        # Add content to `blank_page_vbox`
-        self.add_content_to_blank_page(
+        # Add content to `page_vbox`
+        self.add_content_to_page(
             title_page=_("Cleaning"),
             description_page=_(
                 "Free up disk space and maintain privacy.\n" + "The BleachBit application is used for this task.",
@@ -163,7 +163,7 @@ class Sidebar:
         btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
-        self.add_content_to_blank_page(
+        self.add_content_to_page(
             title_page=_("Checking the integrity of HDD|SSD"),
             description_page=_(
                 "Integrity check of the Btrfs file system,\n"
@@ -192,7 +192,7 @@ class Sidebar:
         btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
-        self.add_content_to_blank_page(
+        self.add_content_to_page(
             title_page=_("Analysis a files fragmentation"),
             description_page=_("Assess the overall state of file fragmentation."),
             service_box=service_vbox,
@@ -212,7 +212,7 @@ class Sidebar:
         btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
         service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
-        self.add_content_to_blank_page(
+        self.add_content_to_page(
             title_page=_("Defragmentation"),
             description_page=_("Optimize partitions formatted with the BtrFS file system."),
             service_box=service_vbox,

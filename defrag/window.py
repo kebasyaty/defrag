@@ -15,8 +15,8 @@ from typing import Any, Literal
 
 from gi.repository import Adw, Gtk  # pyright: ignore[reportMissingModuleSource]
 
-from defrag.blank_page import BlankPage
 from defrag.dialogues import SpinnerDialog
+from defrag.page import Page
 from defrag.sidebar import Sidebar
 from defrag.utils import WinToolsMixin
 
@@ -25,7 +25,7 @@ class DefragWindow(
     Adw.ApplicationWindow,
     WinToolsMixin,
     Sidebar,
-    BlankPage,
+    Page,
 ):
     """Main application window."""
 
@@ -69,7 +69,7 @@ class DefragWindow(
 
         # Init mixins
         Sidebar.__init__(self)
-        BlankPage.__init__(self)
+        Page.__init__(self)
 
         # Render content for the Cleaning button
         self._on_sidebar_btn_cleaning(None)
