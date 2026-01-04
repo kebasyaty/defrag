@@ -6,7 +6,7 @@
 
 from __future__ import annotations
 
-__all__ = ("BlankPage",)
+__all__ = ("Page",)
 
 
 from gi.repository import Gtk
@@ -14,23 +14,23 @@ from gi.repository import Gtk
 from defrag.translator import _
 
 
-class BlankPage:
+class Page:
     """An area with dynamically updated content.
 
-    Located to the left of the sidebar.
+    Located to the right of the sidebar.
     """
 
     def __init__(self) -> None:  # noqa: D107
         # Create a page for dynamic content
-        self.blank_page_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.blank_page_vbox.set_margin_start(30)
-        self.blank_page_vbox.set_hexpand(True)
-        self.content_hbox.append(self.blank_page_vbox)
+        self.page_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.page_vbox.set_margin_start(30)
+        self.page_vbox.set_hexpand(True)
+        self.content_hbox.append(self.page_vbox)
 
-    def refreshing_page(self) -> None:
-        """Remove all child elements in `blank_page_vbox`."""
+    def clear_page(self) -> None:
+        """Remove all child elements in `page_vbox`."""
         # Observe the children of `fresh_page_vbox`
-        children_model = self.blank_page_vbox.observe_children()
+        children_model = self.page_vbox.observe_children()
         # Iterate through the children of `fresh_page_vbox`
         child_list: list[Gtk.Widget] = []
         for idx in range(children_model.get_n_items()):
@@ -38,7 +38,7 @@ class BlankPage:
             if isinstance(child, Gtk.Widget):
                 child_list.append(child)
         for child in child_list:
-            self.blank_page_vbox.remove(child)
+            self.page_vbox.remove(child)
         # Additionally remove the following keys
         if len(child_list) > 0:
             del self.__dict__["result_info_label"]
@@ -65,29 +65,29 @@ class BlankPage:
         btn_run.set_child(btn_content_box)
         return btn_run
 
-    def add_content_to_blank_page(
+    def add_content_to_page(
         self,
         title_page: str,
         description_page: str,
         service_box: Gtk.Box,
     ) -> None:
         """Add content to blank page."""
-        # Remove all child elements in `blank_page_vbox`
-        self.refreshing_page()
+        # Remove all child elements in `page_vbox`
+        self.clear_page()
         # Add Title of page
         title_label = Gtk.Label(halign=Gtk.Align.START)
         title_label.set_markup(f"<b>{title_page}</b>")
-        self.blank_page_vbox.append(title_label)
+        self.page_vbox.append(title_label)
         # Add description of page
         description_label = Gtk.Label(
             label=description_page,
             halign=Gtk.Align.START,
             margin_top=12,
         )
-        self.blank_page_vbox.append(description_label)
+        self.page_vbox.append(description_label)
         # Add box for control of service
         service_box.set_margin_top(12)
-        self.blank_page_vbox.append(service_box)
+        self.page_vbox.append(service_box)
         # Add info box for display result
         self.display_result_info_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
@@ -101,6 +101,19 @@ class BlankPage:
         self.result_info_label.set_markup(f"<b>{label_str}:</b>")
         self.display_result_info_vbox.append(self.result_info_label)
         # add TextView (Label) to info box
-        self.result_info_textview = Gtk.Label(halign=Gtk.Align.START)
-        self.display_result_info_vbox.append(self.result_info_textview)
-        self.blank_page_vbox.append(self.display_result_info_vbox)
+        scrolled_window = Gtk.ScrolledWindow(
+            hexpand=True,
+            vexpand=True,
+            hscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
+            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
+        )
+        self.result_info_textview = Gtk.Label(
+            halign=Gtk.Align.START,
+            valign=Gtk.Align.START,
+            wrap=True,
+            justify=Gtk.Justification.LEFT,
+            selectable=True,
+        )
+        scrolled_window.set_child(self.result_info_textview)
+        self.display_result_info_vbox.append(scrolled_window)
+        self.page_vbox.append(self.display_result_info_vbox)
