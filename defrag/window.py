@@ -51,21 +51,22 @@ class DefragWindow(
         self.set_content(self.main_vbox)  # Set the box as the main child of the window
 
         # Create the header box
-        self.header_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        self.header_hbox.set_hexpand(True)
-        self.header = Adw.HeaderBar()
-        self.header.set_hexpand(True)
-        self.header_hbox.append(self.header)
-        self.main_vbox.append(self.header_hbox)
+        self.main_header_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.main_header_hbox.set_hexpand(True)
+        self.main_header_bar = Adw.HeaderBar(hexpand=True)
+        self.main_header_hbox.append(self.main_header_bar)
+        self.main_vbox.append(self.main_header_hbox)
 
         # Create the content box
-        self.content_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        self.content_hbox.set_margin_top(12)
-        self.content_hbox.set_margin_start(12)
-        self.content_hbox.set_margin_end(12)
-        self.content_hbox.set_margin_bottom(12)
-        self.content_hbox.set_hexpand(True)
-        self.main_vbox.append(self.content_hbox)
+        self.main_content_hbox = Gtk.Box(
+            orientation=Gtk.Orientation.HORIZONTAL,
+            spacing=6,
+            margin_top=12,
+            margin_start=12,
+            margin_bottom=12,
+            hexpand=True,
+        )
+        self.main_vbox.append(self.main_content_hbox)
 
         # Init mixins
         Sidebar.__init__(self)
@@ -103,9 +104,9 @@ class DefragWindow(
         Uses the (progress bar) SpinnerDialog.
         """
         # Clean a message to information box of service
-        self.result_info_textview.set_label("")
+        self.page_info_textview.set_label("")
         # Hide the information box with the result from the subprocess
-        self.display_result_info_vbox.set_visible(False)
+        self.page_info_vbox.set_visible(False)
         # Create and show the progress dialog
         progress_dialog = SpinnerDialog(
             parent=self,

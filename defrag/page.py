@@ -25,7 +25,7 @@ class Page:
         self.page_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.page_vbox.set_margin_start(30)
         self.page_vbox.set_hexpand(True)
-        self.content_hbox.append(self.page_vbox)
+        self.main_content_hbox.append(self.page_vbox)
 
     def clear_page(self) -> None:
         """Remove all child elements in `page_vbox`."""
