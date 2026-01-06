@@ -82,11 +82,11 @@ class SpinnerDialog(Gtk.Dialog):
             # Log ERROR.
             logging.info("Premature termination of a process by the user.")
             # Add a message to information box of service
-            self.app_window.result_info_textview.set_label(
+            self.app_window.page_info_textview.set_label(
                 _("Premature termination of a process by the user."),
             )
             # Display the result of a subprocess
-            self.app_window.display_result_info_vbox.set_visible(True)
+            self.app_window.page_info_vbox.set_visible(True)
             # Close dialog the (progress bar) SpinnerDialog
             self.destroy()
 
@@ -107,14 +107,14 @@ class SpinnerDialog(Gtk.Dialog):
                 if len(stdout_buf) == 0:
                     stdout_buf = _("The operation is completed.")
                 # Add a message to information box of service
-                self.app_window.result_info_textview.set_label(stdout_buf)
+                self.app_window.page_info_textview.set_label(stdout_buf)
             else:
                 # Log ERROR.
                 logging.error(stderr_buf)
                 # Add a error message to information box of service
                 label_str = _("ERROR")
-                self.app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
-                self.app_window.result_info_textview.set_label(stderr_buf)
+                self.app_window.page_info_label.set_markup(f"<b>{label_str}:</b>")
+                self.app_window.page_info_textview.set_label(stderr_buf)
 
         except Exception as err:
             err_msg = "Subprocess ended with an error"
@@ -122,10 +122,10 @@ class SpinnerDialog(Gtk.Dialog):
             logging.exception(err_msg)
             # Add a error message to information box of service
             label_str = _("ERROR")
-            self.app_window.result_info_label.set_markup(f"<b>{label_str}:</b>")
-            self.app_window.result_info_textview.set_label(f"{err_msg}:\n{err}")
+            self.app_window.page_info_label.set_markup(f"<b>{label_str}:</b>")
+            self.app_window.page_info_textview.set_label(f"{err_msg}:\n{err}")
 
         # Display the result of a subprocess
-        self.app_window.display_result_info_vbox.set_visible(True)
+        self.app_window.page_info_vbox.set_visible(True)
         # Close dialog the (progress bar) SpinnerDialog
         GLib.idle_add(self.destroy)

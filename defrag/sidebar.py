@@ -26,7 +26,7 @@ class Sidebar:
             spacing=6,
             halign=Gtk.Align.START,
         )
-        self.content_hbox.append(self.sidebar_vbox)
+        self.main_content_hbox.append(self.sidebar_vbox)
 
         # Create a Cleaning button
         self.btn_cleaning = Gtk.Button(name="btn_cleaning", sensitive=False)
@@ -111,7 +111,7 @@ class Sidebar:
                 buttons=["OK"],
             )
         # Create a box for manage the service
-        service_vbox = Gtk.Box(
+        page_service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
             halign=Gtk.Align.START,
@@ -127,7 +127,7 @@ class Sidebar:
             "bleachbit",
             False,
         )
-        service_vbox.append(btn_user_bleachbit_run)
+        page_service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
         btn_admin_bleachbit_run = self.create_btn_run(
             label=_("Run BleachBit as administrator"),
@@ -139,14 +139,14 @@ class Sidebar:
             f"{self.gui_as_root_command} bleachbit",
             False,
         )
-        service_vbox.append(btn_admin_bleachbit_run)
+        page_service_vbox.append(btn_admin_bleachbit_run)
         # Add content to `page_vbox`
         self.add_content_to_page(
             title_page=_("Cleaning"),
             description_page=_(
                 "Free up disk space and maintain privacy.\n" + "The BleachBit application is used for this task.",
             ),
-            service_box=service_vbox,
+            page_service_box=page_service_vbox,
         )
 
     def _on_sidebar_btn_health(self, widget: Any) -> None:
@@ -154,14 +154,14 @@ class Sidebar:
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_health.get_name())
         # Create a box for manage the service
-        service_vbox = Gtk.Box(
+        page_service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=_("Run check health"))
         btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
-        service_vbox.append(btn_run)
+        page_service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_page(
             title_page=_("Checking the integrity of HDD|SSD"),
@@ -175,7 +175,7 @@ class Sidebar:
                 + "This is an important tool for maintaining Btrfs health,\n"
                 + "especially in redundant configurations.",
             ),
-            service_box=service_vbox,
+            page_service_box=page_service_vbox,
         )
 
     def _on_sidebar_btn_analysis(self, widget: Any) -> None:
@@ -183,19 +183,19 @@ class Sidebar:
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_analysis.get_name())
         # Create a box for manage the service
-        service_vbox = Gtk.Box(
+        page_service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=_("Run analysis"))
         btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
-        service_vbox.append(btn_run)
+        page_service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_page(
             title_page=_("Analysis a files fragmentation"),
             description_page=_("Assess the overall state of file fragmentation."),
-            service_box=service_vbox,
+            page_service_box=page_service_vbox,
         )
 
     def _on_sidebar_btn_defrag(self, widget: Any) -> None:
@@ -203,17 +203,17 @@ class Sidebar:
         # Unlock all buttons on sidebar and lock active button
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_defrag.get_name())
         # Create a box for manage the service
-        service_vbox = Gtk.Box(
+        page_service_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
         )
         # add button `btn_run`
         btn_run = self.create_btn_run(label=_("Run defrag"))
         btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
-        service_vbox.append(btn_run)
+        page_service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_page(
             title_page=_("Defragmentation"),
             description_page=_("Optimize partitions formatted with the BtrFS file system."),
-            service_box=service_vbox,
+            page_service_box=page_service_vbox,
         )

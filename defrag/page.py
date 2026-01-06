@@ -25,7 +25,7 @@ class Page:
         self.page_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.page_vbox.set_margin_start(30)
         self.page_vbox.set_hexpand(True)
-        self.content_hbox.append(self.page_vbox)
+        self.main_content_hbox.append(self.page_vbox)
 
     def clear_page(self) -> None:
         """Remove all child elements in `page_vbox`."""
@@ -41,9 +41,9 @@ class Page:
             self.page_vbox.remove(child)
         # Additionally remove the following keys
         if len(child_list) > 0:
-            del self.__dict__["result_info_label"]
-            del self.__dict__["result_info_textview"]
-            del self.__dict__["display_result_info_vbox"]
+            del self.__dict__["page_info_label"]
+            del self.__dict__["page_info_textview"]
+            del self.__dict__["page_info_vbox"]
 
     def create_btn_run(
         self,
@@ -69,7 +69,7 @@ class Page:
         self,
         title_page: str,
         description_page: str,
-        service_box: Gtk.Box,
+        page_service_box: Gtk.Box,
     ) -> None:
         """Add content to blank page."""
         # Remove all child elements in `page_vbox`
@@ -86,20 +86,20 @@ class Page:
         )
         self.page_vbox.append(description_label)
         # Add box for control of service
-        service_box.set_margin_top(12)
-        self.page_vbox.append(service_box)
+        page_service_box.set_margin_top(12)
+        self.page_vbox.append(page_service_box)
         # Add info box for display result
-        self.display_result_info_vbox = Gtk.Box(
+        self.page_info_vbox = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=6,
             margin_top=24,
             visible=False,
         )
         # add Label to info box
-        self.result_info_label = Gtk.Label(halign=Gtk.Align.START)
+        self.page_info_label = Gtk.Label(halign=Gtk.Align.START)
         label_str = _("INFO")
-        self.result_info_label.set_markup(f"<b>{label_str}:</b>")
-        self.display_result_info_vbox.append(self.result_info_label)
+        self.page_info_label.set_markup(f"<b>{label_str}:</b>")
+        self.page_info_vbox.append(self.page_info_label)
         # add TextView (Label) to info box
         scrolled_window = Gtk.ScrolledWindow(
             hexpand=True,
@@ -107,13 +107,13 @@ class Page:
             hscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
             vscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
         )
-        self.result_info_textview = Gtk.Label(
+        self.page_info_textview = Gtk.Label(
             halign=Gtk.Align.START,
             valign=Gtk.Align.START,
             wrap=True,
             justify=Gtk.Justification.LEFT,
             selectable=True,
         )
-        scrolled_window.set_child(self.result_info_textview)
-        self.display_result_info_vbox.append(scrolled_window)
-        self.page_vbox.append(self.display_result_info_vbox)
+        scrolled_window.set_child(self.page_info_textview)
+        self.page_info_vbox.append(scrolled_window)
+        self.page_vbox.append(self.page_info_vbox)
