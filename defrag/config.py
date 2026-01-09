@@ -1,7 +1,6 @@
 # Defrag - HDD/SSD defragmentation with BTRFS file system.
 # Copyright (c) 2025 Gennady Kostyunin
 # SPDX-License-Identifier: GPL-3.0-or-later
-#
 """Global variables.
 
 List of variables:
