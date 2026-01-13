@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "HDD/SSD defragmentation with BTRFS file system."
 readme = "README.md"
 authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
-license = "GPL-3.0"
+license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 requires-python = ">=3.12,<4.0"
 dependencies = ["babel>=2.17.0", "psutil>=7.2.0", "pygobject>=3.54.5"]
@@ -148,7 +148,7 @@ missing-attribute = false
 matches = "tests/**"
 
 [tool.pyrefly.sub-config.errors]
-
+missing-attribute = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
