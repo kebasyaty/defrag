@@ -2,7 +2,7 @@
   <p align="center">
     <a href="https://github.com/kebasyaty/defrag">
       <img
-        height="100"
+        id="logo"
         alt="Logo"
         src="https://raw.githubusercontent.com/kebasyaty/defrag/main/assets/logo.svg">
     </a>
