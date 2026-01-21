@@ -35,12 +35,12 @@
 
 ## Requirements
 
-[View the list of requirements](https://github.com/kebasyaty/defrag/blob/v0/REQUIREMENTS.md "Requirements").
+[![Requirements](https://raw.githubusercontent.com/kebasyaty/defrag/v0/assets/links/link-requirements.svg "Requirements")](https://github.com/kebasyaty/defrag/blob/v0/REQUIREMENTS.md "Requirements")
 
 ## Changelog
 
-[View the change history](https://github.com/kebasyaty/defrag/blob/v0/CHANGELOG.md "Changelog").
+[![Changelog](https://raw.githubusercontent.com/kebasyaty/defrag/v0/assets/links/link-changelog.svg "Changelog")](https://github.com/kebasyaty/defrag/blob/v0/CHANGELOG.md "Changelog")
 
 ## License
 
-This project is licensed under the [GPL-3.0](https://github.com/kebasyaty/defrag/blob/main/LICENSE "GPL-3.0").
+[![GPL-3.0](https://raw.githubusercontent.com/kebasyaty/defrag/v0/assets/links/link-gpl-3.0-or-later.svg "GPL-3.0")](https://github.com/kebasyaty/defrag/blob/main/LICENSE "GPL-3.0")
