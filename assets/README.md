@@ -1,7 +1,6 @@
 # Additional assets for the project
 
 <br>
-<br>
 
 ## List of useful Internet resources
 
