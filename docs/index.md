@@ -31,14 +31,10 @@
 DESCRIPTION...
 </p>
 
-#### Requirements
+<hr>
 
 [![Requirements](https://raw.githubusercontent.com/kebasyaty/<REPOSITORY-NAME>/v0/assets/links/requirements.svg "Requirements")](https://github.com/kebasyaty/<REPOSITORY-NAME>/blob/v0/REQUIREMENTS.md "Requirements")
 
-#### Changelog
-
 [![Changelog](https://raw.githubusercontent.com/kebasyaty/<REPOSITORY-NAME>/v0/assets/links/changelog.svg "Changelog")](https://github.com/kebasyaty/<REPOSITORY-NAME>/blob/v0/CHANGELOG.md  "Changelog")
-
-#### License
 
 [![GPL-3.0](https://raw.githubusercontent.com/kebasyaty/<REPOSITORY-NAME>/v0/assets/links/gpl-3.0-or-later.svg "GPL-3.0")](https://github.com/kebasyaty/<REPOSITORY-NAME>/blob/main/LICENSE  "GPL-3.0")

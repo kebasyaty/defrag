@@ -33,14 +33,8 @@
 
 <br>
 
-## Requirements
-
 [![Requirements](https://raw.githubusercontent.com/kebasyaty/defrag/v0/assets/links/requirements.svg "Requirements")](https://github.com/kebasyaty/defrag/blob/v0/REQUIREMENTS.md "Requirements")
 
-## Changelog
-
 [![Changelog](https://raw.githubusercontent.com/kebasyaty/defrag/v0/assets/links/changelog.svg "Changelog")](https://github.com/kebasyaty/defrag/blob/v0/CHANGELOG.md "Changelog")
-
-## License
 
 [![GPL-3.0](https://raw.githubusercontent.com/kebasyaty/defrag/v0/assets/links/gpl-3.0-or-later.svg "GPL-3.0")](https://github.com/kebasyaty/defrag/blob/main/LICENSE "GPL-3.0")
