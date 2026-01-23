@@ -31,8 +31,6 @@
   </a>
 </p>
 
-<hr>
-
 [![Requirements](https://raw.githubusercontent.com/kebasyaty/defrag/v0/assets/links/requirements.svg "Requirements")](https://github.com/kebasyaty/defrag/blob/v0/REQUIREMENTS.md "Requirements")
 
 [![Changelog](https://raw.githubusercontent.com/kebasyaty/defrag/v0/assets/links/changelog.svg "Changelog")](https://github.com/kebasyaty/defrag/blob/v0/CHANGELOG.md "Changelog")
