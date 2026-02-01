@@ -1,8 +1,8 @@
 site_name: Defrag Docs
 site_description: "HDD/SSD defragmentation with BTRFS file system."
 site_url: https://kebasyaty.github.io/defrag/
-site_author: Kebasyaty
-copyright: Copyright &copy; 2025 Maintained by <a href="https://github.com/kebasyaty">Kebasyaty</a>
+site_author: kebasyaty
+copyright: Copyright &copy; 2025 Maintained by <a href="https://github.com/kebasyaty">kebasyaty</a>
 repo_name: kebasyaty/defrag
 repo_url: https://github.com/kebasyaty/defrag
 
