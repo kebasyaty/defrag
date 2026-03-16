@@ -51,6 +51,7 @@ class DefragApplication(Adw.Application):
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
             resource_base_path=Config.RESOURCE_BASE_PATH,
         )
+        self.connect("activate", self.on_activate)
 
     def on_activate(self) -> None:
         """Called when the application is activated.
