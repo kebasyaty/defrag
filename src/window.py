@@ -29,9 +29,9 @@ from typing import Any, Literal
 
 from gi.repository import Adw, Gtk
 
-from .dialogues import SpinnerDialog
 from .page import Page
 from .sidebar import Sidebar
+from .spinner_dialog import SpinnerDialog
 from .utils import WinToolsMixin
 
 
