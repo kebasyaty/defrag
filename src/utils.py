@@ -28,8 +28,6 @@ import shlex
 import psutil
 from gi.repository import Gio
 
-from .translator import _
-
 
 class WinToolsMixin:
     """Helper tools for main application window."""

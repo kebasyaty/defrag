@@ -7,7 +7,10 @@ authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 requires-python = ">=3.12,<4.0"
-dependencies = ["babel>=2.17.0", "psutil>=7.2.0", "pygobject>=3.54.5"]
+dependencies = [
+ "psutil>=7.2.0",
+ "pygobject>=3.54.5",
+]
 
 [tool.uv]
 package = false
@@ -15,7 +18,9 @@ compile-bytecode = true
 default-groups = ["dev", "lint", "test", "docs", "types"]
 
 [dependency-groups]
-dev = ["requirements-parser>=0.13.0"]
+dev = [
+    "requirements-parser>=0.13.0",
+]
 lint = ["pre-commit>=4.5.0", "pyrefly>=0.46.0", "ruff>=0.14.6"]
 test = ["pytest>=9.0.1"]
 docs = [

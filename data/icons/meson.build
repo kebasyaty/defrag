@@ -1,4 +1,4 @@
-application_id = 'com.github.kebasyaty.defrag'
+application_id = 'com.github.kebasyaty.Defrag'
 
 scalable_dir = 'hicolor' / 'scalable' / 'apps'
 install_data(

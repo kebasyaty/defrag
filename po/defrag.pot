@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the defrag package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: defrag\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-16 14:33+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.kebasyaty.Defrag.desktop.in:2
+msgid "defrag"
+msgstr ""
+
+#: data/com.github.kebasyaty.Defrag.desktop.in:8
+msgid "GTK;"
+msgstr ""
+
+#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:7 src/sidebar.py:82
+msgid "Defrag"
+msgstr ""
+
+#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:8
+msgid "Keep the summary shorter, between 10 and 35 characters"
+msgstr ""
+
+#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:10
+msgid "No description"
+msgstr ""
+
+#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:14
+msgid "Developer name"
+msgstr ""
+
+#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:52
+#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:56
+msgid "A caption"
+msgstr ""
+
+#: src/dialogues/spinner_dialog.py:29
+msgid "Operation started"
+msgstr ""
+
+#: src/dialogues/spinner_dialog.py:47
+msgid "The process will take some time."
+msgstr ""
+
+#: src/dialogues/spinner_dialog.py:64
+msgid "Please wait..."
+msgstr ""
+
+#: src/dialogues/spinner_dialog.py:73
+msgid "Abort"
+msgstr ""
+
+#: src/dialogues/spinner_dialog.py:85
+msgid "Premature termination of a process by the user."
+msgstr ""
+
+#: src/dialogues/spinner_dialog.py:107
+msgid "The operation is completed."
+msgstr ""
+
+#. Add a error message to information box of service
+#: src/dialogues/spinner_dialog.py:114 src/dialogues/spinner_dialog.py:123
+#: src/utils.py:63 src/utils.py:72
+msgid "ERROR"
+msgstr ""
+
+#: src/page.py:114
+msgid "INFO"
+msgstr ""
+
+#: src/sidebar.py:49 src/sidebar.py:159
+msgid "Cleaning"
+msgstr ""
+
+#: src/sidebar.py:60
+msgid "Health"
+msgstr ""
+
+#: src/sidebar.py:71
+msgid "Analysis"
+msgstr ""
+
+#: src/sidebar.py:107
+msgid ""
+"To clean the system,\n"
+"you need to install the BleachBit application."
+msgstr ""
+
+#: src/sidebar.py:123
+msgid "Warning"
+msgstr ""
+
+#: src/sidebar.py:135
+msgid "Run BleachBit as user"
+msgstr ""
+
+#: src/sidebar.py:147
+msgid "Run BleachBit as administrator"
+msgstr ""
+
+#: src/sidebar.py:161
+msgid ""
+"Free up disk space and maintain privacy.\n"
+"The BleachBit application is used for this task."
+msgstr ""
+
+#. add button `btn_run`
+#: src/sidebar.py:176
+msgid "Run check health"
+msgstr ""
+
+#: src/sidebar.py:181
+msgid "Checking the integrity of HDD|SSD"
+msgstr ""
+
+#: src/sidebar.py:183
+msgid ""
+"Integrity check of the Btrfs file system,\n"
+"which sequentially reads all data and metadata,\n"
+"verifies their checksums and,\n"
+"in the case of a multi-disk array (RAID),\n"
+"automatically restores damaged blocks using redundant copies,\n"
+"detecting and correcting errors without stopping the file system.\n"
+"This is an important tool for maintaining Btrfs health,\n"
+"especially in redundant configurations."
+msgstr ""
+
+#. add button `btn_run`
+#: src/sidebar.py:205
+msgid "Run analysis"
+msgstr ""
+
+#: src/sidebar.py:210
+msgid "Analysis a files fragmentation"
+msgstr ""
+
+#: src/sidebar.py:211
+msgid "Assess the overall state of file fragmentation."
+msgstr ""
+
+#. add button `btn_run`
+#: src/sidebar.py:225
+msgid "Run defrag"
+msgstr ""
+
+#: src/sidebar.py:230
+msgid "Defragmentation"
+msgstr ""
+
+#: src/sidebar.py:231
+msgid "Optimize partitions formatted with the BtrFS file system."
+msgstr ""

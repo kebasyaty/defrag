@@ -30,6 +30,12 @@ defrag_sources = [
   '__init__.py',
   'main.py',
   'window.py',
+  'dialogues/__init__.py',
+  'dialogues/spinner_dialog.py',
+  'config.py',
+  'page.py',
+  'sidebar.py',
+  'utils.py',
 ]
 
 install_data(defrag_sources, install_dir: moduledir)

@@ -1,8 +1,12 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-data/com.github.kebasyaty.defrag.desktop.in
-data/com.github.kebasyaty.defrag.metainfo.xml.in
-data/com.github.kebasyaty.defrag.gschema.xml
+data/com.github.kebasyaty.Defrag.desktop.in
+data/com.github.kebasyaty.Defrag.metainfo.xml.in
+data/com.github.kebasyaty.Defrag.gschema.xml
 src/main.py
 src/window.py
-src/window.ui
+src/dialogues/spinner_dialog.py
+src/config.py
+src/page.py
+src/sidebar.py
+src/utils.py

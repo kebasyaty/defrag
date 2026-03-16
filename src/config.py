@@ -22,7 +22,6 @@ from __future__ import annotations
 
 __all__ = ("Config",)
 
-from pathlib import Path
 from typing import ClassVar, final
 
 
@@ -33,16 +32,10 @@ class Config:
     # Application name
     APP_NAME: ClassVar[str] = "Defrag"
     # Application ID
-    APP_ID: ClassVar[str] = "com.github.kebasyaty.defrag"
+    APP_ID: ClassVar[str] = "com.github.kebasyaty.Defrag"
     # Path to base resources
-    RESOURCE_BASE_PATH: ClassVar[str] = "/com/github/kebasyaty/defrag"
+    RESOURCE_BASE_PATH: ClassVar[str] = "/com/github/kebasyaty/Defrag"
     # Default application window width
     WINDOW_WIDTH: ClassVar[int] = 640
     # Default application window height
     WINDOW_HEIGHT: ClassVar[int] = 480
-    # Define the translation domain
-    APP_DOMAIN: ClassVar[str] = "messages"
-    # Define the directory where locale files will be stored
-    LOCALE_DIR: ClassVar[Path] = Path(__file__).parent / "locales"
-    # Current operating system locale (by default = en)
-    current_locale: ClassVar[str] = "en"

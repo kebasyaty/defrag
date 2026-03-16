@@ -27,8 +27,6 @@ from typing import Any
 
 from gi.repository import Gtk
 
-from .translator import _
-
 
 class Sidebar:
     """Buttons of menu on the left side of the applicatio."""

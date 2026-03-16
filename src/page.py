@@ -25,8 +25,6 @@ __all__ = ("Page",)
 
 from gi.repository import Gtk
 
-from .translator import _
-
 
 class Page:
     """An area with dynamically updated content.

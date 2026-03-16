@@ -13,8 +13,6 @@ import signal
 
 from gi.repository import Adw, Gio, GLib, Gtk
 
-from ..translator import _
-
 
 class SpinnerDialog(Gtk.Dialog):
     """Custom dialog with (progress bar) Spinner."""
