@@ -64,8 +64,8 @@ class DefragApplication(Adw.Application):
             win = DefragWindow(
                 title=Config.APP_NAME,
                 application=self,
-                default_width=Config.WINDOW_DEFAULT_WIDTH,
-                default_height=Config.WINDOW_DEFAULT_HEIGHT,
+                default_width=Config.WINDOW_WIDTH,
+                default_height=Config.WINDOW_HEIGHT,
             )
 
         win.present()
