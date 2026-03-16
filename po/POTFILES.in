@@ -5,7 +5,7 @@ data/com.github.kebasyaty.Defrag.metainfo.xml.in
 data/com.github.kebasyaty.Defrag.gschema.xml
 src/main.py
 src/window.py
-src/dialogues/spinner_dialog.py
+src/spinner_dialog.py
 src/config.py
 src/page.py
 src/sidebar.py

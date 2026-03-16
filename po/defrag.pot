@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: defrag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-16 14:33+0200\n"
+"POT-Creation-Date: 2026-03-16 19:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "GTK;"
 msgstr ""
 
-#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:7 src/sidebar.py:82
+#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:7 src/sidebar.py:80
 msgid "Defrag"
 msgstr ""
 
@@ -46,86 +46,86 @@ msgstr ""
 msgid "A caption"
 msgstr ""
 
-#: src/dialogues/spinner_dialog.py:29
+#: src/spinner_dialog.py:27
 msgid "Operation started"
 msgstr ""
 
-#: src/dialogues/spinner_dialog.py:47
+#: src/spinner_dialog.py:45
 msgid "The process will take some time."
 msgstr ""
 
-#: src/dialogues/spinner_dialog.py:64
+#: src/spinner_dialog.py:62
 msgid "Please wait..."
 msgstr ""
 
-#: src/dialogues/spinner_dialog.py:73
+#: src/spinner_dialog.py:71
 msgid "Abort"
 msgstr ""
 
-#: src/dialogues/spinner_dialog.py:85
+#: src/spinner_dialog.py:83
 msgid "Premature termination of a process by the user."
 msgstr ""
 
-#: src/dialogues/spinner_dialog.py:107
+#: src/spinner_dialog.py:105
 msgid "The operation is completed."
 msgstr ""
 
 #. Add a error message to information box of service
-#: src/dialogues/spinner_dialog.py:114 src/dialogues/spinner_dialog.py:123
-#: src/utils.py:63 src/utils.py:72
+#: src/spinner_dialog.py:112 src/spinner_dialog.py:121 src/utils.py:61
+#: src/utils.py:70
 msgid "ERROR"
 msgstr ""
 
-#: src/page.py:114
+#: src/page.py:112
 msgid "INFO"
 msgstr ""
 
-#: src/sidebar.py:49 src/sidebar.py:159
+#: src/sidebar.py:47 src/sidebar.py:157
 msgid "Cleaning"
 msgstr ""
 
-#: src/sidebar.py:60
+#: src/sidebar.py:58
 msgid "Health"
 msgstr ""
 
-#: src/sidebar.py:71
+#: src/sidebar.py:69
 msgid "Analysis"
 msgstr ""
 
-#: src/sidebar.py:107
+#: src/sidebar.py:105
 msgid ""
 "To clean the system,\n"
 "you need to install the BleachBit application."
 msgstr ""
 
-#: src/sidebar.py:123
+#: src/sidebar.py:121
 msgid "Warning"
 msgstr ""
 
-#: src/sidebar.py:135
+#: src/sidebar.py:133
 msgid "Run BleachBit as user"
 msgstr ""
 
-#: src/sidebar.py:147
+#: src/sidebar.py:145
 msgid "Run BleachBit as administrator"
 msgstr ""
 
-#: src/sidebar.py:161
+#: src/sidebar.py:159
 msgid ""
 "Free up disk space and maintain privacy.\n"
 "The BleachBit application is used for this task."
 msgstr ""
 
 #. add button `btn_run`
-#: src/sidebar.py:176
+#: src/sidebar.py:174
 msgid "Run check health"
 msgstr ""
 
-#: src/sidebar.py:181
+#: src/sidebar.py:179
 msgid "Checking the integrity of HDD|SSD"
 msgstr ""
 
-#: src/sidebar.py:183
+#: src/sidebar.py:181
 msgid ""
 "Integrity check of the Btrfs file system,\n"
 "which sequentially reads all data and metadata,\n"
@@ -138,27 +138,27 @@ msgid ""
 msgstr ""
 
 #. add button `btn_run`
-#: src/sidebar.py:205
+#: src/sidebar.py:203
 msgid "Run analysis"
 msgstr ""
 
-#: src/sidebar.py:210
+#: src/sidebar.py:208
 msgid "Analysis a files fragmentation"
 msgstr ""
 
-#: src/sidebar.py:211
+#: src/sidebar.py:209
 msgid "Assess the overall state of file fragmentation."
 msgstr ""
 
 #. add button `btn_run`
-#: src/sidebar.py:225
+#: src/sidebar.py:223
 msgid "Run defrag"
 msgstr ""
 
-#: src/sidebar.py:230
+#: src/sidebar.py:228
 msgid "Defragmentation"
 msgstr ""
 
-#: src/sidebar.py:231
+#: src/sidebar.py:229
 msgid "Optimize partitions formatted with the BtrFS file system."
 msgstr ""

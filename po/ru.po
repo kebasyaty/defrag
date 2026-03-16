@@ -1,132 +1,137 @@
-# Russian translations for defrag package.
-# Copyright (C) 2026 THE defrag'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the defrag package.
-# Automatically generated, 2026.
+# Russian translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: defrag\n"
+"Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-16 14:33+0200\n"
-"PO-Revision-Date: 2026-03-16 14:33+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2026-03-16 19:19+0200\n"
+"PO-Revision-Date: 2025-12-17 21:36+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: ru <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Generated-By: Babel 2.17.0\n"
 
 #: data/com.github.kebasyaty.Defrag.desktop.in:2
 msgid "defrag"
-msgstr ""
+msgstr "Дефрагментация"
 
 #: data/com.github.kebasyaty.Defrag.desktop.in:8
 msgid "GTK;"
 msgstr ""
 
-#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:7 src/sidebar.py:82
+#: data/com.github.kebasyaty.Defrag.metainfo.xml.in:7 src/sidebar.py:80
 msgid "Defrag"
-msgstr ""
+msgstr "Дефрагментация"
 
 #: data/com.github.kebasyaty.Defrag.metainfo.xml.in:8
 msgid "Keep the summary shorter, between 10 and 35 characters"
-msgstr ""
+msgstr "Сделайте резюме короче, от 10 до 35 символов."
 
 #: data/com.github.kebasyaty.Defrag.metainfo.xml.in:10
 msgid "No description"
-msgstr ""
+msgstr "Нет описания"
 
 #: data/com.github.kebasyaty.Defrag.metainfo.xml.in:14
 msgid "Developer name"
-msgstr ""
+msgstr "Имя разработчика"
 
 #: data/com.github.kebasyaty.Defrag.metainfo.xml.in:52
 #: data/com.github.kebasyaty.Defrag.metainfo.xml.in:56
 msgid "A caption"
-msgstr ""
+msgstr "Подпись"
 
-#: src/dialogues/spinner_dialog.py:29
+#: src/spinner_dialog.py:27
 msgid "Operation started"
-msgstr ""
+msgstr "Операция запущена"
 
-#: src/dialogues/spinner_dialog.py:47
+#: src/spinner_dialog.py:45
 msgid "The process will take some time."
-msgstr ""
+msgstr "Процесс займет некоторое время."
 
-#: src/dialogues/spinner_dialog.py:64
+#: src/spinner_dialog.py:62
 msgid "Please wait..."
-msgstr ""
+msgstr "Пожалуйста, подождите..."
 
-#: src/dialogues/spinner_dialog.py:73
+#: src/spinner_dialog.py:71
 msgid "Abort"
-msgstr ""
+msgstr "Прервать"
 
-#: src/dialogues/spinner_dialog.py:85
+#: src/spinner_dialog.py:83
 msgid "Premature termination of a process by the user."
-msgstr ""
+msgstr "Преждевременное завершение процесса пользователем."
 
-#: src/dialogues/spinner_dialog.py:107
+#: src/spinner_dialog.py:105
 msgid "The operation is completed."
-msgstr ""
+msgstr "Операция завершена."
 
 #. Add a error message to information box of service
-#: src/dialogues/spinner_dialog.py:114 src/dialogues/spinner_dialog.py:123
-#: src/utils.py:63 src/utils.py:72
+#: src/spinner_dialog.py:112 src/spinner_dialog.py:121 src/utils.py:61
+#: src/utils.py:70
 msgid "ERROR"
-msgstr ""
+msgstr "ОШИБКА"
 
-#: src/page.py:114
+#: src/page.py:112
 msgid "INFO"
-msgstr ""
+msgstr "ИНФОРМАЦИЯ"
 
-#: src/sidebar.py:49 src/sidebar.py:159
+#: src/sidebar.py:47 src/sidebar.py:157
 msgid "Cleaning"
-msgstr ""
+msgstr "Очистка"
 
-#: src/sidebar.py:60
+#: src/sidebar.py:58
 msgid "Health"
-msgstr ""
+msgstr "Здоровье"
 
-#: src/sidebar.py:71
+#: src/sidebar.py:69
 msgid "Analysis"
-msgstr ""
+msgstr "Анализ"
 
-#: src/sidebar.py:107
+#: src/sidebar.py:105
 msgid ""
 "To clean the system,\n"
 "you need to install the BleachBit application."
 msgstr ""
+"Для очистки системы,\n"
+"необходимо установить приложение BleachBit."
 
-#: src/sidebar.py:123
+#: src/sidebar.py:121
 msgid "Warning"
-msgstr ""
+msgstr "Предупреждение"
 
-#: src/sidebar.py:135
+#: src/sidebar.py:133
 msgid "Run BleachBit as user"
-msgstr ""
+msgstr "Запустите BleachBit от имени пользователя"
 
-#: src/sidebar.py:147
+#: src/sidebar.py:145
 msgid "Run BleachBit as administrator"
-msgstr ""
+msgstr "Запустите BleachBit от имени администратора"
 
-#: src/sidebar.py:161
+#: src/sidebar.py:159
 msgid ""
 "Free up disk space and maintain privacy.\n"
 "The BleachBit application is used for this task."
 msgstr ""
+"Освободите дисковое пространство и сохраните конфиденциальность.\n"
+"Для этой задачи используется приложение BleachBit."
 
 #. add button `btn_run`
-#: src/sidebar.py:176
+#: src/sidebar.py:174
 msgid "Run check health"
-msgstr ""
+msgstr "Запустить проверку здоровья"
+
+#: src/sidebar.py:179
+msgid "Checking the integrity of HDD|SSD"
+msgstr "Проверка целостности HDD|SSD"
 
 #: src/sidebar.py:181
-msgid "Checking the integrity of HDD|SSD"
-msgstr ""
-
-#: src/sidebar.py:183
 msgid ""
 "Integrity check of the Btrfs file system,\n"
 "which sequentially reads all data and metadata,\n"
@@ -137,29 +142,40 @@ msgid ""
 "This is an important tool for maintaining Btrfs health,\n"
 "especially in redundant configurations."
 msgstr ""
+"Проверка целостности файловой системы Btrfs,\n"
+"которая последовательно считывает все данные и метаданные,\n"
+"проверяет их контрольные суммы и,\n"
+"в случае многодискового массива (RAID),\n"
+"автоматически восстанавливает поврежденные блоки с помощью избыточных "
+"копий,\n"
+"обнаруживая и исправляя ошибки без остановки работы ФС.\n"
+"Это важный инструмент для поддержания здоровья Btrfs,\n"
+"особенно в конфигурациях с избыточностью."
 
 #. add button `btn_run`
-#: src/sidebar.py:205
+#: src/sidebar.py:203
 msgid "Run analysis"
-msgstr ""
+msgstr "Запустить анализ"
 
-#: src/sidebar.py:210
+#: src/sidebar.py:208
 msgid "Analysis a files fragmentation"
-msgstr ""
+msgstr "Анализ фрагментации файлов"
 
-#: src/sidebar.py:211
+#: src/sidebar.py:209
 msgid "Assess the overall state of file fragmentation."
-msgstr ""
+msgstr "Оцените общее состояние фрагментации файлов."
 
 #. add button `btn_run`
-#: src/sidebar.py:225
+#: src/sidebar.py:223
 msgid "Run defrag"
-msgstr ""
+msgstr "Запустить дефрагментацию"
 
-#: src/sidebar.py:230
+#: src/sidebar.py:228
 msgid "Defragmentation"
-msgstr ""
+msgstr "Дефрагментация"
 
-#: src/sidebar.py:231
+#: src/sidebar.py:229
 msgid "Optimize partitions formatted with the BtrFS file system."
 msgstr ""
+"Оптимизируйте разделы,\n"
+"отформатированные с помощью файловой системы BtrFS."
