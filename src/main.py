@@ -53,7 +53,7 @@ class DefragApplication(Adw.Application):
         )
         self.connect("activate", self.on_activate)
 
-    def on_activate(self) -> None:
+    def on_activate(self, event) -> None:
         """Called when the application is activated.
 
         We raise the application's main window, creating it if
