@@ -1,5 +1,20 @@
-# Defrag - HDD/SSD defragmentation with BTRFS file system.
-# Copyright (c) 2025 Gennady Kostyunin
+# utils.py
+#
+# Copyright 2025 Kebasyaty
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Set of auxiliary tools."""
 
@@ -11,13 +26,13 @@ import logging
 import shlex
 
 import psutil
-from gi.repository import Gio  # pyright: ignore[reportMissingModuleSource]
+from gi.repository import Gio
 
-from defrag.translator import _
+from .translator import _
 
 
 class WinToolsMixin:
-    """Helper tools for the application window."""
+    """Helper tools for main application window."""
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
         # Is installed BleachBit

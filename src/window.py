@@ -1,5 +1,20 @@
-# Defrag - HDD/SSD defragmentation with BTRFS file system.
-# Copyright (c) 2025 Gennady Kostyunin
+# window.py
+#
+# Copyright 2025 Kebasyaty
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Main application window."""
 
@@ -12,12 +27,12 @@ import shlex
 import threading
 from typing import Any, Literal
 
-from gi.repository import Adw, Gtk  # pyright: ignore[reportMissingModuleSource]
+from gi.repository import Adw, Gtk
 
-from defrag.dialogues import SpinnerDialog
-from defrag.page import Page
-from defrag.sidebar import Sidebar
-from defrag.utils import WinToolsMixin
+from .dialogues import SpinnerDialog
+from .page import Page
+from .sidebar import Sidebar
+from .utils import WinToolsMixin
 
 
 class DefragWindow(
@@ -27,6 +42,8 @@ class DefragWindow(
     Page,
 ):
     """Main application window."""
+
+    __gtype_name__ = "DefragWindow"
 
     def __init__(self, **kwargs) -> None:  # type: ignore[no-untyped-def]  # noqa: D107
         Adw.ApplicationWindow.__init__(self, **kwargs)

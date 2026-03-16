@@ -13,7 +13,7 @@ import signal
 
 from gi.repository import Adw, Gio, GLib, Gtk
 
-from defrag.translator import _
+from ..translator import _
 
 
 class SpinnerDialog(Gtk.Dialog):
