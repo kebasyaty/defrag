@@ -32,7 +32,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///home/kebasyaty/Projects/Python/defrag",
+                    "url" : "https://github.com/kebasyaty/defrag",
                     "branch" : "v0"
                 }
             ]
