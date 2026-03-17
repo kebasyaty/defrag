@@ -89,27 +89,6 @@
         "uv run mike set-default --push latest"
       ],
       "problemMatcher": []
-    },
-    {
-      "label": "Babel: Run Update Translations",
-      "type": "shell",
-      "command": [
-        "uv run pybabel extract -o defrag/locales/messages.pot defrag;",
-        "uv run pybabel update -i defrag/locales/messages.pot -d defrag/locales"
-      ],
-      "problemMatcher": []
-    },
-    {
-      "label": "Babel: Run Compile Translations",
-      "type": "shell",
-      "command": ["uv run pybabel compile -d defrag/locales"],
-      "problemMatcher": []
-    },
-    {
-      "label": "UV: Run App",
-      "type": "shell",
-      "command": ["m4 src/defrag.m4 | uv run python $1"],
-      "problemMatcher": []
     }
   ]
 }
