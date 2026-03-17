@@ -44,7 +44,7 @@ class Sidebar:
         self.btn_cleaning = Gtk.Button(name="btn_cleaning", sensitive=False)
         btn_cleaning_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_cleaning_icon = Gtk.Image.new_from_icon_name("user-trash-symbolic")
-        btn_cleaning_label = Gtk.Label(label=_("Cleaning"))
+        btn_cleaning_label = Gtk.Label(label=_("Cleaning"))  # noqa: F821 # pyrefly: ignore[unknown-name]
         btn_cleaning_content_box.append(btn_cleaning_icon)
         btn_cleaning_content_box.append(btn_cleaning_label)
         self.btn_cleaning.set_child(btn_cleaning_content_box)
@@ -55,7 +55,7 @@ class Sidebar:
         self.btn_health = Gtk.Button(name="btn_health")
         btn_health_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_health_icon = Gtk.Image.new_from_icon_name("security-medium-rtl-symbolic")
-        btn_health_label = Gtk.Label(label=_("Health"))
+        btn_health_label = Gtk.Label(label=_("Health"))  # noqa: F821 # pyrefly: ignore[unknown-name]
         btn_health_content_box.append(btn_health_icon)
         btn_health_content_box.append(btn_health_label)
         self.btn_health.set_child(btn_health_content_box)
@@ -66,7 +66,7 @@ class Sidebar:
         self.btn_analysis = Gtk.Button(name="btn_analysis")
         btn_analysis_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_analysis_icon = Gtk.Image.new_from_icon_name("applications-science-symbolic")
-        btn_analysis_label = Gtk.Label(label=_("Analysis"))
+        btn_analysis_label = Gtk.Label(label=_("Analysis"))  # noqa: F821 # pyrefly: ignore[unknown-name]
         btn_analysis_content_box.append(btn_analysis_icon)
         btn_analysis_content_box.append(btn_analysis_label)
         self.btn_analysis.set_child(btn_analysis_content_box)
@@ -77,7 +77,7 @@ class Sidebar:
         self.btn_defrag = Gtk.Button(name="btn_defrag")
         btn_defrag_content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         btn_defrag_icon = Gtk.Image.new_from_icon_name("preferences-system-symbolic")
-        btn_defrag_label = Gtk.Label(label=_("Defrag"))
+        btn_defrag_label = Gtk.Label(label=_("Defrag"))  # noqa: F821 # pyrefly: ignore[unknown-name]
         btn_defrag_content_box.append(btn_defrag_icon)
         btn_defrag_content_box.append(btn_defrag_label)
         self.btn_defrag.set_child(btn_defrag_content_box)
@@ -102,7 +102,7 @@ class Sidebar:
         self.unlock_buttons_to_sidebar(active_button_name=self.btn_cleaning.get_name())
         # Check if BleachBit is installed on the user's computer
         if not self.IS_INSTALLED_BLEACHBIT:
-            err_mag = _("To clean the system,\n" + "you need to install the BleachBit application.")
+            err_mag = _("To clean the system,\n" + "you need to install the BleachBit application.")  # noqa: F821 # pyrefly: ignore[unknown-name]
             installation_list = [
                 "# On Debian, Ubuntu, Mint",
                 "sudo apt install bleachbit",
@@ -118,7 +118,7 @@ class Sidebar:
             installation_str = "\n".join(installation_list)
             # Raise a modal window with an error message
             self.sync_alert_dialog(
-                message=_("Warning"),
+                message=_("Warning"),  # noqa: F821 # pyrefly: ignore[unknown-name]
                 detail=f"{err_mag}\n\n{installation_str}",
                 buttons=["OK"],
             )
@@ -130,7 +130,7 @@ class Sidebar:
         )
         # add button `btn_user_bleachbit_run`
         btn_user_bleachbit_run = self.create_btn_run(
-            label=_("Run BleachBit as user"),
+            label=_("Run BleachBit as user"),  # noqa: F821 # pyrefly: ignore[unknown-name]
             is_sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
         btn_user_bleachbit_run.connect(
@@ -142,7 +142,7 @@ class Sidebar:
         page_service_vbox.append(btn_user_bleachbit_run)
         # add button `btn_admin_bleachbit_run`
         btn_admin_bleachbit_run = self.create_btn_run(
-            label=_("Run BleachBit as administrator"),
+            label=_("Run BleachBit as administrator"),  # noqa: F821 # pyrefly: ignore[unknown-name]
             is_sensitive=self.IS_INSTALLED_BLEACHBIT,  # pyrefly: ignore[bad-argument-type]
         )
         btn_admin_bleachbit_run.connect(
@@ -154,8 +154,8 @@ class Sidebar:
         page_service_vbox.append(btn_admin_bleachbit_run)
         # Add content to `page_vbox`
         self.add_content_to_page(
-            title_page=_("Cleaning"),
-            description_page=_(
+            title_page=_("Cleaning"),  # noqa: F821 # pyrefly: ignore[unknown-name]
+            description_page=_(  # noqa: F821 # pyrefly: ignore[unknown-name]
                 "Free up disk space and maintain privacy.\n" + "The BleachBit application is used for this task.",
             ),
             page_service_box=page_service_vbox,
@@ -171,13 +171,13 @@ class Sidebar:
             spacing=6,
         )
         # add button `btn_run`
-        btn_run = self.create_btn_run(label=_("Run check health"))
+        btn_run = self.create_btn_run(label=_("Run check health"))  # noqa: F821 # pyrefly: ignore[unknown-name]
         btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
         page_service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_page(
-            title_page=_("Checking the integrity of HDD|SSD"),
-            description_page=_(
+            title_page=_("Checking the integrity of HDD|SSD"),  # noqa: F821 # pyrefly: ignore[unknown-name]
+            description_page=_(  # noqa: F821 # pyrefly: ignore[unknown-name]
                 "Integrity check of the Btrfs file system,\n"
                 + "which sequentially reads all data and metadata,\n"
                 + "verifies their checksums and,\n"
@@ -200,13 +200,13 @@ class Sidebar:
             spacing=6,
         )
         # add button `btn_run`
-        btn_run = self.create_btn_run(label=_("Run analysis"))
+        btn_run = self.create_btn_run(label=_("Run analysis"))  # noqa: F821 # pyrefly: ignore[unknown-name]
         btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
         page_service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_page(
-            title_page=_("Analysis a files fragmentation"),
-            description_page=_("Assess the overall state of file fragmentation."),
+            title_page=_("Analysis a files fragmentation"),  # noqa: F821 # pyrefly: ignore[unknown-name]
+            description_page=_("Assess the overall state of file fragmentation."),  # noqa: F821 # pyrefly: ignore[unknown-name]
             page_service_box=page_service_vbox,
         )
 
@@ -220,12 +220,12 @@ class Sidebar:
             spacing=6,
         )
         # add button `btn_run`
-        btn_run = self.create_btn_run(label=_("Run defrag"))
+        btn_run = self.create_btn_run(label=_("Run defrag"))  # noqa: F821 # pyrefly: ignore[unknown-name]
         btn_run.connect("clicked", self._on_run_async_subprocess, "ls -l")
         page_service_vbox.append(btn_run)
         # Add content to `fresh_page_vbox`
         self.add_content_to_page(
-            title_page=_("Defragmentation"),
-            description_page=_("Optimize partitions formatted with the BtrFS file system."),
+            title_page=_("Defragmentation"),  # noqa: F821 # pyrefly: ignore[unknown-name]
+            description_page=_("Optimize partitions formatted with the BtrFS file system."),  # noqa: F821 # pyrefly: ignore[unknown-name]
             page_service_box=page_service_vbox,
         )

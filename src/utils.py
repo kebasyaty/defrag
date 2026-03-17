@@ -58,7 +58,7 @@ class WinToolsMixin:
             else:
                 # Raise a modal window with an error message
                 self.sync_alert_dialog(
-                    message=_("ERROR"),
+                    message=_("ERROR"),  # noqa: F821 # pyrefly: ignore[unknown-name]
                     detail=stderr_buf,
                     buttons=["Cancel"],
                 )
@@ -67,7 +67,7 @@ class WinToolsMixin:
             logging.exception("Checking for BleachBit presence failed with an error.")
             # Raise a modal window with an error message
             self.sync_alert_dialog(
-                message=_("ERROR"),
+                message=_("ERROR"),  # noqa: F821 # pyrefly: ignore[unknown-name]
                 detail=str(err),
                 buttons=["Cancel"],
             )

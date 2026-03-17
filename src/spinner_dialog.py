@@ -24,7 +24,7 @@ class SpinnerDialog(Gtk.Dialog):
         is_abort_btn: bool = True,
     ):
         super().__init__(
-            title=_("Operation started"),
+            title=_("Operation started"),  # noqa: F821 # pyrefly: ignore[unknown-name]
             transient_for=parent,
             modal=True,
             deletable=False,
@@ -42,7 +42,7 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Add a top label
         self.top_label = Gtk.Label(
-            label=_("The process will take some time."),
+            label=_("The process will take some time."),  # noqa: F821 # pyrefly: ignore[unknown-name]
             halign=Gtk.Align.CENTER,
             margin_top=24,
         )
@@ -59,7 +59,7 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Add a bottom label
         self.bottom_label = Gtk.Label(
-            label=_("Please wait..."),
+            label=_("Please wait..."),  # noqa: F821 # pyrefly: ignore[unknown-name]
             halign=Gtk.Align.CENTER,
             margin_top=24,
             margin_bottom=24,
@@ -68,7 +68,7 @@ class SpinnerDialog(Gtk.Dialog):
 
         # Add an "Abort" button
         if is_abort_btn:
-            self.add_button(_("Abort"), Gtk.ResponseType.CANCEL)
+            self.add_button(_("Abort"), Gtk.ResponseType.CANCEL)  # noqa: F821 # pyrefly: ignore[unknown-name]
             self.connect("response", self.on_response)
 
     def on_response(self, dialog, response) -> None:
@@ -80,7 +80,7 @@ class SpinnerDialog(Gtk.Dialog):
             logging.info("Premature termination of a process by the user.")
             # Add a message to information box of service
             self.app_window.page_info_textview.set_label(
-                _("Premature termination of a process by the user."),
+                _("Premature termination of a process by the user."),  # noqa: F821 # pyrefly: ignore[unknown-name]
             )
             # Display the result of a subprocess
             self.app_window.page_info_vbox.set_visible(True)
@@ -102,14 +102,14 @@ class SpinnerDialog(Gtk.Dialog):
             )
             if success:
                 if len(stdout_buf) == 0:
-                    stdout_buf = _("The operation is completed.")
+                    stdout_buf = _("The operation is completed.")  # noqa: F821 # pyrefly: ignore[unknown-name]
                 # Add a message to information box of service
                 self.app_window.page_info_textview.set_label(stdout_buf)
             else:
                 # Log ERROR.
                 logging.error(stderr_buf)
                 # Add a error message to information box of service
-                label_str = _("ERROR")
+                label_str = _("ERROR")  # noqa: F821 # pyrefly: ignore[unknown-name]
                 self.app_window.page_info_label.set_markup(f"<b>{label_str}:</b>")
                 self.app_window.page_info_textview.set_label(stderr_buf)
 
@@ -118,7 +118,7 @@ class SpinnerDialog(Gtk.Dialog):
             # Log the exception and traceback
             logging.exception(err_msg)
             # Add a error message to information box of service
-            label_str = _("ERROR")
+            label_str = _("ERROR")  # noqa: F821 # pyrefly: ignore[unknown-name]
             self.app_window.page_info_label.set_markup(f"<b>{label_str}:</b>")
             self.app_window.page_info_textview.set_label(f"{err_msg}:\n{err}")
 

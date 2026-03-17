@@ -109,7 +109,7 @@ class Page:
         )
         # add Label to info box
         self.page_info_label = Gtk.Label(halign=Gtk.Align.START)
-        label_str = _("INFO")
+        label_str = _("INFO")  # noqa: F821 # pyrefly: ignore[unknown-name]
         self.page_info_label.set_markup(f"<b>{label_str}:</b>")
         self.page_info_vbox.append(self.page_info_label)
         # add TextView (Label) to info box
