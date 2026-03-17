@@ -89,6 +89,67 @@
         "uv run mike set-default --push latest"
       ],
       "problemMatcher": []
+    },
+    {
+      "label": "i18n: Generate .pot and .po files",
+      "type": "shell",
+      "command": ["cd build-dir;", "meson compile defrag-pot;", "cd .."],
+      "problemMatcher": []
+    },
+    {
+      "label": "i18n: Update existing .po files",
+      "type": "shell",
+      "command": ["cd build-dir;", "meson compile defrag-update-po;", "cd .."],
+      "problemMatcher": []
+    },
+    {
+      "label": "i18n: Compile .mo files",
+      "type": "shell",
+      "command": ["cd build-dir;", "meson compile -C build-dir;", "cd .."],
+      "problemMatcher": []
+    },
+    {
+      "label": "Meson: Create App Settings",
+      "type": "shell",
+      "command": ["meson setup build-dir"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Meson: Rebuild App Settings",
+      "type": "shell",
+      "command": ["meson compile -C build-dir"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Meson: Reconfigure App Settings",
+      "type": "shell",
+      "command": ["meson setup --reconfigure buil-ddir"],
+      "problemMatcher": []
+    },
+    {
+      "label": "PIP: Run flatpak-pip-generator",
+      "type": "shell",
+      "command": [
+        "uv run python -m flatpak-pip-generator --runtime='org.gnome.Sdk//48' --requirements-file='requirements.txt' --ignore-installed='pygobject' --output build-aux/flatpak/pypi-dependencies.json;",
+        "meson compile -C build-dir"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Flatpak: Build App",
+      "type": "shell",
+      "command": [
+        "flatpak-builder --force-clean flatpak-build-dir build-aux/flatpak/com.github.kebasyaty.Defrag.json"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Flatpak: Run App",
+      "type": "shell",
+      "command": [
+        "flatpak-builder --run flatpak-build-dir build-aux/flatpak/com.github.kebasyaty.Defrag.json defrag"
+      ],
+      "problemMatcher": []
     }
   ]
 }
