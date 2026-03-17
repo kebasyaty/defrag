@@ -6,8 +6,8 @@ dist/
 wheels/
 *.egg-info
 .flatpak-builder/
-builddir/
-flatpak-builddir/
+build-dir/
+flatpak-build-dir/
 site/
 
 # Virtual environments
