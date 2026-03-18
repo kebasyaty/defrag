@@ -4,12 +4,6 @@
     "**/.git/subtree-cache/**": true,
     "**/.hg/store/**": true,
     ".flatpak/**": true,
-    "_build/**": true,
-    "builddir/**": true,
-    "flatpak-build-dir/**": true,
-    ".flatpak-builder/**": true
-  },
-  "mesonbuild.configureOnOpen": false,
-  "mesonbuild.buildFolder": "_build",
-  "mesonbuild.mesonPath": "${workspaceFolder}/.flatpak/meson.sh"
+    "_build/**": true
+  }
 }
