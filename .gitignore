@@ -95,10 +95,10 @@ venv.bak/
 
 # IDE Settings
 .idea
-#.vscode
+.vscode/**
+!.vscode/tasks.json
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
