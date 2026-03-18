@@ -93,37 +93,37 @@
     {
       "label": "i18n: Generate .pot and .po files",
       "type": "shell",
-      "command": ["cd build-dir;", "meson compile defrag-pot;", "cd .."],
+      "command": ["cd builddir;", "meson compile defrag-pot;", "cd .."],
       "problemMatcher": []
     },
     {
       "label": "i18n: Update existing .po files",
       "type": "shell",
-      "command": ["cd build-dir;", "meson compile defrag-update-po;", "cd .."],
+      "command": ["cd builddir;", "meson compile defrag-update-po;", "cd .."],
       "problemMatcher": []
     },
     {
       "label": "i18n: Compile .mo files",
       "type": "shell",
-      "command": ["cd build-dir;", "meson compile -C build-dir;", "cd .."],
+      "command": ["cd builddir;", "meson compile -C builddir;", "cd .."],
       "problemMatcher": []
     },
     {
       "label": "Meson: Create App Settings",
       "type": "shell",
-      "command": ["meson setup build-dir"],
+      "command": ["meson setup builddir"],
       "problemMatcher": []
     },
     {
       "label": "Meson: Rebuild App Settings",
       "type": "shell",
-      "command": ["meson compile -C build-dir"],
+      "command": ["meson compile -C builddir"],
       "problemMatcher": []
     },
     {
       "label": "Meson: Reconfigure App Settings",
       "type": "shell",
-      "command": ["meson setup --reconfigure buil-ddir"],
+      "command": ["meson setup --reconfigure builddir"],
       "problemMatcher": []
     },
     {
@@ -138,7 +138,7 @@
       "label": "Flatpak: Build App",
       "type": "shell",
       "command": [
-        "flatpak-builder --force-clean flatpak-build-dir build-aux/flatpak/com.github.kebasyaty.Defrag.json"
+        "flatpak-builder --force-clean flatpak-builddir build-aux/flatpak/com.github.kebasyaty.Defrag.json"
       ],
       "problemMatcher": []
     },
@@ -146,7 +146,7 @@
       "label": "Flatpak: Run App",
       "type": "shell",
       "command": [
-        "flatpak-builder --run flatpak-build-dir build-aux/flatpak/com.github.kebasyaty.Defrag.json defrag"
+        "flatpak-builder --run flatpak-builddir build-aux/flatpak/com.github.kebasyaty.Defrag.json defrag"
       ],
       "problemMatcher": []
     }
