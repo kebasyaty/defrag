@@ -5,8 +5,8 @@
     "**/.hg/store/**": true,
     ".flatpak/**": true,
     "_build/**": true,
-    "build-dir/**": true,
-    "flatpak-build-dir/**": true,
+    "builddir/**": true,
+    "flatpak-builddir/**": true,
     ".flatpak-builder/**": true
   }
 }
