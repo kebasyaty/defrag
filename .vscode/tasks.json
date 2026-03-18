@@ -130,8 +130,7 @@
       "label": "PIP: Run flatpak-pip-generator",
       "type": "shell",
       "command": [
-        "uv run python -m flatpak-pip-generator --runtime='org.gnome.Sdk//48' --requirements-file='requirements.txt' --ignore-installed='pygobject' --output build-aux/flatpak/pypi-dependencies.json;",
-        "meson compile -C build-dir"
+        "uv run python -m flatpak-pip-generator --runtime='org.gnome.Sdk//48' --requirements-file='requirements.txt' --ignore-installed='pygobject' --output build-aux/flatpak/pypi-dependencies.json;"
       ],
       "problemMatcher": []
     },
