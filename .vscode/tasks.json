@@ -138,7 +138,7 @@
       "label": "Flatpak: Build App",
       "type": "shell",
       "command": [
-        "flatpak-builder --force-clean flatpak-builddir build-aux/flatpak/com.github.kebasyaty.Defrag.json"
+        "flatpak-builder --force-clean flatpak-build-dir build-aux/flatpak/com.github.kebasyaty.Defrag.json"
       ],
       "problemMatcher": []
     },
@@ -146,7 +146,7 @@
       "label": "Flatpak: Run App",
       "type": "shell",
       "command": [
-        "flatpak-builder --run flatpak-builddir build-aux/flatpak/com.github.kebasyaty.Defrag.json defrag"
+        "flatpak-builder --run flatpak-build-dir build-aux/flatpak/com.github.kebasyaty.Defrag.json defrag"
       ],
       "problemMatcher": []
     }

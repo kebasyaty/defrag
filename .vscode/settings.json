@@ -6,7 +6,7 @@
     ".flatpak/**": true,
     "_build/**": true,
     "builddir/**": true,
-    "flatpak-builddir/**": true,
+    "flatpak-build-dir/**": true,
     ".flatpak-builder/**": true
   }
 }

@@ -2,7 +2,8 @@ pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
 moduledir = pkgdatadir / 'defrag'
 gnome = import('gnome')
 
-gnome.compile_resources('defrag',
+gnome.compile_resources(
+  'defrag',
   'defrag.gresource.xml',
   gresource_bundle: true,
   install: true,
@@ -23,7 +24,7 @@ configure_file(
   configuration: conf,
   install: true,
   install_dir: get_option('bindir'),
-  install_mode: 'rwxr-xr-x'
+  install_mode: 'rwxr-xr-x',
 )
 
 defrag_sources = [
