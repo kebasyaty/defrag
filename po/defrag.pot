@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: defrag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-16 19:19+0200\n"
+"POT-Creation-Date: 2026-03-18 20:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,6 +110,8 @@ msgstr ""
 msgid "Run BleachBit as administrator"
 msgstr ""
 
+#. noqa: F821 # pyrefly: ignore[unknown-name]
+#. noqa: F821 # pyrefly: ignore[unknown-name]
 #: src/sidebar.py:159
 msgid ""
 "Free up disk space and maintain privacy.\n"
@@ -125,6 +127,8 @@ msgstr ""
 msgid "Checking the integrity of HDD|SSD"
 msgstr ""
 
+#. noqa: F821 # pyrefly: ignore[unknown-name]
+#. noqa: F821 # pyrefly: ignore[unknown-name]
 #: src/sidebar.py:181
 msgid ""
 "Integrity check of the Btrfs file system,\n"
@@ -146,6 +150,7 @@ msgstr ""
 msgid "Analysis a files fragmentation"
 msgstr ""
 
+#. noqa: F821 # pyrefly: ignore[unknown-name]
 #: src/sidebar.py:209
 msgid "Assess the overall state of file fragmentation."
 msgstr ""
@@ -159,6 +164,7 @@ msgstr ""
 msgid "Defragmentation"
 msgstr ""
 
+#. noqa: F821 # pyrefly: ignore[unknown-name]
 #: src/sidebar.py:229
 msgid "Optimize partitions formatted with the BtrFS file system."
 msgstr ""
