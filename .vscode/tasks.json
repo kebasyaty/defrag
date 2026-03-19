@@ -146,7 +146,7 @@
       "label": "Flatpak: Run App",
       "type": "shell",
       "command": [
-        "flatpak-builder --run .flatpak build-aux/flatpak/com.github.kebasyaty.Defrag.json defrag"
+        "flatpak-builder --run --env=LC_ALL=ru_Ru.UTF-8 .flatpak build-aux/flatpak/com.github.kebasyaty.Defrag.json defrag"
       ],
       "problemMatcher": []
     }
