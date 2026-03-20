@@ -57,9 +57,9 @@
       "label": "PyTest: Run Tests",
       "type": "shell",
       "command": [
-        "uv run python remove_pycache.py;",
+        "uv run python pyhelpers/remove_pycache.py;",
         "uv run pytest -v tests/;",
-        "uv run python remove_pycache.py"
+        "uv run python pyhelpers/remove_pycache.py;"
       ],
       "problemMatcher": []
     },
@@ -130,7 +130,7 @@
       "label": "PIP: Run flatpak-pip-generator",
       "type": "shell",
       "command": [
-        "uv run python -m flatpak-pip-generator --runtime='org.gnome.Sdk//48' --requirements-file='requirements.txt' --ignore-installed='pygobject' --output build-aux/flatpak/pypi-dependencies.json;"
+        "uv run python -m pyhelpers/flatpak-pip-generator --runtime='org.gnome.Sdk//48' --requirements-file='requirements.txt' --ignore-installed='pygobject' --output build-aux/flatpak/pypi-dependencies.json;"
       ],
       "problemMatcher": []
     },
