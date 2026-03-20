@@ -16,4 +16,4 @@ def flatpak_cleaning(root_dir_path: str) -> None:
 
 
 if __name__ == "__main__":
-    flatpak_cleaning("..")
+    flatpak_cleaning(".")
