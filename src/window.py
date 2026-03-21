@@ -27,7 +27,7 @@ import shlex
 import threading
 from typing import Any, Literal
 
-from gi.repository import Adw, Gtk  # pyright: ignore[reportMissingModuleSource]
+from gi.repository import Adw, Gtk
 
 from .page import Page
 from .sidebar import Sidebar

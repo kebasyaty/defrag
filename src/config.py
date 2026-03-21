@@ -32,9 +32,9 @@ class Config:
     # Application name
     APP_NAME: ClassVar[str] = "Defrag"
     # Application ID
-    APP_ID: ClassVar[str] = "com.github.kebasyaty.Defrag"
+    APP_ID: ClassVar[str] = "org.gnome.develgen.Defrag"
     # Path to base resources
-    RESOURCE_BASE_PATH: ClassVar[str] = "/com/github/kebasyaty/Defrag"
+    RESOURCE_BASE_PATH: ClassVar[str] = "/org/gnome/develgen/Defrag"
     # Default application window width
     WINDOW_WIDTH: ClassVar[int] = 640
     # Default application window height

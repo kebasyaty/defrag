@@ -1,5 +1,5 @@
 {
-    "id" : "com.github.kebasyaty.Defrag",
+    "id" : "org.gnome.develgen.Defrag",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "48",
     "sdk" : "org.gnome.Sdk",
@@ -31,7 +31,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://github.com/kebasyaty/defrag",
+                    "url" : "https://gitlab.gnome.org/develgen/defrag",
                     "branch" : "v0"
                 }
             ]

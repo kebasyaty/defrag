@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-        input: 'com.github.kebasyaty.Defrag.desktop.in',
-       output: 'com.github.kebasyaty.Defrag.desktop',
+        input: 'org.gnome.develgen.Defrag.desktop.in',
+       output: 'org.gnome.develgen.Defrag.desktop',
          type: 'desktop',
        po_dir: '../po',
       install: true,
@@ -13,8 +13,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-        input: 'com.github.kebasyaty.Defrag.metainfo.xml.in',
-       output: 'com.github.kebasyaty.Defrag.metainfo.xml',
+        input: 'org.gnome.develgen.Defrag.metainfo.xml.in',
+       output: 'org.gnome.develgen.Defrag.metainfo.xml',
        po_dir: '../po',
       install: true,
   install_dir: get_option('datadir') / 'metainfo'
@@ -24,7 +24,7 @@ appstreamcli = find_program('appstreamcli', required: false, disabler: true)
 test('Validate appstream file', appstreamcli,
      args: ['validate', '--no-net', '--explain', appstream_file])
 
-install_data('com.github.kebasyaty.Defrag.gschema.xml',
+install_data('org.gnome.develgen.Defrag.gschema.xml',
   install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
 
@@ -37,8 +37,8 @@ test('Validate schema file',
 service_conf = configuration_data()
 service_conf.set('bindir', get_option('prefix') / get_option('bindir'))
 configure_file(
-  input: 'com.github.kebasyaty.Defrag.service.in',
-  output: 'com.github.kebasyaty.Defrag.service',
+  input: 'org.gnome.develgen.Defrag.service.in',
+  output: 'org.gnome.develgen.Defrag.service',
   configuration: service_conf,
   install_dir: get_option('datadir') / 'dbus-1' / 'services'
 )

@@ -1,8 +1,8 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-data/com.github.kebasyaty.Defrag.desktop.in
-data/com.github.kebasyaty.Defrag.metainfo.xml.in
-data/com.github.kebasyaty.Defrag.gschema.xml
+data/org.gnome.develgen.Defrag.desktop.in
+data/org.gnome.develgen.Defrag.metainfo.xml.in
+data/org.gnome.develgen.Defrag.gschema.xml
 src/main.py
 src/window.py
 src/spinner_dialog.py

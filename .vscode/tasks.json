@@ -105,7 +105,7 @@
     {
       "label": "i18n: Compile .mo files",
       "type": "shell",
-      "command": ["meson compile -C builddir;"],
+      "command": ["cd builddir;", "meson compile -C builddir;", "cd .."],
       "problemMatcher": []
     },
     {
@@ -127,10 +127,18 @@
       "problemMatcher": []
     },
     {
+      "label": "PIP: Download flatpak-pip-generator",
+      "type": "shell",
+      "command": [
+        "wget https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/pip/flatpak-pip-generator.py"
+      ],
+      "problemMatcher": []
+    },
+    {
       "label": "PIP: Run flatpak-pip-generator",
       "type": "shell",
       "command": [
-        "uv run python pyhelpers/flatpak-pip-generator.py --runtime='org.gnome.Sdk//48' --requirements-file='requirements.txt' --ignore-installed='pygobject' --output build-aux/flatpak/pypi-dependencies.json;"
+        "uv run python flatpak-pip-generator.py --runtime='org.gnome.Sdk//48' --requirements-file='requirements.txt' --ignore-installed='pygobject' --output build-aux/flatpak/pypi-dependencies.json"
       ],
       "problemMatcher": []
     },

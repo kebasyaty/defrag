@@ -1,4 +1,4 @@
-application_id = 'com.github.kebasyaty.Defrag'
+application_id = 'org.gnome.develgen.Defrag'
 
 scalable_dir = 'hicolor' / 'scalable' / 'apps'
 install_data(

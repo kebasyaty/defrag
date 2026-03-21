@@ -7,10 +7,15 @@ requires-python = ">=3.12,<4.0"
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
-dependencies = ["psutil>=7.2.0", "pygobject>=3.54.5"]
+dependencies = [
+  "psutil>=7.2.0",
+  "pygobject>=3.54.5",
+]
 
 [dependency-groups]
-dev = ["requirements-parser>=0.13.0"]
+dev = [
+  "requirements-parser>=0.13.0",
+]
 docs = [
   "mike>=2.1.3",
   "mkdocs>=1.6.1",
@@ -87,58 +92,58 @@ exclude = [
 [tool.ruff.lint]
 preview = true
 select = [
-  "D",     # pydocstyle
-  "I",     # isort
-  "E",     # flake8-errors
-  "W",     # flake8-warnings
-  "F",     # flake8-pyflakes
-  "B",     # flake8-bugbear
-  "C4",    # flake8-comprehensions
-  "S",     # flake8-bandit
-  "BLE",   # flake8-blind-except
-  "T20",   # flake8-print
-  "T10",   # flake8-debugger
-  "PT",    # flake8-pytest-style
-  "RUF",   # Ruff-specific
-  "DTZ",   # flake8-datetimez
-  "ERA",   # eradicate
+  "D",  # pydocstyle
+  "I",  # isort
+  "E",  # flake8-errors
+  "W",  # flake8-warnings
+  "F",  # flake8-pyflakes
+  "B",  # flake8-bugbear
+  "C4",  # flake8-comprehensions
+  "S",  # flake8-bandit
+  "BLE",  # flake8-blind-except
+  "T20",  # flake8-print
+  "T10",  # flake8-debugger
+  "PT",  # flake8-pytest-style
+  "RUF",  # Ruff-specific
+  "DTZ",  # flake8-datetimez
+  "ERA",  # eradicate
   "FURB",  # refurb
-  "ARG",   # flake8-unused-arguments
-  "EM",    # flake8-errmsg
-  "ICN",   # flake8-import-conventions
-  "G",     # flake8-logging-format
-  "PGH",   # pygrep-hooks
-  "PIE",   # flake8-pie
-  "PL",    # pylint
-  "PTH",   # flake8-use-pathlib
-  "RET",   # flake8-return
-  "SIM",   # flake8-simplify
-  "UP",    # pyupgrade
-  "YTT",   # flake8-2020
-  "EXE",   # flake8-executable
-  "ASYNC", # flake8-async
+  "ARG",  # flake8-unused-arguments
+  "EM",  # flake8-errmsg
+  "ICN",  # flake8-import-conventions
+  "G",  # flake8-logging-format
+  "PGH",  # pygrep-hooks
+  "PIE",  # flake8-pie
+  "PL",  # pylint
+  "PTH",  # flake8-use-pathlib
+  "RET",  # flake8-return
+  "SIM",  # flake8-simplify
+  "UP",  # pyupgrade
+  "YTT",  # flake8-2020
+  "EXE",  # flake8-executable
+  "ASYNC",  # flake8-async
 ]
 ignore = [
-  "D417",   # Missing argument descriptions in the docstring
-  "D206",   # Docstring should be indented with spaces, not tabs
-  "C408",   # Unnecessary `dict` call (rewrite as a literal)
-  "RUF001", # ambiguous-unicode-character-docstring
-  "RUF002", # ambiguous-unicode-character-docstring
-  "RUF003", # ambiguous-unicode-character-docstring
-  "RUF022", # unsorted-dunder-all
-  "E722",   # Do not use bare except
-  "S110",   # try-except-pass detected, consider logging the exception
-  "S101",   # Use of `assert` detected
-  "PLR",    # Design related pylint codes
+  "D417",  # Missing argument descriptions in the docstring
+  "D206",  # Docstring should be indented with spaces, not tabs
+  "C408",  # Unnecessary `dict` call (rewrite as a literal)
+  "RUF001",  # ambiguous-unicode-character-docstring
+  "RUF002",  # ambiguous-unicode-character-docstring
+  "RUF003",  # ambiguous-unicode-character-docstring
+  "RUF022",  # unsorted-dunder-all
+  "E722",  # Do not use bare except
+  "S110",  # try-except-pass detected, consider logging the exception
+  "S101",  # Use of `assert` detected
+  "PLR",  # Design related pylint codes
   "EM101",  # Exception must not use a string literal, assign to variable first
   "EM102",  # Exception must not use an f-string literal, assign to variable first
-  "ARG002", # Unused method argument
+  "ARG002",  # Unused method argument
 ]
 fixable = ["I"]
 unfixable = [
-  "RUF100", # Unused noqa
-  "T20",    # Removes print statements
-  "F841",   # Removes unused variables
+  "RUF100",  # Unused noqa
+  "T20",  # Removes print statements
+  "F841",  # Removes unused variables
 ]
 flake8-unused-arguments.ignore-variadic-names = true
 isort.required-imports = ["from __future__ import annotations"]

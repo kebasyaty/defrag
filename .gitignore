@@ -38,6 +38,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+flatpak-pip-generator.py
 
 # mkdocs documentation
 /site
@@ -95,6 +96,7 @@ venv.bak/
 
 # IDE Settings
 .idea
+#.zed
 .vscode/**
 !.vscode/tasks.json
 *.suo
